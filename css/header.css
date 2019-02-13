@@ -2,7 +2,7 @@
 	margin-top: -10px;
 }
 .header-background {
-	background-color: #434343;
+	background-color: #222222;
 }
 
 @media (min-width: 768px) {
@@ -29,8 +29,8 @@
 
 /* navbar */
 .navbar-default {
-    background-color: #434343;
-    border-color: #434343;
+    background-color: #222222;
+    border-color: #222222;
 }
 /* Title */
 .navbar-default .navbar-brand {
