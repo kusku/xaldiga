@@ -82,14 +82,14 @@
 .navbar-default .navbar-nav > .active > a:hover,
 .navbar-default .navbar-nav > .active > a:focus {
     color: #E4797B;
-    background-color: #E7E7E7;
+    background-color: #222222;
 	transition: 0.3s;
 }
 .navbar-default .navbar-nav > .open > a,
 .navbar-default .navbar-nav > .open > a:hover,
 .navbar-default .navbar-nav > .open > a:focus {
     color: #E4797B;
-    background-color: #D5D5D5;
+    background-color: #222222;
 	transition: 0.3s;
 }
 /* Caret */
@@ -114,7 +114,7 @@
 }
 .navbar-default .navbar-toggle:hover,
 .navbar-default .navbar-toggle:focus {
-    background-color: #DDD;
+    background-color: #222222;
 }
 .navbar-default .navbar-toggle .icon-bar {
     background-color: #CCC;
@@ -127,4 +127,20 @@
     .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
           color: #333;
     }
+}
+.dropdown-menu {
+	background-color: #222222;
+}
+.navbar-nav > li > .dropdown-menu { 
+	background-color: #222222; 
+}
+.navbar-nav > li > .dropdown-menu > li > a { 
+	color: #FFFFFF;
+	background-color: #222222;
+	transition: 0.3s;
+}
+.navbar-nav > li > .dropdown-menu > li > a:hover,
+.navbar-nav > li > .dropdown-menu > li > a:focus { 
+	color: #E4797B;
+	transition: 0.3s;
 }
