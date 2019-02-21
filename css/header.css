@@ -134,6 +134,7 @@
 .navbar-nav > li > .dropdown-menu > li > a:focus { 
 	color: #E4797B;
 	transition: 0.3s;
+	background-color: #3E3E3E;
 }
 @media (max-width: 767px) {
     .navbar-default .navbar-nav .open .dropdown-menu > li > a {
@@ -145,4 +146,17 @@
         color: #E4797B;
 		transition: 0.3s;
     }
+}
+@media (min-width: 768px) {
+	.navbar a {
+		border-top: 3px solid transparent;
+	}
+
+	.navbar a:hover,
+	.navbar a.active {
+	  border-top: 3px solid #E4797B;
+	}
+	.navbar-default .navbar-nav .open .dropdown-menu > li > a {
+		border-top: 0px solid transparent;
+	}
 }
