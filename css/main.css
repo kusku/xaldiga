@@ -36,10 +36,15 @@
 .carousel-item {
 	height: 100vh;
 	min-height: 350px;
-	background: no-repeat center center scroll;
+	background: no-repeat center center;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
 	background-size: cover;
 	background-image: url('../images/main-image.jpg');
+	background-attachment: fixed;
+}
+
+.main-content {
+	margin-top: 10px;
 }
