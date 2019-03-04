@@ -1,17 +1,17 @@
 .band-footer {
-	background-color: #222222;
+	background-color: var(--background-color);
 	padding-top: 50px;
 	padding-bottom: 50px;
 }
 .social-network-icon {
-	color: #FFFFFF;
+	color: var(--button-color);
 	text-decoration: none;
 	margin-left: 2px;
 	margin-right: 2px;
 	transition: 0.3s;
 }
 .social-network-icon:hover {
-	color: #E4797B;
+	color: var(--hover-button-color);
 	text-decoration: none;
 }
 
@@ -20,15 +20,15 @@
 	text-decoration: none;
 }
 .social-network.icon:link {
-	color: #FFFFFF;
+	color: var(--button-color);
 	text-decoration: none;
 }
 .social-network-link:visited {
-	color: #FFFFFF;
+	color: var(--button-color);
 	text-decoration: none;
 }
 .info-footer {
-	color: #FFFFFF;
+	color: var(--button-color);
 	padding-top: 10px;
 	padding-bottom: 10px;
 }
