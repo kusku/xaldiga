@@ -18,7 +18,7 @@
 }
 
 .header-background {
-	background-color: #222222;
+	background-color: #161616;
 }
 
 .navbar-collapse {
@@ -38,6 +38,10 @@
         text-align: center;
 		top: 0px !important;
     }
+	
+	.dropdown:hover .dropdown-menu {
+		display: block;
+	}
 }
 
 .button {
@@ -57,8 +61,8 @@
 
 /* navbar */
 .navbar-default {
-    background-color: #222222;
-    border-color: #222222;
+    background-color: #161616;
+    border-color: #161616;
 }
 /* Link */
 .navbar-default .navbar-nav > li > a {
