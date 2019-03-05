@@ -21,10 +21,12 @@
 	background-color: var(--background-color);
 }
 
-.navbar-collapse {
-	text-align: left;
-    top:25px !important;
-    position:relative;
+@media (max-width: 767px) {
+	.navbar-collapse {
+		text-align: left;
+		top:32px !important;
+		position:relative;
+	}
 }
 
 @media (min-width: 768px) {
