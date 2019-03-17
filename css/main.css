@@ -52,17 +52,3 @@
 	margin-top: 10px;
 	position: relative;
 }
-
-.rectangle {
-	height: 10%;
-	width: 10%;
-	background-color: var(--background-color);
-	position: fixed;
-	bottom: 50px;
-	left: 50px;
-	color: var(--button-color);
-  }
-
-  .rectangle > a{
-	font-size:5vw;
-  }
