@@ -2,6 +2,8 @@
 	background-color: var(--background-color);
 	padding-top: 50px;
 	padding-bottom: 50px;
+	z-index: 10;
+	position: relative;
 }
 .social-network-icon {
 	color: var(--button-color);
@@ -43,8 +45,24 @@
 	background-size: cover;
 	background-image: url('../images/main-image.jpg');
 	background-attachment: fixed;
+	z-index: 0;
 }
 
-.main-content {
+.header-content {
 	margin-top: 10px;
+	position: relative;
 }
+
+.rectangle {
+	height: 10%;
+	width: 10%;
+	background-color: var(--background-color);
+	position: fixed;
+	bottom: 50px;
+	left: 50px;
+	color: var(--button-color);
+  }
+
+  .rectangle > a{
+	font-size:5vw;
+  }

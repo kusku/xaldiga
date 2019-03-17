@@ -16,22 +16,26 @@
   </head>
   
   <body>
-  <!-- Header -->
-  <nav>
+	<!-- Header -->
+	<div id="navbar"></div>
+  <!--<nav>
   <div class="container-fluid header-background navbar-fixed-top">
 	  <div class="container header-background">
 			<nav class="navbar navbar-default">
-			  <div class="navbar-header">
-				<a class="navbar-brand" href="#">
+			  <div class="navbar-header">-->
+				<!--<a class="navbar-brand" href="#">
 					<img src="./images/logo3.png" width="205" height="109" class="d-inline-block align-top brand-logo" alt="">
-				</a>  
-				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#sectionsNavBar">
+				</a>-->  
+				<!--<div id="brand"></div>
+				<div id="toggle"></div>-->
+				<!--<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#sectionsNavBar">
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
-					</button>
-			  </div>
-			  <div class="collapse navbar-collapse" id="sectionsNavBar">      
+					</button>-->
+				<!--</div>
+				<div id="buttons"></div>-->
+			  <!--<div class="collapse navbar-collapse" id="sectionsNavBar">      
 				<ul class="nav navbar-nav">
 				  <li><a href="#">El Correfoc de Manresa</a></li>
 				  <li class="dropdown">
@@ -47,21 +51,21 @@
 					<li><a href="#">Fes-te soci</a></li>
 					<li><a href="#">Contacte</a></li>
 				</ul>
-				</div>
-		  </nav>
+				</div>-->
+		  <!--</nav>
 		</div>
 	</div>
-	</nav>
+	</nav>-->
 
 	<!-- Content -->
 	<!-- https://startbootstrap.com/snippets/full-slider/ -->
-	<header>
-	<div class="main-content">
+	<div class="header-content">
 		<div id="carouselExampleIndicators" class="carousel" data-ride="carousel">
-			<div class="carousel-item active" ></div>
+			<div class="carousel-item active" >
+				<div class="rectangle"><a href="">Inscriu-te</a></div>
+			</div>
 		</div>
 	</div>
-	</header>
 
 	<!-- Footer -->
 	<div class="container-fluid band-footer">
@@ -101,5 +105,13 @@
 
 	<!-- Include all compiled plugins (below), or include individual files as needed --> 
 	<script src="js/bootstrap.js"></script>
+
+	  <!-- Load React. -->
+  <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+  <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+
+  <!-- Load our React component. -->
+	<script src="js/navbar-dist.js"></script>
   </body>
 </html>
