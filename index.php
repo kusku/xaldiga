@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-	<?php include('src/header.html'); ?>
+	<?php include('src/definitions/header.html'); ?>
   
   <body>
 	<!-- Header -->
@@ -24,7 +24,7 @@
 	<!-- Footer -->
 	<?php include('src/components/footer.html'); ?>
 
-	<?php include('src/scriptsdef.html'); ?>
+	<?php include('src/definitions/scriptsdef.html'); ?>
 
   </body>
 </html>
