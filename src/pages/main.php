@@ -1,0 +1,13 @@
+<!-- https://startbootstrap.com/snippets/full-slider/ -->
+<div class="header-content">
+    <div id="carouselExampleIndicators" class="carousel" data-ride="carousel">
+        <div class="carousel-item active" >
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="container">
+        <div id="relaod_test"></div>
+    </div>
+</div>
