@@ -1,7 +1,7 @@
 <!-- https://startbootstrap.com/snippets/full-slider/ -->
 <div class="header-content">
     <div id="carouselExampleIndicators" class="carousel" data-ride="carousel">
-        <div class="carousel-item active" >
+        <div class="carousel-item active" style="background-image: url('/images/main-image.jpg')">
         </div>
     </div>
 </div>

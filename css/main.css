@@ -43,7 +43,6 @@
 	-moz-background-size: cover;
 	-o-background-size: cover;
 	background-size: cover;
-	background-image: url('../images/main-image.jpg');
 	background-attachment: fixed;
 	z-index: 0;
 }
