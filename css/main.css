@@ -51,3 +51,11 @@
 	margin-top: 10px;
 	position: relative;
 }
+
+.generic-content {
+	background-color: bisque;
+	padding-top: 85px;
+	padding-bottom: 50px;
+	z-index: 10;
+	position: relative;
+}
