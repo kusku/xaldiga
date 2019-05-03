@@ -1,3 +1,19 @@
+@font-face {
+    font-family: jfallaone-regular;
+    src: url("/fonts/FjallaOne-Regular.ttf");
+}
+h1 {
+    font-family: jfallaone-regular, sans-serif;
+    -ms-text-size-adjust: 100%;
+	-webkit-text-size-adjust: 100%;
+	font-size: 50px;
+}
+
+.p-desc {
+	font-size: 15px;
+	color: var(--font-p-color);
+}
+
 .band-footer {
 	background-color: var(--background-color);
 	padding-top: 50px;
