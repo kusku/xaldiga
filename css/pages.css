@@ -12,12 +12,13 @@
 
 .content-container {
     position: relative;
-    top: -140px;
+    top: 60px;
+    padding-bottom: 60px;
 }
 
 @media (max-width: 767px) {
     .content-container {
-        top: -85px;
+        top: 30px;
     }
 }
 
@@ -45,11 +46,14 @@
     font-size: 120px;
     color: white;
     font-family: jfallaone-regular, sans-serif;
+    top: 260px;
+    position: relative;
 }
 
 @media (max-width: 767px) {
 	.portrait-caption {
         font-size: 70px;
+        top: 310px;
 	}
 }
 
