@@ -15,6 +15,7 @@
         <link href=<?php echo getCSSPath("/css/main.css");?> rel="stylesheet" type="text/css">
         <link href=<?php echo getCSSPath("/css/header.css");?> rel="stylesheet" type="text/css">
         <link href=<?php echo getCSSPath("/css/pages.css");?> rel="stylesheet" type="text/css">
+        <link href=<?php echo getCSSPath("/css/modalImage.css");?> rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css' integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ' crossorigin='anonymous'>
 
@@ -29,6 +30,9 @@
 	<!-- Content -->
   <?php require_once(getPath('/src/routing.php')); ?>
 
+  <!-- Modal Image -->
+  <!--<?php require_once(getPath('/src/components/modalImage.html')); ?>-->
+
 	<!-- Footer -->
 	<?php require_once(getPath('/src/components/footer.html')); ?>
 
@@ -42,6 +46,7 @@
   <!-- Include all compiled plugins (below), or include individual files as needed --> 
   <script src="js/bootstrap.js"></script>
   <script src="js/scroll.js"></script>
+  <script src="js/modalImage.js"></script>
 
   </body>
 </html>

@@ -5,7 +5,7 @@
 </div>
 <div class="row row-margin">
     <div class="col-lg-6 content-image">
-        <img src="<?php echo $sectionUrl ?>" alt="<?php echo $sectionTitle ?>">
+        <?php echo "<img class='thumb-image' id='".$sectionTitle."' src='".$sectionUrl."' alt='".$sectionTitle."' onClick=clickedThumbImage('".$sectionTitle."'); >" ?>
     </div>
     <div class="col-lg-6">
         <p class="p-desc"><?php echo $sectionDescription ?></p>
