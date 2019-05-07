@@ -16,8 +16,8 @@
         <link href=<?php echo getCSSPath("/css/header.css");?> rel="stylesheet" type="text/css">
         <link href=<?php echo getCSSPath("/css/pages.css");?> rel="stylesheet" type="text/css">
         <link href=<?php echo getCSSPath("/css/modalImage.css");?> rel="stylesheet" type="text/css">
+        <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css'>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css' integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ' crossorigin='anonymous'>
 
         <link rel="shortcut icon" type="image/x-icon" href="favicon.ico"/>
         <meta name="description" content="Entitat manresana organitzadora d'actes festius, entre ells El Correfoc de Manresa.">
