@@ -1,9 +1,7 @@
 <div class="generic-content">
 	<div class="parallax">
 		<div class="container-fluid">
-		<div class="container portrait-caption">
-				INFANTIL
-			</div>
+		<div class="container portrait-caption">INFANTIL</div>
 		</div>
 	</div>
 	<div class="container-fluid content-container">
