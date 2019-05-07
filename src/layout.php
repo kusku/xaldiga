@@ -31,7 +31,7 @@
   <?php require_once(getPath('/src/routing.php')); ?>
 
   <!-- Modal Image -->
-  <!--<?php require_once(getPath('/src/components/modalImage.html')); ?>-->
+  <?php require_once(getPath('/src/components/modalImage.html')); ?>
 
 	<!-- Footer -->
 	<?php require_once(getPath('/src/components/footer.html')); ?>
