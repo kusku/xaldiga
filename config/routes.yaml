@@ -1,0 +1,7 @@
+index:
+    path: /
+    controller: App\Controller\WebController::homepageAction
+
+infantil:
+  path: /infantil
+  controller: App\Controller\InfantilController:infantilAction
