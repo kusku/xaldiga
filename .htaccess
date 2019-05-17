@@ -1,3 +1,8 @@
+Order allow,deny
+Deny from all
+
+Options -Indexes
+
 RewriteEngine on
 #RewriteCond %{REQUEST_URI} !public/
 RewriteRule (.*) /public/$1 [L]
