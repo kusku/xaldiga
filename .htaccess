@@ -1,11 +1,4 @@
-<IfModule mod_rewrite.c>
-    RewriteEngine On
-    RewriteCond %{REQUEST_FILENAME} !-f
-    RewriteRule ^(.*)$ index.php [QSA,L]
-</IfModule>
-
-<IfModule !mod_rewrite.c>
-    <IfModule mod_alias.c>
-        RedirectMatch 302 ^/$ /public/index.php/
-    </IfModule>
-</IfModule>
+RewriteEngine on
+#RewriteCond %{REQUEST_URI} !public/
+RewriteRule (.*) /public/$1 [L]
+RewriteRule !public - [F]
