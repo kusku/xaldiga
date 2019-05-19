@@ -4,15 +4,17 @@ namespace App\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
-class InfantilController extends AbstractController
+class SectionPageWithSectionsController extends AbstractController
 {
     public function infantilAction()
     {
         $infantilElements;
 
         $genericInfo = array(
+            "sectionFolder" => "infantil",
             "title" => "tid_infantil_title",
-            "description" => "tid_infantil_main_desc"
+            "description" => "tid_infantil_main_desc",
+            "mainImageDescription" => "tid_infantil_main_image_desc"
         );
 
         $diablons = array(
@@ -51,8 +53,8 @@ class InfantilController extends AbstractController
             "description" => "tid_infantil_ceptrot_desc"
         );
 
-        $infantilElements = array($diablons, $tabalons, $tremenda, $traqueta, $bou, $ceptrot);
+        $sectionElements = array($diablons, $tabalons, $tremenda, $traqueta, $bou, $ceptrot);
 
-        return $this->render('web/infantil.html.twig', ['genericInfo' => $genericInfo, 'infantilElements' => $infantilElements]);
+        return $this->render('web/section-page-with-sections.html.twig', ['genericInfo' => $genericInfo, 'sectionElements' => $sectionElements]);
     }
 }

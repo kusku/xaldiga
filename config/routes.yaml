@@ -4,4 +4,12 @@ index:
 
 infantil:
   path: /infantil
-  controller: App\Controller\InfantilController:infantilAction
+  controller: App\Controller\SectionPageWithSectionsController:infantilAction
+
+tabalers:
+  path: /tabalers
+  controller: App\Controller\SectionPageOnlyDescriptionController:tabalersAction
+
+histrions:
+  path: /histrions
+  controller: App\Controller\SectionPageOnlyDescriptionController:histrionsAction

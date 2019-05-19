@@ -1,4 +1,6 @@
-tid_infantil_title: infantil
+# INFANTIL --------------------------------------
+tid_infantil_title: Infantil
+tid_infantil_main_image_desc: Moscada Infantil
 tid_infantil_diablons_title: diablons
 tid_infantil_tabalons_title: tabalons
 tid_infantil_tremenda_title: tremenda
@@ -37,4 +39,15 @@ tid_infantil_main_desc: Arran de la celebració de la 1a Moscada infantil de la 
                         més a més, la Secció participa en altres esdeveniments de la ciutat i en altres festes i
                         manifestacions de foc i bestiari que s’organitzen arreu de Catalunya.
 
-foo: caca <br> pipi
+# TABALERS --------------------------------------
+tid_tabalers_title: Tabalers
+tid_tabalers_main_desc: Els Tabalers són el grup de percussió de l’entitat Xàldiga Taller de Festes.<br><br>
+                        Els seus orígens els trobem a mitjans dels anys vuitanta amb el naixement del Correfoc de Manresa i des d'aleshores s'han convertit en la banda sonora d'aquesta cercavila de foc. Tot i així els darrers anys han potenciat els seus espectacles de percussió i, a banda d'acompanyar a la colla de diables, també realitzen cercaviles, casaments, aniversaris, fires medievals, trobades i actes de tot tipus.
+tid_tabalers_main_image_desc: Tabalers
+
+# HISTRIONS --------------------------------------
+tid_histrions_title: Histrions
+tid_histrions_main_desc:  Els histrions són uns personatges que apareixen durant la Fira de l’Aixada. Es van crear l’any 2004 coincidint amb la presentació de la Gàrgola de la Seu en societat.<br><br>
+                          Els histrions són unes personalitats que, gràcies a la seva vestimenta negra (en ocasions també blanca) amb caputxa cilíndrica i la cara tapada tenen llicència per fer-ho gairebé tot i, sovint, saltar-se algunes normes. Acompanyats d’estris com escombres o altres similars es mofen del públic i fins i tot de les més altes instàncies polítiques, sense deixar el seu tarannà divertit i alegre que els acaba convertint en personatges entranyables i divertits.<br><br>
+                          Estan inspirats en personatges com els de les festes de la Santantonà, al País Valencià, o el típic Poio de Moià.
+tid_histrions_main_image_desc: Histrions

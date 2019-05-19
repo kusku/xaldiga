@@ -3,7 +3,7 @@
 {% block body %}
 
 <div class="generic-content">
-	<div class="parallax">
+	<div class="parallax" style="background-image: url('{{ '/images/' ~ genericInfo.sectionFolder ~ '/background-image.jpg' }}')">
 		<div class="container-fluid">
 		<div class="container portrait-caption">{{ genericInfo.title|trans|upper }}</div>
 		</div>
@@ -15,7 +15,7 @@
 					<p class="p-desc">{{ genericInfo.description|trans|raw }}</p>
 				</div>
 				<div class="col-lg-6 content-image">
-					<img id="moscada-infantil" src="/images/infantil/moscada-infantil.jpg" class="thumb-image" alt="Moscada Infantil" onClick="clickedThumbImage('moscada-infantil');">
+					<img id="main-image" src="{{ '/images/' ~ genericInfo.sectionFolder ~ '/main-image.jpg' }}" class="thumb-image" alt='{{ genericInfo.mainImageDescription|trans }}' onClick="clickedThumbImage('main-image');">
 				</div>
 			</div>
 		</div>
@@ -23,18 +23,18 @@
 	<div class="container-fluid">
 		<div class="container">
 
-            {% for infantilElement in infantilElements %}
+            {% for sectionElement in sectionElements %}
                 <div class="row row-title-space">
                     <div class="col">
-                        <h1>{{ infantilElement.title|trans|capitalize }}</h1>
+                        <h1>{{ sectionElement.title|trans|capitalize }}</h1>
                     </div>
                 </div>
                 <div class="row row-margin">
                     <div class="col-lg-6 content-image">
-                        <img class='thumb-image' id='{{ infantilElement.title }}' src='{{ infantilElement.url }}' alt='{{ infantilElement.title|trans|capitalize }}' onClick=clickedThumbImage('{{ infantilElement.title }}'); >
+                        <img class='thumb-image' id='{{ sectionElement.title }}' src='{{ sectionElement.url }}' alt='{{ sectionElement.title|trans|capitalize }}' onClick=clickedThumbImage('{{ sectionElement.title }}'); >
                     </div>
                     <div class="col-lg-6">
-                        <p class="p-desc">{{ infantilElement.description|trans|raw }}</p>
+                        <p class="p-desc">{{ sectionElement.description|trans|raw }}</p>
                     </div>
                 </div>
             {% endfor %}
