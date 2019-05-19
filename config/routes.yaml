@@ -13,3 +13,7 @@ tabalers:
 histrions:
   path: /histrions
   controller: App\Controller\SectionPageOnlyDescriptionController:histrionsAction
+
+diables:
+  path: /diables
+  controller: App\Controller\SectionPageWithSectionsController:diablesAction

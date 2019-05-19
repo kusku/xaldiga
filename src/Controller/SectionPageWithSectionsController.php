@@ -8,8 +8,6 @@ class SectionPageWithSectionsController extends AbstractController
 {
     public function infantilAction()
     {
-        $infantilElements;
-
         $genericInfo = array(
             "sectionFolder" => "infantil",
             "title" => "tid_infantil_title",
@@ -54,6 +52,38 @@ class SectionPageWithSectionsController extends AbstractController
         );
 
         $sectionElements = array($diablons, $tabalons, $tremenda, $traqueta, $bou, $ceptrot);
+
+        return $this->render('web/section-page-with-sections.html.twig', ['genericInfo' => $genericInfo, 'sectionElements' => $sectionElements]);
+    }
+
+    public function diablesAction()
+    {
+        $genericInfo = array(
+            "sectionFolder" => "diables",
+            "title" => "tid_diables_title",
+            "description" => "tid_diables_main_desc",
+            "mainImageDescription" => "tid_diables_main_image_desc"
+        );
+
+        $diables = array(
+            "title" => "tid_diables_diables_title",
+            "url" => "/images/diables/diables.jpg",
+            "description" => "tid_diables_diables_desc"
+        );
+
+        $diablesa = array(
+            "title" => "tid_diables_diablesa_title",
+            "url" => "/images/diables/diablesa.jpg",
+            "description" => "tid_diables_diablesa_desc"
+        );
+
+        $ceptrot = array(
+            "title" => "tid_diables_ceptrot_title",
+            "url" => "/images/diables/ceptrot.jpg",
+            "description" => "tid_diables_ceptrot_desc"
+        );
+
+        $sectionElements = array($diables, $diablesa, $ceptrot);
 
         return $this->render('web/section-page-with-sections.html.twig', ['genericInfo' => $genericInfo, 'sectionElements' => $sectionElements]);
     }
