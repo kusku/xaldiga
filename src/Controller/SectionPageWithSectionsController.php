@@ -17,37 +17,37 @@ class SectionPageWithSectionsController extends AbstractController
 
         $diablons = array(
             "title" => "tid_infantil_diablons_title",
-            "url" => "/images/infantil/diablons.jpg",
+            "imageName" => "diablons.jpg",
             "description" => "tid_infantil_diablons_desc"
         );
 
         $tabalons = array(
             "title" => "tid_infantil_tabalons_title",
-            "url" => "/images/infantil/tabalons.jpg",
+            "imageName" => "tabalons.jpg",
             "description" => "tid_infantil_tabalons_desc"
         );
 
         $tremenda = array(
             "title" => "tid_infantil_tremenda_title",
-            "url" => "/images/infantil/tremenda.jpg",
+            "imageName" => "tremenda.jpg",
             "description" => "tid_infantil_tremenda_desc"
         );
 
         $traqueta = array(
             "title" => "tid_infantil_traqueta_title",
-            "url" => "/images/infantil/traqueta.jpg",
+            "imageName" => "traqueta.jpg",
             "description" => "tid_infantil_traqueta_desc"
         );
 
         $bou = array(
             "title" => "tid_infantil_bou_title",
-            "url" => "/images/infantil/bou.jpg",
+            "imageName" => "bou.jpg",
             "description" => "tid_infantil_bou_desc"
         );
 
         $ceptrot = array(
             "title" => "tid_infantil_ceptrot_title",
-            "url" => "/images/infantil/ceptrot.jpg",
+            "imageName" => "ceptrot.jpg",
             "description" => "tid_infantil_ceptrot_desc"
         );
 
@@ -67,19 +67,19 @@ class SectionPageWithSectionsController extends AbstractController
 
         $diables = array(
             "title" => "tid_diables_diables_title",
-            "url" => "/images/diables/diables.jpg",
+            "imageName" => "diables.jpg",
             "description" => "tid_diables_diables_desc"
         );
 
         $diablesa = array(
             "title" => "tid_diables_diablesa_title",
-            "url" => "/images/diables/diablesa.jpg",
+            "imageName" => "diablesa.jpg",
             "description" => "tid_diables_diablesa_desc"
         );
 
         $ceptrot = array(
             "title" => "tid_diables_ceptrot_title",
-            "url" => "/images/diables/ceptrot.jpg",
+            "imageName" => "ceptrot.jpg",
             "description" => "tid_diables_ceptrot_desc"
         );
 
