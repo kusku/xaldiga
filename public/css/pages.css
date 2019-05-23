@@ -56,3 +56,15 @@
 .row-title-space {
     margin-top: 50px;
 }
+
+.title {
+    font-weight: 700;
+    font-size: 80px;
+    color: var(--background-color);
+    font-family: jfallaone-regular, sans-serif;
+}
+
+.paragraph-entitat {
+    font-size: 16px;
+    line-height: 1.6;
+}

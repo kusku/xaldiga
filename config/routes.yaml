@@ -17,3 +17,7 @@ histrions:
 diables:
   path: /diables
   controller: App\Controller\SectionPageWithSectionsController:diablesAction
+
+equip-permanent:
+  path: /equip-permanent
+  controller: App\Controller\EntitatController:equipPermanentAction

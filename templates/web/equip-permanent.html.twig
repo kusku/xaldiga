@@ -1,0 +1,29 @@
+{% extends 'web/web-base.html.twig' %}
+
+{% block body %}
+
+<div class="generic-content">
+	<div class="container-fluid content-container">
+		<div class="container">
+            <div class="row">
+                <div class="title">
+                    {{ 'tid_equip_permanent_title'|trans|upper }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 content-image">
+                    <img class='thumb-image' id='equip-permanent' src='/images/entitat/equip-permanent.jpg' onClick=clickedThumbImage('equip-permanent'); >
+                </div>
+                <div class="col-lg-8 paragraph-entitat">
+                    <b>{{ 'tid_equip_permanent_president'|trans }}</b>: Marc Cuscullola<br>
+                    <b>{{ 'tid_equip_permanent_secretari'|trans }}</b>: Dàmaris Panduro<br>
+                    <b>{{ 'tid_equip_permanent_tresorera'|trans }}</b>: Lisbeth Gómez<br>
+                    <b>{{ 'tid_equip_permanent_vocal'|trans }}</b>: Ivan Escorsell<br>
+                    <b>{{ 'tid_equip_permanent_vocal'|trans }}</b>: Marc Estrems<br>
+                </div>
+            </div>
+		</div>
+	</div>
+</div>
+
+{% endblock %}

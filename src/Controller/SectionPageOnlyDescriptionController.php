@@ -8,8 +8,6 @@ class SectionPageOnlyDescriptionController extends AbstractController
 {
     public function tabalersAction()
     {
-        $infantilElements;
-
         $genericInfo = array(
             "sectionFolder" => "tabalers",
             "title" => "tid_tabalers_title",
@@ -22,8 +20,6 @@ class SectionPageOnlyDescriptionController extends AbstractController
 
     public function histrionsAction()
     {
-        $infantilElements;
-
         $genericInfo = array(
             "sectionFolder" => "histrions",
             "title" => "tid_histrions_title",
