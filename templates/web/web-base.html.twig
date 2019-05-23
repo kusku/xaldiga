@@ -1,0 +1,116 @@
+{% extends 'base.html.twig' %}
+
+{% block meta %}
+    <link href="{{ asset('/css/variables.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('/css/main.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('/css/header.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('/css/pages.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('/css/modalImage.css') }}" rel="stylesheet" type="text/css">
+    <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+{% endblock %}
+
+{% block mainbody %}
+	<!-- Header -->
+	<div class="container-fluid header-background navbar-fixed-top">
+        <div class="container header-background">
+            <nav class="navbar navbar-default">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="/">
+                        <img src="{{ asset('/images/logo3.png') }}" width="205" height="109" class="d-inline-block align-top brand-logo" alt="">
+                    </a>  
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#sectionsNavBar">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                </div>
+                <div class="collapse navbar-collapse" id="sectionsNavBar">      
+                    <ul class="nav navbar-nav">
+                        <li><a href="#">El Correfoc de Manresa</a></li>
+                        <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">L'Entitat</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Qui som?</a></li>
+                            <li><a href="#">Equip Permanent</a></li>
+                            <li><a href="#">Agenda</a></li>
+                            <li><a href="#">Notícies</a></li>
+                        </ul>
+                        </li>
+                        <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Seccions</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/diables">Diables</a></li>
+                            <li><a href="/tabalers">Tabalers</a></li>
+                            <li><a href="/histrions">Histrions</a></li>
+                            <li><a href="/infantil">Infantil</a></li>
+                            <li><a href="#">I+D</a></li>
+                        </ul>
+                        </li>
+                        <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Actes i activitats</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">La Bategada</a></li>
+                            <li><a href="#">La Carnavalada</a></li>
+                            <li><a href="#">Passatge del Terror</a></li>
+                        </ul>
+                        </li>
+                        <li><a href="#">Fes-te soci</a></li>
+                        <li><a href="#">Contacte</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </div>
+
+	<!-- Content -->
+    {% block body %}{% endblock %}
+
+  <!-- Modal Image -->
+    <div id="modal-image" class="modal-image" onClick="closeModalImage();">
+        <span class="modal-image-close">&times;</span>
+        <img class="modal-image-content" id="bigModalImage">
+        <div id="modal-image-caption"></div>
+    </div>
+
+	<!-- Footer -->
+    <div class="container-fluid band-footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-3">
+        <div class="info-footer">
+          <p><strong>Xàldiga Taller de Festes</strong></p>
+          <p> Carrer Sant Bartomeu 50<br>
+            08241 Manresa </p>
+        </div>
+        <div class="info-footer">
+          <p>
+              <b>+34 717 70 76 71</b><br>
+              xaldiga@xaldiga.cat
+          </p>
+        </div>
+        </div>
+        <div class="col-lg-3">
+          <div class="info-footer">
+              <p>Segueix-nos a:<br>
+                  <h3>
+                      <a class="fa fa-facebook-official social-network-icon" href="https://www.facebook.com/Xaldiga" target="_blank" rel="noopener noreferrer" title="Facebook"></a>
+                      <a class="fa fa-twitter social-network-icon" href="https://twitter.com/xaldiga" target="_blank" rel="noopener noreferrer" title="Twitter"></a>
+                      <a class="fa fa-instagram social-network-icon" href="https://www.instagram.com/xaldigamanresa/" target="_blank" rel="noopener noreferrer" title="Instagram"></a>
+                  </h3>
+              </p>
+          </div>
+        </div>
+        <div class="col-lg-6"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Return to Top -->
+  <a href="javascript:void(0)" onclick="returnToTop();" id="return-to-top-button" class="return-to-top-button"><i class='fas fa-chevron-up' style='font-size:22px'></i></a>
+{% endblock %}
+
+{% block scripts %}
+  <script src="js/scroll.js"></script>
+  <script src="js/modalImage.js"></script>
+{% endblock %}
