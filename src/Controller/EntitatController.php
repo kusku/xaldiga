@@ -10,4 +10,9 @@ class EntitatController extends AbstractController
     {
         return $this->render('web/equip-permanent.html.twig');
     }
+
+    public function entitatAction()
+    {
+        return $this->render('web/entitat.html.twig');
+    }
 }

@@ -21,3 +21,7 @@ diables:
 equip-permanent:
   path: /equip-permanent
   controller: App\Controller\EntitatController:equipPermanentAction
+
+entitat:
+  path: /entitat
+  controller: App\Controller\EntitatController:entitatAction
