@@ -17,7 +17,7 @@
 					<p class="p-desc">{{ genericInfo.description|trans|raw }}</p>
 				</div>
 				<div class="col-lg-6 content-image">
-					<img id="main-image" src="{{ imagesFolderPath ~ 'main-image.jpg' }}" class="thumb-image" alt='{{ genericInfo.mainImageDescription|trans }}' onClick="clickedThumbImage('main-image');">
+					<img id="main-image" src="{{ imagesFolderPath ~ 'main-image.jpg' }}" alt='{{ genericInfo.mainImageDescription|trans }}' onClick="clickedThumbImage('main-image');">
 				</div>
 			</div>
 		</div>
@@ -33,7 +33,7 @@
                 </div>
                 <div class="row row-margin">
                     <div class="col-lg-6 content-image">
-                        <img class='thumb-image' id='{{ sectionElement.title }}' src='{{ imagesFolderPath ~ sectionElement.imageName }}' alt='{{ sectionElement.title|trans|capitalize }}' onClick=clickedThumbImage('{{ sectionElement.title }}'); >
+                        <img id='{{ sectionElement.title }}' src='{{ imagesFolderPath ~ sectionElement.imageName }}' alt='{{ sectionElement.title|trans|capitalize }}' onClick=clickedThumbImage('{{ sectionElement.title }}'); >
                     </div>
                     <div class="col-lg-6">
                         <p class="p-desc">{{ sectionElement.description|trans|raw }}</p>
