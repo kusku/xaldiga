@@ -25,3 +25,7 @@ equip-permanent:
 entitat:
   path: /entitat
   controller: App\Controller\EntitatController:entitatAction
+
+correfoc:
+  path: /correfoc
+  controller: App\Controller\CorrefocController:correfocAction
