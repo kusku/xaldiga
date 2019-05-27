@@ -10,11 +10,6 @@
     }
 }
 
-.content-image > img {
-    width: 100%;
-    height: auto;
-}
-
 .parallax {
     /* Set a specific height */
     min-height: 400px; 
