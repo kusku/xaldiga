@@ -20,7 +20,14 @@ class ActesController extends AbstractController
 
     public function moscadaInfantilAction()
     {
-        return $this->render('web/moscada-infantil.html.twig');
+        $genericInfo = array(
+            "sectionFolder" => "moscada-infantil",
+            "title" => "tid_moscada_infantil_title",
+            "description" => "tid_moscada_infantil_desc",
+            "mainImageDescription" => "tid_moscada_infantil_main_image_desc"
+        );
+
+        return $this->render('web/actes.html.twig', ['genericInfo' => $genericInfo]);
     }
 
     public function bategadaAction()

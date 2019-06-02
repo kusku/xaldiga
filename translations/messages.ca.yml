@@ -48,55 +48,54 @@ tid_infantil_tremenda_title: tremenda
 tid_infantil_traqueta_title: traqueta
 tid_infantil_bou_title: bou
 tid_infantil_ceptrot_title: ceptrot
-tid_infantil_diablons_desc: |
-                            Els Diablons són els encarregats de fer l’espectacle de foc. Per fer-ho, utilitzen una forca amb la que tiren les carretilles o els sortidors, depenent de l’actuació.<br><br>
-                            Els Diablons, com els diables grans, tenen també un ball propi, estrenat  a la moscada de l’any 2008. La música del ball és de Lluís Toran, amb alguna variació realitzada durant els últims anys, i amb la coreografia de Maribel Jódar.<br><br>
-                            L’edat mínima per participar amb el grup de Diablons és de 9 anys.
+tid_infantil_diablons_desc: "Els Diablons són els encarregats de fer l’espectacle de foc. Per fer-ho, utilitzen una forca amb la que tiren les carretilles o els sortidors, depenent de l’actuació.\n\n
+                            Els Diablons, com els diables grans, tenen també un ball propi, estrenat  a la moscada de l’any 2008. La música del ball és de Lluís Toran, amb alguna variació realitzada durant els últims anys, i amb la coreografia de Maribel Jódar.\n\n
+                            L’edat mínima per participar amb el grup de Diablons és de 9 anys."
 
-tid_infantil_tabalons_desc: Els Tabalons són el grup de percussió de la secció infantil. Acostumen a acompanyar als diablons a totes les actuacions, tot i que també en fan ells pel seu compte.<br><br>
-                            El grup consta de diversos instruments, el “repe” (repenique), les caixes, els tabals, els bombos, la closca, el “xiqui”, els xiulets i les esquelles. Els diferents ritmes del grup es poden veure a les cercaviles que es fan, o bé als espectacles que es duen a terme, ja sigui estàtics o de recorregut.<br><br>
-                            L’edat mínima per participar amb el grup de Tabalons és de 6 anys.
+tid_infantil_tabalons_desc: "Els Tabalons són el grup de percussió de la secció infantil. Acostumen a acompanyar als diablons a totes les actuacions, tot i que també en fan ells pel seu compte.\n\n
+                            El grup consta de diversos instruments, el “repe” (repenique), les caixes, els tabals, els bombos, la closca, el “xiqui”, els xiulets i les esquelles. Els diferents ritmes del grup es poden veure a les cercaviles que es fan, o bé als espectacles que es duen a terme, ja sigui estàtics o de recorregut.\n\n
+                            L’edat mínima per participar amb el grup de Tabalons és de 6 anys."
 
-tid_infantil_tremenda_desc: La Tremenda és el drac de la secció infantil. És una estructura que simula la silueta d’un drac de dos caps. Els colors de la Tremenda provenen de la Víbria i el Drac de Manresa, mare i pare de la Tremenda. La Tremenda, durant l’any recull els xumets dels infants de la ciutat i els porta al coll durant les actuacions.<br><br>
-                            El Ball de la Tremenda és costum que el faci un sol ballador, tot i que en alguns moments puntuals l’han arribat a ballar dues persones.<br><br>
-                            Té dues pinces a la boca per on s’hi posa la pirotècnia durant el ball i els diferents correfocs que es fan durant l’any. Normalment porta 4 fuets encesos.<br><br>
-                            Els portadores i les portadores del drac són infants de la secció.
+tid_infantil_tremenda_desc: "La Tremenda és el drac de la secció infantil. És una estructura que simula la silueta d’un drac de dos caps. Els colors de la Tremenda provenen de la Víbria i el Drac de Manresa, mare i pare de la Tremenda. La Tremenda, durant l’any recull els xumets dels infants de la ciutat i els porta al coll durant les actuacions.\n\n
+                            El Ball de la Tremenda és costum que el faci un sol ballador, tot i que en alguns moments puntuals l’han arribat a ballar dues persones.\n\n
+                            Té dues pinces a la boca per on s’hi posa la pirotècnia durant el ball i els diferents correfocs que es fan durant l’any. Normalment porta 4 fuets encesos.\n\n
+                            Els portadores i les portadores del drac són infants de la secció."
 
 tid_infantil_traqueta_desc: WIP
 tid_infantil_bou_desc: WIP
 tid_infantil_ceptrot_desc: WIP
 
-tid_infantil_main_desc: Arran de la celebració de la 1a Moscada infantil de la Festa Major de Manresa l’any 2004 es va
+tid_infantil_main_desc: "Arran de la celebració de la 1a Moscada infantil de la Festa Major de Manresa l’any 2004 es va
                         crear la Secció Infantil de Xàldiga, amb una doble finalitat, d’una banda iniciar a un grup de
                         nois i noies en els diferents aspectes vinculats a les festes tradicionals de foc –percussions,
                         pirotècnia, diables, imatgeria, etc.- tot afavorint la seva participació i continuïtat en l’entitat i,
                         per altra banda, acostar les festes de foc als infants i adolescents de Manresa.
-                        <br><br>
+                        \n\n
                         Durant aquests anys de funcionament la Secció Infantil ha anat consolidant una estructura i un
                         funcionament propi, i ha anat definint i creant els elements propis i identificatius com a colla
                         de foc infantil. En paral·lel, també ha consolidat la seva participació en les dues principals
                         festes de la ciutat, La Fira de l’Aixada i la Festa Major de Manresa. En aquest segon cas es
                         participa en el recorregut del cercavila i s’organitza una activitat pròpia, la Moscada Infantil. A
                         més a més, la Secció participa en altres esdeveniments de la ciutat i en altres festes i
-                        manifestacions de foc i bestiari que s’organitzen arreu de Catalunya.
+                        manifestacions de foc i bestiari que s’organitzen arreu de Catalunya."
 
 # TABALERS --------------------------------------
 tid_tabalers_title: Tabalers
-tid_tabalers_main_desc: Els Tabalers són el grup de percussió de l’entitat Xàldiga Taller de Festes.<br><br>
-                        Els seus orígens els trobem a mitjans dels anys vuitanta amb el naixement del Correfoc de Manresa i des d'aleshores s'han convertit en la banda sonora d'aquesta cercavila de foc. Tot i així els darrers anys han potenciat els seus espectacles de percussió i, a banda d'acompanyar a la colla de diables, també realitzen cercaviles, casaments, aniversaris, fires medievals, trobades i actes de tot tipus.
+tid_tabalers_main_desc: "Els Tabalers són el grup de percussió de l’entitat Xàldiga Taller de Festes.\n\n
+                        Els seus orígens els trobem a mitjans dels anys vuitanta amb el naixement del Correfoc de Manresa i des d'aleshores s'han convertit en la banda sonora d'aquesta cercavila de foc. Tot i així els darrers anys han potenciat els seus espectacles de percussió i, a banda d'acompanyar a la colla de diables, també realitzen cercaviles, casaments, aniversaris, fires medievals, trobades i actes de tot tipus."
 tid_tabalers_main_image_desc: Tabalers
 
 # HISTRIONS --------------------------------------
 tid_histrions_title: Histrions
-tid_histrions_main_desc:  Els histrions són uns personatges que apareixen durant la Fira de l’Aixada. Es van crear l’any 2004 coincidint amb la presentació de la Gàrgola de la Seu en societat.<br><br>
-                          Els histrions són unes personalitats que, gràcies a la seva vestimenta negra (en ocasions també blanca) amb caputxa cilíndrica i la cara tapada tenen llicència per fer-ho gairebé tot i, sovint, saltar-se algunes normes. Acompanyats d’estris com escombres o altres similars es mofen del públic i fins i tot de les més altes instàncies polítiques, sense deixar el seu tarannà divertit i alegre que els acaba convertint en personatges entranyables i divertits.<br><br>
-                          Estan inspirats en personatges com els de les festes de la Santantonà, al País Valencià, o el típic Poio de Moià.
+tid_histrions_main_desc:  "Els histrions són uns personatges que apareixen durant la Fira de l’Aixada. Es van crear l’any 2004 coincidint amb la presentació de la Gàrgola de la Seu en societat.\n\n
+                          Els histrions són unes personalitats que, gràcies a la seva vestimenta negra (en ocasions també blanca) amb caputxa cilíndrica i la cara tapada tenen llicència per fer-ho gairebé tot i, sovint, saltar-se algunes normes. Acompanyats d’estris com escombres o altres similars es mofen del públic i fins i tot de les més altes instàncies polítiques, sense deixar el seu tarannà divertit i alegre que els acaba convertint en personatges entranyables i divertits.\n\n
+                          Estan inspirats en personatges com els de les festes de la Santantonà, al País Valencià, o el típic Poio de Moià."
 tid_histrions_main_image_desc: Histrions
 
 # DIABLES --------------------------------------
 tid_diables_title: Diables
-tid_diables_main_desc:  L’any 1986 una colla d’amics i amants de la cultura del foc va crear la secció de Diables de Xàldiga. Aquesta naixia amb la intenció d’escampar una tradició tan nostra com són els Correfocs arreu de Catalunya.<br><br>
-                        Des de llavors, ha fet correfocs per bona part de la geografia catalana i, a diversos punts de l’estat espanyol, a més d’alguna sortida a d’altres països (Portugal, Itàlia, Andorra…), acompanyats sempre pels bons ritmes dels Tabalers.
+tid_diables_main_desc:  "L’any 1986 una colla d’amics i amants de la cultura del foc va crear la secció de Diables de Xàldiga. Aquesta naixia amb la intenció d’escampar una tradició tan nostra com són els Correfocs arreu de Catalunya.\n\n
+                        Des de llavors, ha fet correfocs per bona part de la geografia catalana i, a diversos punts de l’estat espanyol, a més d’alguna sortida a d’altres països (Portugal, Itàlia, Andorra…), acompanyats sempre pels bons ritmes dels Tabalers."
 tid_diables_main_image_desc: Diables
 
 tid_diables_diables_title: Diables
@@ -117,28 +116,34 @@ tid_equip_permanent_vocal: Vocal
 
 # ENTITAT --------------------------------------
 tid_entitat_title: L'Entitat
-tid_entitat_desc: Xàldiga Taller de festes es va fundar a Manresa la primavera de l’any 1983 a partir del grup de joves que l’any anterior havien organitzat el primer Correfoc de la ciutat de Manresa.<br><br>
-                  Els objectius de l’entitat, fixats en els seus estatuts són els de l’organització i col·laboració en l’organització d’actes festius i de festes populars i participatives a la ciutat de Manresa.<br><br>
-                  En compliment d’aquest manament, Xàldiga organitza el Correfoc de la Festa Major de Manresa, des de l’any 1982, la Mostra des de 1983, el Correaigua de la Festa Major des de l’any 1989, i la Moscada infantil des de l’any 2004.<br><br>
-                  Durant un temps, també va organitzar els actes del Carnestoltes de Manresa, entre els anys 1984 i 1987, la festa del Mullader dins dels actes de les Festes de la Llum, entre els anys 1989 i 1991 o les festes de cap d’any, obertes a tota la ciutat, entre els anys 1983 i 2000.<br><br>
-                  D’altra banda, ha col·laborat amb altres entitats i grups de la ciutat en l’organització de festes puntuals, com l’Avalot de les faves, l’any 1988, o la Xancada popular, el 1990.<br><br>
-                  Actualment, a banda de l’organització del Correfoc, de Mostra, del Correaigua i de la Moscada Infantil, grups i seccions de l’entitat participen i col·laboren en la cavalcada de reis, la Fira de l’Aixada, les festes de la Llum, i altres actes puntuals als quals se’ls demana la col·laboració, com per exemple l’espectacle d’inici dels actes de celebració a la ciutat de Manresa del tricentenari de la guerra de Successió.<br><br>
-                  Igualment, des de l’any 1986 compta amb un grup de diables i un grup de tabalers molt actius i que han participat en tot tipus d’actes arreu de Catalunya.<br><br>
-                  En l'àmbit editorial, Xàldiga va publicar l’any 2006 el llibre que porta per títol “El Correfoc”, número 1 de la col·lecció “El patrimoni festiu de Manresa”, promoguda per l’Ajuntament de Manresa.
+tid_entitat_desc: "Xàldiga Taller de festes es va fundar a Manresa la primavera de l’any 1983 a partir del grup de joves que l’any anterior havien organitzat el primer Correfoc de la ciutat de Manresa.\n\n
+                  Els objectius de l’entitat, fixats en els seus estatuts són els de l’organització i col·laboració en l’organització d’actes festius i de festes populars i participatives a la ciutat de Manresa.\n\n
+                  En compliment d’aquest manament, Xàldiga organitza el Correfoc de la Festa Major de Manresa, des de l’any 1982, la Mostra des de 1983, el Correaigua de la Festa Major des de l’any 1989, i la Moscada infantil des de l’any 2004.\n\n
+                  Durant un temps, també va organitzar els actes del Carnestoltes de Manresa, entre els anys 1984 i 1987, la festa del Mullader dins dels actes de les Festes de la Llum, entre els anys 1989 i 1991 o les festes de cap d’any, obertes a tota la ciutat, entre els anys 1983 i 2000.\n\n
+                  D’altra banda, ha col·laborat amb altres entitats i grups de la ciutat en l’organització de festes puntuals, com l’Avalot de les faves, l’any 1988, o la Xancada popular, el 1990.\n\n
+                  Actualment, a banda de l’organització del Correfoc, de Mostra, del Correaigua i de la Moscada Infantil, grups i seccions de l’entitat participen i col·laboren en la cavalcada de reis, la Fira de l’Aixada, les festes de la Llum, i altres actes puntuals als quals se’ls demana la col·laboració, com per exemple l’espectacle d’inici dels actes de celebració a la ciutat de Manresa del tricentenari de la guerra de Successió.\n\n
+                  Igualment, des de l’any 1986 compta amb un grup de diables i un grup de tabalers molt actius i que han participat en tot tipus d’actes arreu de Catalunya.\n\n
+                  En l'àmbit editorial, Xàldiga va publicar l’any 2006 el llibre que porta per títol “El Correfoc”, número 1 de la col·lecció “El patrimoni festiu de Manresa”, promoguda per l’Ajuntament de Manresa."
 
 # CORREAIGUA --------------------------------------
 tid_correaigua_title: Correaigua
 tid_correaigua_main_image_desc: Correaigua
-tid_correaigua_desc:  El Correaigua és una festa de carrer on l'aigua enllaça tots els participants. Aquest acte dóna el tret de sortida de la Festa Major de Manresa i es realitza durant la tarda del dissabte del penúltim cap de setmana del mes d'agost.<br><br>
-                      Tota la festa s'estructura a partir d'un cercavila que va passant per diverses places i carrers del barri vell de la ciutat, en cadascun dels quals hi ha diferents elements que serveixen per a remullar tots els participants de la cercavila. Per aquest motiu, i amb aquest objectiu, l'organització del Correaigua té disposades estratègicament diverses cisternes i mànegues d'aigua al llarg d'aquest recorregut, de manera que tothom pugui gaudir completament de la festa. Hem de tenir en compte però que no tota l'aigua que cau damunt la gent és la que subministra l'organització, sinó que es compta amb la col·aboració dels propis participants i dels veïns dels carrers i places per on passa.<br><br>
-                      En aquest sentit, el Correaigua gaudeix de la bona predisposició dels participants que, ja sigui organitzant comparses o portant estris per a remullar a l'altra gent, promouen un ambient festiu espectacular.<br><br>
-                      El primer Correaigua es realitzà durant els actes de la Festa Major de Manresa de l'any 1989 però l'origen de la festa es remunta al 1982 quan, durant la realització dels primers correfocs que es varen celebrar a la ciutat, per a fer-se passar la calor, els participants demanaven als veïns dels carrers per on passaven que els tiressin aigua des del balcó. Aquest fet, a més a més d'ésser perjudicial per a la pirotècnia, era quelcom perillós per al Correfoc ja que podia provocar explosions descontrolades de la pirotècnia molla.<br><br>
-                      Pel què fa al recorregut, ha variat poc al llarg dels anys, mantenint-se en els mateixos carrers i places del barri vell. Tanmateix, cada any es procura anar afegint sorpreses als participants en altres aspectes com els tipus d'aigua que s'utilitzen, la decoració dels carrers, l'ús de diferents mànegues amb aigua de diversos colors i olors, l'incorporació d'altres elements com el fang, el confeti, la farina, etc.<br><br>
-                      Amb aquestes expectatives doncs, el recorregut s'inicia a la Plaça Europa i es dirigeix cap al carrer del Carme, c.Pedregar, pl. Pedregar, c. Metge Planes, c. Nou, c. Sant Miquel, Baixada del Carme, pl. Sant Ignasi Malalt i arriba a la plaça Major, on sovint es preparen diferents "trampes aquàtiques" als agosarats participants de la cercavila. Des de la plaça Major es dirigeix fins a c. Cap del Rec, pl. Carme, c. Carme i retorna a pl. Europa on es fa el fi de festa.
+tid_correaigua_desc:  "El Correaigua és una festa de carrer on l'aigua enllaça tots els participants. Aquest acte dóna el tret de sortida de la Festa Major de Manresa i es realitza durant la tarda del dissabte del penúltim cap de setmana del mes d'agost.\n\n
+                      Tota la festa s'estructura a partir d'un cercavila que va passant per diverses places i carrers del barri vell de la ciutat, en cadascun dels quals hi ha diferents elements que serveixen per a remullar tots els participants de la cercavila. Per aquest motiu, i amb aquest objectiu, l'organització del Correaigua té disposades estratègicament diverses cisternes i mànegues d'aigua al llarg d'aquest recorregut, de manera que tothom pugui gaudir completament de la festa. Hem de tenir en compte però que no tota l'aigua que cau damunt la gent és la que subministra l'organització, sinó que es compta amb la col·aboració dels propis participants i dels veïns dels carrers i places per on passa.\n\n
+                      En aquest sentit, el Correaigua gaudeix de la bona predisposició dels participants que, ja sigui organitzant comparses o portant estris per a remullar a l'altra gent, promouen un ambient festiu espectacular.\n\n
+                      El primer Correaigua es realitzà durant els actes de la Festa Major de Manresa de l'any 1989 però l'origen de la festa es remunta al 1982 quan, durant la realització dels primers correfocs que es varen celebrar a la ciutat, per a fer-se passar la calor, els participants demanaven als veïns dels carrers per on passaven que els tiressin aigua des del balcó. Aquest fet, a més a més d'ésser perjudicial per a la pirotècnia, era quelcom perillós per al Correfoc ja que podia provocar explosions descontrolades de la pirotècnia molla.\n\n
+                      Pel què fa al recorregut, ha variat poc al llarg dels anys, mantenint-se en els mateixos carrers i places del barri vell. Tanmateix, cada any es procura anar afegint sorpreses als participants en altres aspectes com els tipus d'aigua que s'utilitzen, la decoració dels carrers, l'ús de diferents mànegues amb aigua de diversos colors i olors, l'incorporació d'altres elements com el fang, el confeti, la farina, etc.\n\n
+                      Amb aquestes expectatives doncs, el recorregut s'inicia a la Plaça Europa i es dirigeix cap al carrer del Carme, c.Pedregar, pl. Pedregar, c. Metge Planes, c. Nou, c. Sant Miquel, Baixada del Carme, pl. Sant Ignasi Malalt i arriba a la plaça Major, on sovint es preparen diferents 'trampes aquàtiques' als agosarats participants de la cercavila. Des de la plaça Major es dirigeix fins a c. Cap del Rec, pl. Carme, c. Carme i retorna a pl. Europa on es fa el fi de festa."
 
 
 # PASSATGE DEL TERROR --------------------------------------
 tid_passatge_terror_title: Passatge del Terror
 tid_passatge_terror_main_image_desc: Passatge del Terror
-tid_passatge_terror_desc: Xàldiga Taller de Festes és l'entitat encarregada de crear i dirigir el Passatge del Terror de Manresa al carrer del Balç de la capital del Bages. Es tracta d'una proposta que recupera el concepte més clàssic del passatge del terror evocant les pors més comunes dels éssers humans. Així cadascú pot trobar la seva pròpia por i no deixa indiferent a ningú.<br><br>
-                          El Passatge es realitza coincidint amb la festivitat de Tots Sants en un entorn immillorable com és el Carrer del Balç de Manresa. Les parets plenes d'història d'aquest carrer medieval acullen els ensurts i el neguit que provoquen l'ambientació i la trentena de personatges que es poden trobar al llarg del recorregut.
+tid_passatge_terror_desc: "Xàldiga Taller de Festes és l'entitat encarregada de crear i dirigir el Passatge del Terror de Manresa al carrer del Balç de la capital del Bages. Es tracta d'una proposta que recupera el concepte més clàssic del passatge del terror evocant les pors més comunes dels éssers humans. Així cadascú pot trobar la seva pròpia por i no deixa indiferent a ningú.\n\n
+                          El Passatge es realitza coincidint amb la festivitat de Tots Sants en un entorn immillorable com és el Carrer del Balç de Manresa. Les parets plenes d'història d'aquest carrer medieval acullen els ensurts i el neguit que provoquen l'ambientació i la trentena de personatges que es poden trobar al llarg del recorregut."
+
+# MOSCADA INFANTIL --------------------------------------
+tid_moscada_infantil_title: Moscada Infantil
+tid_moscada_infantil_main_image_desc: Moscada Infantil
+tid_moscada_infantil_desc:  "Activitat promoguda i organitzada des de la Secció Infantil i que forma part del programa d’actes de les Festa Major de Manresa de manera ininterrompuda des de l’any 2004. Inicialment es va fer a la Plaça Sant Domènec (2004-2005), però a partir de l’any 2006, amb la remodelació de la Plaça Major i atès l’èxit de participació de les primeres edicions, es va passar a la Plaça Major. Des de sempre, la Moscada es celebra la tarda-vespre del primer diumenge de Festa Major.\n\n
+                            La Moscada consta de dues parts: a la primera, i simulant la Mostra del Correfoc, a través de la figura del Boc es van presentant els diferents elements propis de la secció i els balls. La segona part consta d’un petit correfoc obert a la participació dels nens i nenes de la ciutat. Com al Correfoc, la Moscada s’acaba amb la música De vacances."

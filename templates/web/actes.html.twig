@@ -14,7 +14,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-6">
-					<p class="p-desc">{{ genericInfo.description|trans|raw }}</p>
+					<p class="p-desc">{{ genericInfo.description|trans|nl2br }}</p>
 				</div>
 				<div class="col-lg-6 content-image">
 					<img id='main-image' src="{{ imagesFolderPath ~ 'main-image.jpg' }}" alt='{{ genericInfo.mainImageDescription|trans }}' onClick="clickedThumbImage('main-image');">
