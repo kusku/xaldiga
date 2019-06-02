@@ -1,0 +1,27 @@
+{% extends 'web/web-base.html.twig' %}
+
+{% block body %}
+
+{% set imagesFolderPath = '/images/' ~ genericInfo.sectionFolder ~ '/' %}
+
+<div class="generic-content">
+	<div class="parallax" style="background-image: url('{{ imagesFolderPath ~ 'background-image.jpg' }}')">
+		<div class="container-fluid">
+		<div class="container portrait-caption">{{ genericInfo.title|trans|upper }}</div>
+		</div>
+	</div>
+	<div class="container-fluid content-container">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-6">
+					<p class="p-desc">{{ genericInfo.description|trans|raw }}</p>
+				</div>
+				<div class="col-lg-6 content-image">
+					<img id='main-image' src="{{ imagesFolderPath ~ 'main-image.jpg' }}" alt='{{ genericInfo.mainImageDescription|trans }}' onClick="clickedThumbImage('main-image');">
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+{% endblock %}

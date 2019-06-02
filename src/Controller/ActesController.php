@@ -8,7 +8,14 @@ class ActesController extends AbstractController
 {
     public function correaiguaAction()
     {
-        return $this->render('web/correaigua.html.twig');
+        $genericInfo = array(
+            "sectionFolder" => "correaigua",
+            "title" => "tid_correaigua_title",
+            "description" => "tid_correaigua_desc",
+            "mainImageDescription" => "tid_correaigua_main_image_desc"
+        );
+
+        return $this->render('web/actes.html.twig', ['genericInfo' => $genericInfo]);
     }
 
     public function moscadaInfantilAction()
