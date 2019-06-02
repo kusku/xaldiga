@@ -45,6 +45,13 @@ class ActesController extends AbstractController
 
     public function passatgeTerrorAction()
     {
-        return $this->render('web/passatge-terror.html.twig');
+        $genericInfo = array(
+            "sectionFolder" => "passatge-terror",
+            "title" => "tid_passatge_terror_title",
+            "description" => "tid_passatge_terror_desc",
+            "mainImageDescription" => "tid_passatge_terror_main_image_desc"
+        );
+
+        return $this->render('web/actes.html.twig', ['genericInfo' => $genericInfo]);
     }
 }
