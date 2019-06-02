@@ -32,7 +32,14 @@ class ActesController extends AbstractController
 
     public function bategadaAction()
     {
-        return $this->render('web/bategada.html.twig');
+        $genericInfo = array(
+            "sectionFolder" => "bategada",
+            "title" => "tid_bategada_title",
+            "description" => "tid_bategada_desc",
+            "mainImageDescription" => "tid_bategada_main_image_desc"
+        );
+
+        return $this->render('web/actes.html.twig', ['genericInfo' => $genericInfo]);
     }
 
     public function carnavaladaAction()
