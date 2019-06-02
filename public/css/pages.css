@@ -37,6 +37,14 @@
     position: relative;
 }
 
+@media (max-width: 1200px) {
+	.portrait-caption {
+        font-size: 80px;
+        top: 305px;
+	}
+}
+
+
 @media (max-width: 767px) {
 	.portrait-caption {
         font-size: 60px;
