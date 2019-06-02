@@ -29,3 +29,31 @@ entitat:
 correfoc:
   path: /correfoc
   controller: App\Controller\CorrefocController:correfocAction
+
+correaigua:
+  path: /correaigua
+  controller: App\Controller\ActesController:correaiguaAction 
+
+moscada-infantil:
+  path: /moscada-infantil
+  controller: App\Controller\ActesController:moscadaInfantilAction
+
+bategada:
+  path: /bategada
+  controller: App\Controller\ActesController:bategadaAction
+
+carnavalada:
+  path: /carnavalada
+  controller: App\Controller\ActesController:carnavaladaAction
+
+trobada-diables:
+  path: /trobada-diables
+  controller: App\Controller\ActesController:trobadaDiablesAction
+
+aixada:
+  path: /aixada
+  controller: App\Controller\ActesController:aixadaAction
+
+passatge-terror:
+  path: /passatge-terror
+  controller: App\Controller\ActesController:passatgeTerrorAction
