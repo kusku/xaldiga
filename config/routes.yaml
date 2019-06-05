@@ -26,10 +26,6 @@ entitat:
   path: /entitat
   controller: App\Controller\EntitatController:entitatAction
 
-correfoc:
-  path: /correfoc
-  controller: App\Controller\CorrefocController:correfocAction
-
 correaigua:
   path: /correaigua
   controller: App\Controller\ActesController:correaiguaAction 
@@ -57,3 +53,51 @@ aixada:
 passatge-terror:
   path: /passatge-terror
   controller: App\Controller\ActesController:passatgeTerrorAction
+
+correfoc:
+  path: /correfoc
+  controller: App\Controller\CorrefocController:correfocAction
+
+mostra:
+  path: /mostra
+  controller: App\Controller\CorrefocController:mostraAction
+
+historia:
+  path: /historia
+  controller: App\Controller\CorrefocController:historiaAction
+
+recorregut:
+  path: /recorregut
+  controller: App\Controller\CorrefocController:recorregutAction
+
+dimonis:
+  path: /dimonis
+  controller: App\Controller\CorrefocController:dimonisAction
+
+bestiari:
+  path: /bestiari
+  controller: App\Controller\CorrefocController:bestiariAction
+
+figures:
+  path: /figures
+  controller: App\Controller\CorrefocController:figuresAction  
+
+musica:
+  path: /musica
+  controller: App\Controller\CorrefocController:musicaAction
+
+tabalers-correfoc:
+  path: /tabalers-correfoc
+  controller: App\Controller\CorrefocController:tabalersAction  
+
+quants-band:
+  path: /quants-band
+  controller: App\Controller\CorrefocController:quantsbandAction  
+
+sac:
+  path: /sac
+  controller: App\Controller\CorrefocController:sacAction
+
+seguretat:
+  path: /seguretat
+  controller: App\Controller\CorrefocController:seguretatAction

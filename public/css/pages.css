@@ -37,6 +37,26 @@
     position: relative;
 }
 
+.portrait-caption-sm{
+    text-shadow: 0 1px 2px rgba(0, 0, 0, .6);
+    font-weight: 700;
+    font-size: 60px;
+    color: white;
+    font-family: jfallaone-regular, sans-serif;
+    top: 210px;
+    position: relative;
+}
+
+.portrait-caption-lg{
+    text-shadow: 0 1px 2px rgba(0, 0, 0, .6);
+    font-weight: 700;
+    font-size: 120px;
+    color: white;
+    font-family: jfallaone-regular, sans-serif;
+    top: 175px;
+    position: relative;
+}
+
 @media (max-width: 1200px) {
 	.portrait-caption {
         font-size: 80px;

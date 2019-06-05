@@ -1,0 +1,50 @@
+{% extends 'web/web-base.html.twig' %}
+
+{% block body %}
+
+{% set imagesFolderPath = '/images/correfoc/' ~ genericInfo.sectionFolder ~ '/' %}
+
+<div class="generic-content">
+	<div class="parallax" style="background-image: url('{{ imagesFolderPath ~ 'background-image.jpg' }}')">
+		<div class="container-fluid">
+        <div class="container portrait-caption-sm">{{ 'tid_navbar_correfoc_title'|trans|upper }}</div>
+		<div class="container portrait-caption-lg">{{ genericInfo.title|trans|upper }}</div>
+		</div>
+	</div>
+	<div class="container-fluid content-container">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-6">
+					<p class="p-desc">{{ genericInfo.description|trans|nl2br }}</p>
+				</div>
+				<div class="col-lg-6 content-image">
+					<img id="main-image" src="{{ imagesFolderPath ~ 'main-image.jpg' }}" alt='{{ genericInfo.mainImageDescription|trans }}' onClick="clickedThumbImage('main-image');">
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="container-fluid">
+		<div class="container">
+
+            {% for sectionElement in sectionElements %}
+                <div class="row row-title-space">
+                    <div class="col">
+                        <h1>{{ sectionElement.title|trans|capitalize }}</h1>
+                    </div>
+                </div>
+                <div class="row row-margin">
+                    <div class="col-lg-6 content-image">
+                        <img id='{{ sectionElement.title }}' src='{{ imagesFolderPath ~ sectionElement.imageName }}' alt='{{ sectionElement.title|trans|capitalize }}' onClick=clickedThumbImage('{{ sectionElement.title }}'); >
+                    </div>
+                    <div class="col-lg-6">
+                        <p class="p-desc">{{ sectionElement.description|trans|nl2br }}</p>
+                    </div>
+                </div>
+            {% endfor %}
+
+
+		</div>
+	</div>
+</div>
+
+{% endblock %}
