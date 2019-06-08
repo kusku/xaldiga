@@ -128,7 +128,34 @@ class CorrefocController extends AbstractController
 
     public function figuresAction()
     {
-        return $this->render('web/correfoc.html.twig');
+        $genericInfo = array(
+            "sectionFolder" => "figures",
+            "title" => "tid_correfoc_figures_title",
+            "description" => "tid_correfoc_figures_desc",
+            "mainImageDescription" => "tid_correfoc_figures_main_image_desc"
+        );
+
+        $paraigues = array(
+            "title" => "tid_correfoc_figures_paraigues_title",
+            "imageName" => "paraigues.jpg",
+            "description" => "tid_correfoc_figures_paraigues_desc"
+        );
+
+        $ceptrot = array(
+            "title" => "tid_correfoc_figures_ceptrot_title",
+            "imageName" => "ceptrot.jpg",
+            "description" => "tid_correfoc_figures_ceptrot_desc"
+        );
+
+        $boc = array(
+            "title" => "tid_correfoc_figures_boc_title",
+            "imageName" => "boc.jpg",
+            "description" => "tid_correfoc_figures_boc_desc"
+        );
+
+        $sectionElements = array($paraigues, $ceptrot, $boc);
+
+        return $this->render('web/correfoc-page-with-sections.html.twig', ['genericInfo' => $genericInfo, 'sectionElements' => $sectionElements]);
     }
 
     public function musicaAction()
