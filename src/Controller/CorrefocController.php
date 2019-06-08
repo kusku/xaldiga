@@ -10,9 +10,9 @@ class CorrefocController extends AbstractController
     {
         $genericInfo = array(
             "sectionFolder" => "correfoc",
-            "title" => "tid_correaigua_title",
-            "description" => "tid_correaigua_desc",
-            "mainImageDescription" => "tid_correaigua_main_image_desc"
+            "title" => "tid_correfoc_correfoc_title",
+            "description" => "tid_correfoc_correfoc_desc",
+            "mainImageDescription" => "tid_correfoc_correfoc_main_image_desc"
         );
         return $this->render('web/correfoc.html.twig', ['genericInfo' => $genericInfo]);
     }
