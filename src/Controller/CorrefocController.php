@@ -19,7 +19,13 @@ class CorrefocController extends AbstractController
 
     public function mostraAction()
     {
-        return $this->render('web/correfoc.html.twig');
+        $genericInfo = array(
+            "sectionFolder" => "mostra",
+            "title" => "tid_correfoc_mostra_title",
+            "description" => "tid_correfoc_mostra_desc",
+            "mainImageDescription" => "tid_correfoc_mostra_main_image_desc"
+        );
+        return $this->render('web/correfoc.html.twig', ['genericInfo' => $genericInfo]);
     }
 
     public function historiaAction()
