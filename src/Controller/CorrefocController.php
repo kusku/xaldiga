@@ -182,12 +182,24 @@ class CorrefocController extends AbstractController
 
     public function quantsbandAction()
     {
-        return $this->render('web/correfoc.html.twig');
+        $genericInfo = array(
+            "sectionFolder" => "quantsband",
+            "title" => "tid_correfoc_quantsband_title",
+            "description" => "tid_correfoc_quantsband_desc",
+            "mainImageDescription" => "tid_correfoc_quantsband_main_image_desc"
+        );
+        return $this->render('web/correfoc.html.twig', ['genericInfo' => $genericInfo]);
     }
 
     public function sacAction()
     {
-        return $this->render('web/correfoc.html.twig');
+        $genericInfo = array(
+            "sectionFolder" => "sac",
+            "title" => "tid_correfoc_sac_title",
+            "description" => "tid_correfoc_sac_desc",
+            "mainImageDescription" => "tid_correfoc_sac_main_image_desc"
+        );
+        return $this->render('web/correfoc.html.twig', ['genericInfo' => $genericInfo]);
     }
 
     public function seguretatAction()
