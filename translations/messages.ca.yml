@@ -169,6 +169,11 @@ tid_correfoc_mostra_desc: "La Mostra té lloc a la Plaça Major al vespre del di
                           Així mateix, la Mostra de cada any ha servit en certa manera per a , diguem-ne, fer ‘la presentació en societat’ dels nous elements i el bestiari que s’han anat creant.\n\n
                           Tal com es fa el dia del Correfoc, la Mostra acaba amb les músiques de la Moscada i el pasdoble Vacances, amb les quals es convida els espectadors a entrar al mig de la plaça i a ballar barrejats amb els dimonis i els dracs, ja sense foc."
 
+# HISTORIA --------------------------------------
+tid_correfoc_historia_title: "Història"
+tid_correfoc_historia_main_image_desc: "WIP"
+tid_correfoc_historia_desc: "WIP"
+
 # DIMONIS --------------------------------------
 tid_correfoc_dimonis_title: "Dimonis"
 tid_correfoc_dimonis_main_image_desc: "Dimonis"
