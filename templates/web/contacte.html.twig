@@ -1,0 +1,22 @@
+{% extends 'web/web-base.html.twig' %}
+
+{% block body %}
+
+<div class="generic-content">
+	<div class="container-fluid content-container">
+		<div class="container">
+            <div class="row">
+                <div class="title">
+                    {{ 'tid_navbar_contacte_title'|trans|upper }}
+                </div>
+            </div>
+            <div>
+                {{ form_start(our_form) }}
+                {{ form_widget(our_form) }}
+                {{ form_end(our_form) }}
+            </div>
+		</div>
+	</div>
+</div>
+
+{% endblock %}

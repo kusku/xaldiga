@@ -101,3 +101,7 @@ sac:
 seguretat:
   path: /seguretat
   controller: App\Controller\CorrefocController:seguretatAction
+
+contacte:
+  path: /contacte
+  controller: App\Controller\ContacteController:contacteAction
