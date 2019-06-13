@@ -10,10 +10,25 @@
                     {{ 'tid_navbar_contacte_title'|trans|upper }}
                 </div>
             </div>
-            <div>
-                {{ form_start(our_form) }}
-                {{ form_widget(our_form) }}
-                {{ form_end(our_form) }}
+            <div class="row">
+                <div class="col-lg-8">
+                    <div>
+                        {{ form_start(our_form) }}
+                        {{ form_widget(our_form) }}
+                        <input type="submit" value="Send" class="btn btn-success btn-lg" />
+                        {{ form_end(our_form) }}
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2456.36877615768!2d1.8288694473356704!3d41.72224673519051!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12a45875c1b09243%3A0xdcffdc0a7d3dac62!2sXaldiga!5e0!3m2!1sca!2ses!4v1560286441494!5m2!1sca!2ses" width="370" height="270" frameborder="0" style="border:0" allowfullscreen></iframe>
+                    <p><strong><br>Xàldiga Taller de Festes</strong></p>
+                    <p> Carrer Sant Bartomeu 50<br>
+                        08241 Manresa<br><br>
+
+                        +34 717 70 76 71<br>
+                        xaldiga@xaldiga.cat
+                    </p>
+                </div>
             </div>
 		</div>
 	</div>

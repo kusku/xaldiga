@@ -256,3 +256,11 @@ tid_correfoc_quantsband_desc: "La Quants Band és la formació que toca les mús
                               Tot i que la majoria pertanyien a la Unió Musical del Bages, el segon any que va actuar el grup ja ho va fer amb el nom de Quants Band. Aquest nom va sorgir quan, durant un sopar en que s’anaven fent propostes, i per la ràdio es retransmetia un partit de futbol, un dels músics va dir “quants van?”, i com que el primer any havia estat força caòtic per poder estabilitzar el grup, fins al punt que una setmana abans de la Mostra encara so es sabia amb certesa quants hi hauria, va semblar bé fer una barreja, i d’aquí va sortir el nom de Quants Band.\n\n
                               Uns anys després va semblar convenient encabir la Quants Band com a secció de la Unió Musical del Bages, per tal de garantir que sempre hi hagués músics per a poder tocar a la Mostra. Cal indicar que en el moment de fer-se càrrec de les músiques, la Quants Band es va trobar amb el fet que després de tants anys d’adaptacions lliures de la música, moltes partitures havien quedat escampades o molt retocades. És per això que es va contactar amb el compositor Lluís Toran i amb el professor de música Jordi Gonzàlez, per tal de recuperar les músiques originals del Correfoc de Manresa, amb els arranjaments necessaris per a la nova formació musical.\n\n
                               L’any 2013 el grup va enregistrar un disc de les Músiques del Correfoc, que incloïa, a més de les que ja s’havien enregistrat en el disc editat el 1993 per Masos Rònecs, les quatre peces composades amb posterioritat, incloses les dues del correfoc Infantil. La darrera peça incorporada a la Moscada Infantil, la de la Mulassa, és posterior a aquest disc, i el grup en va fer un enregistrament per tal que els balladors la poguéssin assajar i es pogués reproduïr a la Plaça Major."
+
+
+# CONTACTE --------------------------------------
+tid_contacte_name_title: "Nom i cognoms*"
+tid_contacte_email_title: "Correu electrònic*"
+tid_contacte_phone_title: "Telèfon"
+tid_contacte_sections_title: "Tema de la consulta*"
+tid_contacte_message_title: "Missatge*"
