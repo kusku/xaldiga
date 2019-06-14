@@ -2,22 +2,25 @@
 
 {% block body %}
 
+{% set imagesFolderPath = '/images/correfoc/' ~ genericInfo.sectionFolder ~ '/' %}
+
 <div class="generic-content">
+	<div class="parallax" style="background-image: url('{{ imagesFolderPath ~ 'background-image.jpg' }}')">
+		<div class="container-fluid">
+        <div class="container portrait-caption-sm">{{ 'tid_navbar_correfoc_title'|trans|upper }}</div>
+		<div class="container portrait-caption-lg">{{ genericInfo.title|trans|upper }}</div>
+		</div>
+	</div>
 	<div class="container-fluid content-container">
 		<div class="container">
-            <div class="row">
-                <div class="title">
-                    {{ 'tid_entitat_title'|trans|upper }}
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-4 content-image">
-                    <img id='entitat' src='/images/entitat/entitat.png' onClick=clickedThumbImage('entitat'); >
-                </div>
-                <div class="col-lg-8 paragraph-entitat">
-                    {{ 'tid_entitat_desc'|trans|nl2br }}
-                </div>
-            </div>
+			<div class="row">
+				<div class="col-lg-6">
+					<p class="p-desc">{{ genericInfo.description|trans|nl2br }}</p>
+				</div>
+				<div class="col-lg-6 content-image">
+					<img id="main-image" src="{{ imagesFolderPath ~ 'main-image.jpg' }}" alt='{{ genericInfo.mainImageDescription|trans }}' onClick="clickedThumbImage('main-image');">
+				</div>
+			</div>
 		</div>
 	</div>
 </div>
