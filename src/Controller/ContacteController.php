@@ -34,22 +34,19 @@ class ContacteController extends AbstractController
                 ->setTo($email)
                 ->setCc('xaldigatallerdefestes@gmail.com')
                 ->setBody(
-                    $contactFormData['message'],
-                    'text/plain'
+                    $this->renderView(
+                        'web/contacte-form-email.html.twig',
+                        [
+                            'name' => $contactFormData['name'],
+                            'email' => $contactFormData['from'],
+                            'phone' => $contactFormData['phone'],
+                            'message' => $contactFormData['message'],
+                        ]
+                    ),
+                    'text/html'
                 );
-            $logger = new \Swift_Plugins_Loggers_ArrayLogger();
-            $mailer->registerPlugin(new \Swift_Plugins_LoggerPlugin($logger));
             
-            if(!$mailer->send($message, $errors))
-            {
-                echo "Error:" . $logger->dump();
-                $contactFormData['message'] = $logger->dump();
-            }
-            else
-            {
-                echo "Succesful mail";
-                $contactFormData['message'] = 'success';
-            }
+            $mailer->send($message);
 
             return $this->redirectToRoute('contacte');
         }
