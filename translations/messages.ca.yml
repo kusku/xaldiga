@@ -39,6 +39,20 @@ tid_navbar_contacte_title: Contacte
 # FOOTER --------------------------------------
 tid_footer_segueixnos_title: Segueix-nos a
 
+# GENERIC --------------------------------------
+tid_january: "Gener"
+tid_february: "Febrer"
+tid_march: "Març"
+tid_april: "Abril"
+tid_may: "Maig"
+tid_june: "Juny"
+tid_july: "Juliol"
+tid_august: "Agost"
+tid_september: "Setembre"
+tid_october: "Octubre"
+tid_november: "Novembre"
+tid_december: "Desembre"
+
 # INFANTIL --------------------------------------
 tid_infantil_title: Infantil
 tid_infantil_main_image_desc: Moscada Infantil
@@ -272,3 +286,6 @@ tid_contacte_email_phone: "Telèfon: "
 tid_contacte_email_message: "La consulta és: \n"
 tid_contacte_email_reminder: "No oblideu respondre la consulta!"
 tid_contacte_email_footer: "Gràcies!\n\nAdministració web\n\nXàldiga Taller de Festes"
+
+# CALENDARI --------------------------------------
+tid_calendari_main_page_title: "Properes actuacions"
