@@ -99,13 +99,96 @@ a:focus {
   padding-bottom: 10px;
 	padding-left: 15px;
 	transition: 0.3s;
-  }
+}
   
-  .return-to-top-button:hover {
-	background-color: #555;
-  }
+.return-to-top-button:hover {
+background-color: #555;
+}
 
-  .return-to-top-button:hover i {
-		color: white;
-		transition: 0.3s;
+.return-to-top-button:hover i {
+	color: white;
+	transition: 0.3s;
+}
+
+.band-calendar {
+	background-color: white;
+	padding-top: 20px;
+	padding-bottom: 50px;
+	z-index: 10;
+	position: relative;
+	font-size: 15px;
+}
+
+.band-calendar > .container > .row {
+	padding-left: 80px;
+	padding-right: 50px;
+}
+
+.band-calendar > .container > .row > .col-lg-12 {
+	padding-bottom: 40px;
+}
+
+.band-calendar > .container > .row > .col-lg-4 {
+	padding-left: 0px;
+	padding-right: 0px;
+}
+
+.band-calendar > .container > .row > .col-lg-4 > .row {
+	margin-left: 3px;
+}
+
+.band-calendar > .container > .row > .col-lg-4 > .row > .col-sm-4,
+.band-calendar > .container > .row > .col-lg-4 > .row > .col-sm-7 {
+	color: black;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	margin-left: 0px;
+	margin-right: 0px;
+}
+
+@media (min-width: 767px) and (max-width: 991px) {
+	.band-calendar > .container > .row > .col-lg-4 > .row > .col-sm-4,
+	.band-calendar > .container > .row > .col-lg-4 > .row > .col-sm-7 {
+		margin-left: -38px;
+		margin-right: -38px;
 	}
+
+	.band-calendar > .container > .row {
+		padding-left: 100px;
+		padding-right: 50px;
+	}
+
+	.band-calendar > .container > .row > .col-lg-4 > .row {
+		margin-left: 40px;
+	}
+}
+
+@media (min-width: 992px) and (max-width: 1200px) {
+	.band-calendar > .container > .row > .col-lg-4 > .row > .col-sm-4,
+	.band-calendar > .container > .row > .col-lg-4 > .row > .col-sm-7 {
+		margin-left: -67px;
+		margin-right: -67px;
+	}
+
+	.band-calendar > .container > .row {
+		padding-left: 100px;
+		padding-right: 50px;
+	}
+
+	.band-calendar > .container > .row > .col-lg-4 > .row {
+		margin-left: 72px;
+	}
+}
+
+.band-calendar > .container > .row > .col-lg-4 > .row > .col-sm-4 > .square > h4 > .text-right {
+	padding-top: 5px;
+	color:white;
+}
+
+.square {
+	height: 105px;
+	width: 100px;
+	padding-right: 7px;
+	border-radius: 5px;
+	background-color: var(--hover-button-color);
+}
