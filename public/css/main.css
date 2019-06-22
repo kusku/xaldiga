@@ -184,7 +184,7 @@ background-color: #555;
 	color: var(--hover-button-color);
 }
 
-.band-calendar > .container > .row > .col-lg-4 > .row > .col-sm-4 > .square > h4 > .text-right {
+.band-calendar > .container > .row > .col-lg-4 > .row > .col-sm-4 > .square > h4 > b > .text-right {
 	padding-top: 5px;
 	color:white;
 }
