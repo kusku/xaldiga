@@ -1,5 +1,5 @@
 .navbar-brand {
-	margin-top: -0px;
+	height: 80px;
 }
 
 .brand-logo {	
@@ -21,28 +21,12 @@
 	background-color: var(--background-color);
 }
 
+
 @media (max-width: 767px) {
 	.navbar-collapse {
 		text-align: left;
 		top:32px !important;
 		position:relative;
-	}
-}
-
-@media (min-width: 768px) {
-    .navbar .navbar-nav {
-        display: inline-block;
-        float: none;
-        vertical-align: top;
-    }
-
-    .navbar .navbar-collapse {
-        text-align: center;
-		top: 0px !important;
-    }
-	
-	.dropdown:hover .dropdown-menu {
-		display: block;
 	}
 }
 
@@ -143,6 +127,10 @@
 	}
 }
 
+.dropdown-menu {
+	background-color: var(--dropdown-background-color);
+}
+
 .dropdown-menu.columns-2 {
 	min-width: 400px;
 }
@@ -150,7 +138,7 @@
 	min-width: 600px;
 }
 .dropdown-menu.columns-4 {
-	min-width: 700px;
+	min-width: 815px;
 }
 .dropdown-menu li a {
 	padding: 5px 25px;

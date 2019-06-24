@@ -12,7 +12,7 @@
 
 {% block mainbody %}
 	<!-- Header -->
-	<div class="container-fluid header-background navbar-fixed-top">
+	{# <div class="container-fluid header-background navbar-fixed-top">
         <div class="container header-background">
             <nav class="navbar navbar-default">
                 <div class="navbar-header">
@@ -123,7 +123,116 @@
                 </div>
             </nav>
         </div>
+    </div> #}
+    <div class="container-fluid header-background fixed-top">
+        <div class="container">
+            <nav class="navbar navbar-expand-lg navbar-dark header-background">
+                <a class="navbar-brand" href="/">
+                        <img src="{{ asset('/images/logo3.png') }}" width="205" height="109" class="d-inline-block align-top brand-logo" alt="">
+                    </a>  
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">      
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ 'tid_navbar_correfoc_manresa_title'|trans }}</a>
+                            <ul class="dropdown-menu multi-column columns-4">
+                                <div class="row">
+			                        <div class="col-sm-3">
+				                        <ul class="multi-column-dropdown">
+                                            <h4><b>{{ 'tid_navbar_correfoc_title'|trans }}</b></h4>
+                                            <li><a href="/correfoc">{{ 'tid_navbar_correfoc_title'|trans }}</a></li>
+                                            <li><a href="/mostra">{{ 'tid_navbar_mostra_title'|trans }}</a></li>
+                                            <li><a href="/historia">{{ 'tid_navbar_historia_title'|trans }}</a></li>
+                                            <li><a href="/recorregut">{{ 'tid_navbar_recorregut_title'|trans }}</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-sm-3">
+				                        <ul class="multi-column-dropdown">
+                                            <h4><b>{{ 'tid_navbar_imatgeria_title'|trans }}</b></h4>
+                                            <li><a href="/dimonis">{{ 'tid_navbar_dimonis_title'|trans }}</a></li>
+                                            <li><a href="/bestiari">{{ 'tid_navbar_bestiari_title'|trans }}</a></li>
+                                            <li><a href="/figures">{{ 'tid_navbar_figures_title'|trans }}</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-sm-3">
+				                        <ul class="multi-column-dropdown">
+                                        <h4><b>{{ 'tid_navbar_musica_title'|trans }}</b></h4>
+                                        <li><a href="/musica">{{ 'tid_navbar_musica_title'|trans }}</a></li>
+                                        <li><a href="/tabalers-correfoc">{{ 'tid_navbar_tabalers_title'|trans }}</a></li>
+                                        <li><a href="/quants-band">{{ 'tid_navbar_quantsband_title'|trans }}</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-sm-3">
+				                        <ul class="multi-column-dropdown">
+                                        <h4><b>{{ 'tid_navbar_seguretat_title'|trans }}</b></h4>
+                                        <li><a href="/sac">{{ 'tid_navbar_sac_title'|trans }}</a></li>
+                                        <li><a href="/seguretat">{{ 'tid_navbar_correfoc_segur_title'|trans }}</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ 'tid_navbar_entitat_title'|trans }}</a>
+                            <ul class="dropdown-menu multi-column columns-2">
+                                <div class="row">
+			                        <div class="col-sm-6">
+                                        <ul class="multi-column-dropdown">
+                                            <h4><b>{{ 'tid_navbar_entitat_title'|trans }}</b></h4>
+                                            <li><a href="/entitat">{{ 'tid_navbar_qui_som_title'|trans }}</a></li>
+                                            <li><a href="/equip-permanent">{{ 'tid_navbar_ep_title'|trans }}</a></li>
+                                            <li><a href="#">{{ 'tid_navbar_agenda_title'|trans }}</a></li>
+                                            <li><a href="#">{{ 'tid_navbar_noticies_title'|trans }}</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <ul class="multi-column-dropdown">
+                                            <h4><b>{{ 'tid_navbar_seccions_title'|trans }}</b></h4>
+                                            <li><a href="/diables">{{ 'tid_navbar_diables_title'|trans }}</a></li>
+                                            <li><a href="/tabalers">{{ 'tid_navbar_tabalers_title'|trans }}</a></li>
+                                            <li><a href="/histrions">{{ 'tid_navbar_histrions_title'|trans }}</a></li>
+                                            <li><a href="/infantil">{{ 'tid_navbar_infantil_title'|trans }}</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ 'tid_navbar_actes_title'|trans }}</a>
+                            <ul class="dropdown-menu multi-column columns-2">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <ul class="multi-column-dropdown">
+                                            <h4><b>{{ 'tid_navbar_festa_major_title'|trans }}</b></h4>
+                                            <li><a href="/correfoc">{{ 'tid_navbar_correfoc_title'|trans }}</a></li>
+                                            <li><a href="/mostra">{{ 'tid_navbar_mostra_title'|trans }}</a></li>
+                                            <li><a href="/correaigua">{{ 'tid_navbar_correaigua_title'|trans }}</a></li>
+                                            <li><a href="/moscada-infantil">{{ 'tid_navbar_moscada_infantil_title'|trans }}</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <ul class="multi-column-dropdown">
+                                            <h4><b>{{ 'tid_navbar_altres_actes_title'|trans }}</b></h4>
+                                            <li><a href="/bategada">{{ 'tid_navbar_bategada_title'|trans }}</a></li>
+                                            <li><a href="/carnavalada">{{ 'tid_navbar_carnavalada_title'|trans }}</a></li>
+                                            <li><a href="/trobada-diables">{{ 'tid_navbar_trobada_diables_title'|trans }}</a></li>
+                                            <li><a href="/aixada">{{ 'tid_navbar_aixada_title'|trans }}</a></li>
+                                            <li><a href="/passatge-terror">{{ 'tid_navbar_passatge_terror_title'|trans }}</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </ul>
+                        </li>
+                        <li class="nav-item"><a class="nav-link" href="#">{{ 'tid_navbar_fer_soci_title'|trans }}</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/contacte">{{ 'tid_navbar_contacte_title'|trans }}</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
     </div>
+    
 
 	<!-- Content -->
     {% block body %}{% endblock %}
