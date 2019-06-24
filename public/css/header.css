@@ -138,7 +138,7 @@
 	min-width: 600px;
 }
 .dropdown-menu.columns-4 {
-	min-width: 815px;
+	min-width: 750px;
 }
 .dropdown-menu li a {
 	padding: 5px 25px;
@@ -163,7 +163,7 @@
 	background-color: var(--dropdown-background-color);
 }
  
-.multi-column-dropdown h4 {
+.multi-column-dropdown h5 {
 	display: block;
 	clear: both;
 	padding: 5px 15px;
