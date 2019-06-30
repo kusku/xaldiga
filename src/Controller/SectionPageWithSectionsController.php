@@ -72,9 +72,9 @@ class SectionPageWithSectionsController extends AbstractController
         );
 
         $diablesa = array(
-            "title" => "tid_diables_diablesa_title",
+            "title" => "tid_diables_diablessa_title",
             "imageName" => "diablesa.jpg",
-            "description" => "tid_diables_diablesa_desc"
+            "description" => "tid_diables_diablessa_desc"
         );
 
         $ceptrot = array(
