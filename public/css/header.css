@@ -21,7 +21,6 @@
 	background-color: var(--background-color);
 }
 
-
 @media (max-width: 767px) {
 	.navbar-collapse {
 		text-align: left;
@@ -45,11 +44,6 @@
 	}
 }
 
-/* Mobile version */
-.dropdown-menu {
-	min-width: 200px;
-	background-color: var(--background-color);
-}
 .navbar-nav > li > .dropdown-menu { 
 	background-color: var(--background-color); 
 }
@@ -89,6 +83,7 @@
 }
 
 .dropdown-menu {
+	min-width: 200px;
 	left: 50% !important;
   	transform: translateX(-50%) !important;
   	top: 100% !important;
