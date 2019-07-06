@@ -31,7 +31,7 @@
                     </div>
                     <div class="col-sm-7">
                         <p><h5>{{ calendarElement.title }}</h5>
-                        <span class="glyphicon glyphicon-time"></span> {{ calendarElement.hour }}<br>
+                        {{ calendarElement.hour }}<br>
                         {{ calendarElement.dir }}<br>
                         {{ calendarElement.city }}</p>
                     </div>
@@ -45,11 +45,12 @@
 {# CONTRATATION #}
 <div class="contratation">
     <div class="container">
-        <p>Vols organitzar un acte?</p>
-        <a href="/contacte" class="btn btn-outline-light">Contacta'ns</a>
+        <p>{{ "tid_contractacio_main_page_title"|trans }}</p>
+        <a href="/contacte" class="btn btn-outline-light">{{ "tid_contractacio_main_page_button"|trans }}</a>
     </div>
 </div>
 
 {# NEWS #}
+
 
 {% endblock %}
