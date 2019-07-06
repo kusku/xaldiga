@@ -91,3 +91,31 @@
     font-size: 16px;
     line-height: 1.6;
 }
+
+.contratation {
+    background-image: url('/images/main/contratation/background-image.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 500px;
+}
+
+.contratation > .container > p {
+    color: white;
+    font-size: 35px;
+    font-family: jfallaone-regular, sans-serif;
+    padding-top: 330px;
+    margin-bottom: 0px;
+}
+
+.contratation > .container > a {
+    color: white;
+    font-size: 40px;
+    font-family: jfallaone-regular, sans-serif;
+    border: 2px solid;
+}
+
+.contratation > .container > a:hover {
+    color: var(--hover-button-color);
+    border-color: white;
+}
