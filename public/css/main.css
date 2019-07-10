@@ -119,16 +119,19 @@ background-color: #555;
 	font-size: 15px;
 }
 
-.band-calendar > .container > .row {
+.band-calendar > .container > .row,
+.band-news > .container > .row {
 	padding-left: 80px;
 	padding-right: 50px;
 }
 
-.band-calendar > .container > .row > .col-lg-12 {
+.band-calendar > .container > .row > .col-lg-12,
+.band-news > .container > .row > .col-lg-12 {
 	padding-bottom: 40px;
 }
 
-.band-calendar > .container > .row > .col-lg-12 > h4 {
+.band-calendar > .container > .row > .col-lg-12 > h4,
+.band-news > .container > .row > .col-lg-12 > h4 {
 	font-weight: bold;
 }
 
@@ -164,4 +167,76 @@ background-color: #555;
 	padding-right: 7px;
 	border-radius: 5px;
 	background-color: var(--hover-button-color);
+}
+
+.contratation {
+    background-image: url('/images/main/contratation/background-image.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 500px;
+}
+
+.contratation > .container > p {
+    color: white;
+    font-size: 35px;
+    font-family: jfallaone-regular, sans-serif;
+    padding-top: 330px;
+    margin-bottom: 0px;
+}
+
+.contratation > .container > a {
+    color: white;
+    font-size: 40px;
+    font-family: jfallaone-regular, sans-serif;
+    border: 2px solid;
+}
+
+.contratation > .container > a:hover {
+    color: var(--hover-button-color);
+    border-color: white;
+}
+
+.band-news {
+	background-color: white;
+	padding-top: 20px;
+	padding-bottom: 100px;
+	z-index: 10;
+	position: relative;
+	font-size: 15px;
+	/* background-color: var(--background-color);
+	color: white; */
+}
+
+.band-news > .container > .row > .col-md-6 {
+	height: 500px;
+}
+
+.band-news > .container > .row > .col-md-6 > img {
+	object-fit: cover;
+	overflow: hidden;
+	height: 90%; 
+	width : 100%;
+}
+
+.band-news > .container > .row > .col-md-6 > h5 {
+	padding-top: 10px;
+}
+
+.band-news > .container > .row >.offset-md-2 {
+	margin-left: 8%;
+}
+
+@media (max-width: 767px) {
+	.band-news > .container > .row > .col-md-6 {
+		height: 500px;
+	}
+
+	.band-news > .container > .row > .col-md-6 > img {
+		height: 70%;
+	}
+
+	.band-news {
+		padding-bottom: 0px;
+	}
 }
