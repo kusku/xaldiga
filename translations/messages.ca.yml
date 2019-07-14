@@ -290,7 +290,11 @@ tid_contacte_send_button: "Enviar"
 
 # CALENDARI --------------------------------------
 tid_calendari_main_page_title: "Properes actuacions"
+tid_calendari_mes_actes: "Veure més actes"
 
 # CONTRACTACIO --------------------------------------
 tid_contractacio_main_page_title: "Vols organitzar un acte?"
 tid_contractacio_main_page_button: "Contacta'ns"
+
+# NEWS --------------------------------------
+tid_news_mes_noticies: "Veure més notícies"

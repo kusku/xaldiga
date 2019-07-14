@@ -125,14 +125,33 @@ background-color: #555;
 	padding-right: 50px;
 }
 
-.band-calendar > .container > .row > .col-lg-12,
-.band-news > .container > .row > .col-lg-12 {
+.band-calendar > .container > .row > .col-lg-10,
+.band-news > .container > .row > .col-lg-10 {
 	padding-bottom: 40px;
 }
 
-.band-calendar > .container > .row > .col-lg-12 > h4,
-.band-news > .container > .row > .col-lg-12 > h4 {
+.band-calendar > .container > .row > .col-lg-10 > h4,
+.band-news > .container > .row > .col-lg-10 > h4 {
 	font-weight: bold;
+}
+
+.band-calendar > .container > .row > .col-lg-2,
+.band-news > .container > .row > .col-lg-2 {
+	text-align: right !important;
+	padding-bottom: 40px;
+}
+
+.band-calendar > .container > .row > .col-lg-2 > a,
+.band-news > .container > .row > .col-lg-2 > a {
+	color: black;
+	text-decoration: none;
+	font-size: 16px;
+}
+
+.band-calendar > .container > .row > .col-lg-2 > a:hover,
+.band-news > .container > .row > .col-lg-2 > a:hover {
+	color: var(--hover-button-color);
+	transition: 0.3s;
 }
 
 .band-calendar > .container > .row > .col-lg-4 {
@@ -252,5 +271,10 @@ background-color: #555;
 
 	.band-news {
 		padding-bottom: 0px;
+	}
+
+	.band-news > .container > .row > .col-lg-2 {
+		text-align: left !important;
+		padding-bottom: 20px;
 	}
 }
