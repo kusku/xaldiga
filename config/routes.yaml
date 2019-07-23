@@ -105,3 +105,7 @@ seguretat:
 contacte:
   path: /contacte
   controller: App\Controller\ContacteController:contacteAction
+
+agenda:
+  path: /agenda
+  controller: App\Controller\EntitatController:agendaAction

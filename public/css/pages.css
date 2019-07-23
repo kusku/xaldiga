@@ -91,3 +91,29 @@
     font-size: 16px;
     line-height: 1.6;
 }
+
+.top-buffer {
+    margin-top: 70px;
+}
+
+.page-calendar > .container > .row > .col-lg-10 > .row > .col-md-2 > .square > h5 {
+    color: white;
+    padding-top: 5px;
+	font-weight: bold;
+}
+
+.page-calendar > .container > .row > .col-lg-10 > .row > .col-sm-3 > h4 {
+    color: var(--hover-button-color);
+}
+
+.page-calendar > .container > .row > .col-lg-10 > .row > .col-sm-3 {
+    margin-top: -20px;
+}
+
+.page-calendar > .container > .row > .col-lg-10 > .row > .col-sm-7 {
+    margin-top: 25px;
+}
+
+.page-calendar > .container > .row > .col-lg-10 > .row {
+    margin-bottom: 20px;
+}

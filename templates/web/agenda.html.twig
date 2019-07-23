@@ -1,0 +1,44 @@
+{% extends 'web/web-base.html.twig' %}
+
+{% block body %}
+
+<div class="generic-content">
+	<div class="container-fluid content-container page-calendar">
+		<div class="container">
+            <div class="row">
+                <div class="title">
+                    {{ 'tid_calendari_title'|trans|upper }}
+                </div>
+            </div>
+			{% for agendaYear, agendaElements in agendaInfo %}
+				<div class="row top-buffer">
+					<div class="col-lg-2">
+						<h1>{{ agendaYear }}</h1>
+					</div>
+					<div class="col-lg-10 ">
+					{% for agendaData in agendaElements %}
+						<div class="row">
+							<div class="col-md-2">
+								<div class="square">
+									<h5><p class="text-right">{{ agendaData.day }}<br>{{ agendaData.month|trans }}<br>{{ agendaData.year }}</p></h5>
+								</div>
+							</div>
+							<div class="col-sm-3">
+								<p><h4>{{ agendaData.title }}</h4>
+								{{ agendaData.hour }}<br>
+								{{ agendaData.dir }}<br>
+								{{ agendaData.city }}</p>
+							</div>
+							<div class="col-sm-7">
+							<p>{{ agendaData.description }}</p>
+							</div>
+						</div>
+					{% endfor %}
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+	</div>
+</div>
+
+{% endblock %}
