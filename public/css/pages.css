@@ -117,3 +117,46 @@
 .page-calendar > .container > .row > .col-lg-10 > .row {
     margin-bottom: 20px;
 }
+
+.page-news > .container > .row > .col-lg-12 > .row > .col-lg-4 > a {
+    color: black;
+}
+
+.page-news > .container > .row > .col-lg-12 > .row > .col-lg-4 > a:hover {
+    text-decoration: none;
+    color: var(--hover-button-color);
+    transition: 0.3s;
+}
+
+.page-news > .container > .row > .col-lg-12 > .row > .col-lg-4 > a > img {
+    height: 350px; 
+    width : 350px;
+    object-fit: cover;
+	overflow: hidden;
+}
+
+.page-news > .container > .row > .col-lg-12 > .row > .col-lg-4 > a > img:hover {
+	filter: grayscale(60%);
+	-webkit-filter: grayscale(60%); /* Safari */
+	transition: 0.3s;
+}
+
+.page-news > .container > .row > .col-lg-12 > .row > .col-lg-4 > p {
+    color: rgba(80, 80, 80, 1);
+}
+
+.page-news > .container > .row > .col-lg-12 > .row > .col-lg-4 > #date {
+    font-size: 12px;
+    color: rgba(80, 80, 80, 1);
+}
+
+.page-news > .container > .row > .col-lg-12 > .row > .col-lg-4 > #more-info {
+    font-size: 14px;
+    color: rgba(80, 80, 80, 1);
+}
+
+.page-news > .container > .row > .col-lg-12 > .row > .col-lg-4 > #more-info:hover {
+    text-decoration: none;
+    color: var(--hover-button-color);
+    transition: 0.3s;
+}

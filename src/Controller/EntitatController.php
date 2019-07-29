@@ -58,4 +58,39 @@ class EntitatController extends AbstractController
 
         return $this->render('web/agenda.html.twig', ['agendaInfo' => $agendaInfo]);
     }
+
+    public function newsAction()
+    {
+        $news1 = array(
+            "id" => "1",
+            "title" => "Els Diables participen al Correfoc de Sant Boi de Llobregat juntament amb dues colles més convidades per a la ocasió",
+            "description" => "Aquesta és la descripció més cutre i mal feta que s'ha vist mai com a notícia, però em serveix com a exemple enlloc d'anar repetint x vegades el típic Hello World!",
+            "date" => "15 Juny 2019"
+        );
+
+        $news2 = array(
+            "id" => "2",
+            "title" => "Els Tabalers posen ritme al Carnestoltes Infantil del 2019",
+            "description" => "Descripció notícia 2",
+            "date" => "27 Febrer 2019"
+        );
+
+        $news3 = array(
+            "id" => "3",
+            "title" => "Diablons i Tabalons fan un Correfoc a les festes de l'Oms i de Prat",
+            "description" => "Descripció notícia 3",
+            "date" => "12 Juny 2019"
+        );
+
+        $news4 = array(
+            "id" => "4",
+            "title" => "La Tremenda surt a la Cavalcada de Ses Majestats els Reis d'Orient",
+            "description" => "Descripció notícia 4",
+            "date" => "05 Gener 2019"
+        );
+
+        $newsInfo = array([$news1, $news2, $news3], [$news4]);
+
+        return $this->render('web/news.html.twig', ['newsInfo' => $newsInfo]);
+    }
 }

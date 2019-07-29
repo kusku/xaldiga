@@ -109,3 +109,7 @@ contacte:
 agenda:
   path: /agenda
   controller: App\Controller\EntitatController:agendaAction
+
+news:
+  path: /news
+  controller: App\Controller\EntitatController:newsAction
