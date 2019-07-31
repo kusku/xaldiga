@@ -204,6 +204,41 @@ class CorrefocController extends AbstractController
 
     public function seguretatAction()
     {
-        return $this->render('web/correfoc.html.twig');
+        $genericInfo = array(
+            "sectionFolder" => "seguretat",
+            "title" => "tid_correfoc_seguretat_title"
+        );
+
+        $veinsInfo = array(
+            "title" => "tid_correfoc_seguretat_veins_title",
+            "infoList" => array("tid_correfoc_seguretat_veins_1", 
+                                "tid_correfoc_seguretat_veins_2", 
+                                "tid_correfoc_seguretat_veins_3", 
+                                "tid_correfoc_seguretat_veins_4", 
+                                "tid_correfoc_seguretat_veins_5", 
+                                "tid_correfoc_seguretat_veins_6")
+        );
+
+        $participantsInfo = array(
+            "title" => "tid_correfoc_seguretat_participants_title",
+            "infoList" => array("tid_correfoc_seguretat_participants_1",
+                                "tid_correfoc_seguretat_participants_2", 
+                                "tid_correfoc_seguretat_participants_3", 
+                                "tid_correfoc_seguretat_participants_4", 
+                                "tid_correfoc_seguretat_participants_5", 
+                                "tid_correfoc_seguretat_participants_6", 
+                                "tid_correfoc_seguretat_participants_7", 
+                                "tid_correfoc_seguretat_participants_8", 
+                                "tid_correfoc_seguretat_participants_9", 
+                                "tid_correfoc_seguretat_participants_10", 
+                                "tid_correfoc_seguretat_participants_11", 
+                                "tid_correfoc_seguretat_participants_12", 
+                                "tid_correfoc_seguretat_participants_13")
+
+        );
+
+        $mainInfo = array($participantsInfo, $veinsInfo);
+
+        return $this->render('web/correfoc-two-columns.html.twig', ['genericInfo' => $genericInfo, 'mainInfo' => $mainInfo]);
     }
 }

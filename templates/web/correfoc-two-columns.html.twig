@@ -1,0 +1,32 @@
+{% extends 'web/web-base.html.twig' %}
+
+{% block body %}
+
+{% set imagesFolderPath = '/images/correfoc/' ~ genericInfo.sectionFolder ~ '/' %}
+
+<div class="generic-content">
+	<div class="parallax" style="background-image: url('{{ imagesFolderPath ~ 'background-image.jpg' }}')">
+		<div class="container-fluid">
+			<div class="container portrait-caption-sm">{{ 'tid_navbar_correfoc_title'|trans|upper }}</div>
+			<div class="container portrait-caption-lg">{{ genericInfo.title|trans|upper }}</div>
+		</div>
+	</div>
+	<div class="container-fluid content-container">
+		<div class="container">
+			<div class="row">
+				{% for mainInfoElement in mainInfo %}
+				<div class="col-lg-6">
+					<h4>{{ mainInfoElement.title|trans }}</h4>
+					<ul>
+						{% for elem in mainInfoElement.infoList %}
+							<li>{{ elem|trans }}</li>
+						{% endfor %}
+					</ul>
+				</div>
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+</div>
+
+{% endblock %}
