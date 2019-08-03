@@ -59,17 +59,37 @@
 
 @media (max-width: 1200px) {
 	.portrait-caption {
-        font-size: 80px;
-        top: 305px;
-	}
+        font-size: 70px;
+        top: 310px;
+    }
+    
+    .portrait-caption-sm {
+        font-size: 40px;
+        top: 270px;
+    }
+
+    .portrait-caption-lg {
+        font-size: 75px;
+        top: 250px;
+    }
 }
 
 
 @media (max-width: 767px) {
 	.portrait-caption {
-        font-size: 60px;
-        top: 320px;
-	}
+        font-size: 50px;
+        top: 340px;
+    }
+    
+    .portrait-caption-sm {
+        font-size: 25px;
+        top: 330px;
+    }
+
+    .portrait-caption-lg {
+        font-size: 40px;
+        top: 312px;
+    }
 }
 
 .row-margin {
