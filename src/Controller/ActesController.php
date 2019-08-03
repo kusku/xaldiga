@@ -49,7 +49,14 @@ class ActesController extends AbstractController
 
     public function trobadaDiablesAction()
     {
-        return $this->render('web/trobada-diables.html.twig');
+        $genericInfo = array(
+            "sectionFolder" => "trobada-diables",
+            "title" => "tid_trobada_diables_title",
+            "description" => "tid_trobada_diables_desc",
+            "mainImageDescription" => "tid_trobada_diables_main_image_desc"
+        );
+
+        return $this->render('web/actes.html.twig', ['genericInfo' => $genericInfo]);
     }
 
     public function aixadaAction()

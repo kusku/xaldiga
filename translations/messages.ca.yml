@@ -324,3 +324,8 @@ tid_correfoc_seguretat_participants_10: "No encengueu foc ni fumeu a prop de les
 tid_correfoc_seguretat_participants_11: "En cas d'un accident greu, s'ha de facilitar l'accés als equips d'emergència i seguir les instruccions del cap de Correfoc o dels grups d'ordre."
 tid_correfoc_seguretat_participants_12: "No es permet la participació de menors de 12 anys, ni portar canalla sobre les espatlles o assistir al Correfoc en cotxet."
 tid_correfoc_seguretat_participants_13: "Tot el públic participat és responable, en primer i únic terme, dels accidents que pugui patir al Correfoc."
+
+# TROBADA DIABLES --------------------------------------
+tid_trobada_diables_title: "Trobada de Diables"
+tid_trobada_diables_desc: "La Trobada de Diables és una trobada de diables"
+tid_trobada_diables_main_image_desc: "Trobada de Diables"
