@@ -329,3 +329,8 @@ tid_correfoc_seguretat_participants_13: "Tot el públic participat és responabl
 tid_trobada_diables_title: "Trobada de Diables"
 tid_trobada_diables_desc: "La Trobada de Diables és una trobada de diables"
 tid_trobada_diables_main_image_desc: "Trobada de Diables"
+
+# AIXADA --------------------------------------
+tid_aixada_title: "Fira de l'Aixada"
+tid_aixada_desc: "Descripció de la Fira de l'Aixada"
+tid_aixada_main_image_desc: "Fira de l'Aixada"

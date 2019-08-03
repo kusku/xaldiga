@@ -61,7 +61,14 @@ class ActesController extends AbstractController
 
     public function aixadaAction()
     {
-        return $this->render('web/aixada.html.twig');
+        $genericInfo = array(
+            "sectionFolder" => "aixada",
+            "title" => "tid_aixada_title",
+            "description" => "tid_aixada_desc",
+            "mainImageDescription" => "tid_aixada_main_image_desc"
+        );
+
+        return $this->render('web/actes.html.twig', ['genericInfo' => $genericInfo]);
     }
 
     public function passatgeTerrorAction()
