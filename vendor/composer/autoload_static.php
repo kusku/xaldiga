@@ -36,10 +36,12 @@ class ComposerStaticInit48e37c5c582fc61fbe40a8f8ee8075e5
         ),
         'S' => 
         array (
+            'Symfony\\WebpackEncoreBundle\\' => 28,
             'Symfony\\Polyfill\\Php72\\' => 23,
             'Symfony\\Polyfill\\Mbstring\\' => 26,
             'Symfony\\Polyfill\\Intl\\Idn\\' => 26,
             'Symfony\\Flex\\' => 13,
+            'Symfony\\Contracts\\Service\\' => 26,
             'Symfony\\Contracts\\' => 18,
             'Symfony\\Component\\Yaml\\' => 23,
             'Symfony\\Component\\WebLink\\' => 26,
@@ -162,6 +164,10 @@ class ComposerStaticInit48e37c5c582fc61fbe40a8f8ee8075e5
         array (
             0 => __DIR__ . '/..' . '/twig/twig/src',
         ),
+        'Symfony\\WebpackEncoreBundle\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/webpack-encore-bundle/src',
+        ),
         'Symfony\\Polyfill\\Php72\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-php72',
@@ -177,6 +183,10 @@ class ComposerStaticInit48e37c5c582fc61fbe40a8f8ee8075e5
         'Symfony\\Flex\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/flex/src',
+        ),
+        'Symfony\\Contracts\\Service\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/service-contracts',
         ),
         'Symfony\\Contracts\\' => 
         array (
