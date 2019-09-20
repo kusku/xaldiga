@@ -21,7 +21,6 @@ class App extends React.Component {
 
   render() {
     if (this.state.hasError) {
-        console.log("React 2");
         // You can render any custom fallback UI
         return <h1>Something went wrong.</h1>;
       }

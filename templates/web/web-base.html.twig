@@ -113,7 +113,7 @@
                                 </div>
                             </ul>
                         </li>
-                        <li class="nav-item"><a class="nav-link" href="#">{{ 'tid_navbar_fer_soci_title'|trans }}</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/nou-soci">{{ 'tid_navbar_fer_soci_title'|trans }}</a></li>
                         <li class="nav-item"><a class="nav-link" href="/contacte">{{ 'tid_navbar_contacte_title'|trans }}</a></li>
                     </ul>
                 </div>
@@ -172,4 +172,5 @@
 {% block scripts %}
   <script src="js/scroll.js"></script>
   <script src="js/modalImage.js"></script>
+  {% block customscripts %}{% endblock %}
 {% endblock %}

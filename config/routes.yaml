@@ -113,3 +113,7 @@ agenda:
 news:
   path: /news
   controller: App\Controller\EntitatController:newsAction
+
+new-member:
+  path: /nou-soci
+  controller: App\Controller\ContacteController:newMemberAction

@@ -1,0 +1,120 @@
+warning: LF will be replaced by CRLF in assets/js/app.js.
+The file will have its original line endings in your working directory.
+[1mdiff --git a/assets/js/app.js b/assets/js/app.js[m
+[1mindex f07c959..8892a7d 100644[m
+[1m--- a/assets/js/app.js[m
+[1m+++ b/assets/js/app.js[m
+[36m@@ -21,7 +21,6 @@[m [mclass App extends React.Component {[m
+ [m
+   render() {[m
+     if (this.state.hasError) {[m
+[31m-        console.log("React 2");[m
+         // You can render any custom fallback UI[m
+         return <h1>Something went wrong.</h1>;[m
+       }[m
+[36m@@ -37,4 +36,5 @@[m [mclass App extends React.Component {[m
+   }[m
+ }[m
+ [m
+[32m+[m[32mconsole.log("list 1");[m
+ ReactDOM.render(<App />, document.getElementById('employee-list'));[m
+\ No newline at end of file[m
+[1mdiff --git a/config/routes.yaml b/config/routes.yaml[m
+[1mindex 082dc08..6381561 100644[m
+[1m--- a/config/routes.yaml[m
+[1m+++ b/config/routes.yaml[m
+[36m@@ -112,4 +112,8 @@[m [magenda:[m
+ [m
+ news:[m
+   path: /news[m
+[31m-  controller: App\Controller\EntitatController:newsAction[m
+\ No newline at end of file[m
+[32m+[m[32m  controller: App\Controller\EntitatController:newsAction[m
+[32m+[m
+[32m+[m[32mnew-member:[m
+[32m+[m[32m  path: /nou-soci[m
+[32m+[m[32m  controller: App\Controller\ContacteController:newMemberAction[m
+\ No newline at end of file[m
+[1mdiff --git a/src/Controller/ContacteController.php b/src/Controller/ContacteController.php[m
+[1mindex 6c5e44d..73e1daa 100644[m
+[1m--- a/src/Controller/ContacteController.php[m
+[1m+++ b/src/Controller/ContacteController.php[m
+[36m@@ -53,4 +53,9 @@[m [mclass ContacteController extends AbstractController[m
+ [m
+         return $this->render('web/contacte.html.twig', ['our_form' => $form->createView()]);[m
+     }[m
+[32m+[m
+[32m+[m[32m    public function newMemberAction()[m
+[32m+[m[32m    {[m
+[32m+[m[32m        return $this->rendeR('web/new-member-form.html.twig');[m
+[32m+[m[32m    }[m
+ }[m
+\ No newline at end of file[m
+[1mdiff --git a/templates/base.html.twig b/templates/base.html.twig[m
+[1mindex 397ac89..3dc0d65 100644[m
+[1m--- a/templates/base.html.twig[m
+[1m+++ b/templates/base.html.twig[m
+[36m@@ -17,7 +17,6 @@[m
+ 	{% block mainbody %}{% endblock %}[m
+ [m
+   <script type="text/javascript" src="{{ asset('build/runtime.js') }}"></script>[m
+[31m-  <script type="text/javascript" src="{{ asset('build/vendors~app.js') }}"></script>[m
+ [m
+   <!-- jQuery (necessary for Bootstrap's JavaScript plugins) --> [m
+   <script src="js/jquery-1.11.3.min.js"></script>[m
+[36m@@ -26,7 +25,6 @@[m
+   <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>[m
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>[m
+   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>[m
+[31m-  <script type="text/javascript" src="{{ asset('build/app.js') }}"></script>[m
+ [m
+   {% block scripts %}{% endblock %}[m
+ [m
+[1mdiff --git a/templates/web/entitat.html.twig b/templates/web/entitat.html.twig[m
+[1mindex 6681a6b..3a72e99 100644[m
+[1m--- a/templates/web/entitat.html.twig[m
+[1m+++ b/templates/web/entitat.html.twig[m
+[36m@@ -15,7 +15,6 @@[m
+                     <img id='entitat' src='/images/entitat/entitat.png' onClick=clickedThumbImage('entitat'); >[m
+                 </div>[m
+                 <div class="col-lg-8 paragraph-entitat">[m
+[31m-                <div id="employee-list"></div>[m
+                     {{ 'tid_entitat_desc'|trans|nl2br }}[m
+                 </div>[m
+             </div>[m
+[1mdiff --git a/templates/web/web-base.html.twig b/templates/web/web-base.html.twig[m
+[1mindex d85243d..ff1d650 100644[m
+[1m--- a/templates/web/web-base.html.twig[m
+[1m+++ b/templates/web/web-base.html.twig[m
+[36m@@ -113,7 +113,7 @@[m
+                                 </div>[m
+                             </ul>[m
+                  warning: LF will be replaced by CRLF in config/routes.yaml.
+The file will have its original line endings in your working directory.
+       </li>[m
+[31m-                        <li class="nav-item"><a class="nav-link" href="#">{{ 'tid_navbar_fer_soci_title'|trans }}</a></li>[m
+[32m+[m[32m                        <li class="nav-item"><a class="nav-link" href="/nou-soci">{{ 'tid_navbar_fer_soci_title'|trans }}</a></li>[m
+                         <li class="nav-item"><a class="nav-link" href="/contacte">{{ 'tid_navbar_contacte_title'|trans }}</a></li>[m
+                     </ul>[m
+                 </div>[m
+[36m@@ -172,4 +172,5 @@[m
+ {% block scripts %}[m
+   <script src="js/scroll.js"></script>[m
+   <script src="js/modalImage.js"></script>[m
+[32m+[m[32m  {% block customscripts %}{% endblock %}[m
+ {% endblock %}[m
+\ No newline at end of file[m
+[1mdiff --git a/webpack.config.js b/webpack.config.js[m
+[1mindex 27dd2ff..5f80156 100644[m
+[1m--- a/webpack.config.js[m
+[1m+++ b/webpack.config.js[m
+[36m@@ -24,6 +24,7 @@[m [mEncore[m
+      * and one CSS file (e.g. app.css) if your JavaScript imports CSS.[m
+      */[m
+     .addEntry('app', './assets/js/app.js')[m
+[32m+[m[32m    .addEntry('new-member-form', './assets/js/new-member-form.js')[m
+     //.addEntry('page1', './assets/js/page1.js')[m
+     //.addEntry('page2', './assets/js/page2.js')[m
+ [m
+warning: LF will be replaced by CRLF in webpack.config.js.
+The file will have its original line endings in your working directory.

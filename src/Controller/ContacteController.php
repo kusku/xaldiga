@@ -53,4 +53,9 @@ class ContacteController extends AbstractController
 
         return $this->render('web/contacte.html.twig', ['our_form' => $form->createView()]);
     }
+
+    public function newMemberAction()
+    {
+        return $this->rendeR('web/new-member-form.html.twig');
+    }
 }
