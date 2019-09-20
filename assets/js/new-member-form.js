@@ -68,19 +68,19 @@ class Form extends React.Component {
             <form onSubmit={this.handleSubmit}>
                 <div id="member">
                     <div class="form-group">
-                        <label class="required" for="member_name">Nom i cognoms*</label>
+                        <label class="required" for="member_name">Nom i cognoms</label>
                         <input id="member_name" class="form-control" type="text" name="fullname" required="required"/>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <div class="form-group">
-                                <label class="required" for="member_nif">DNI*</label>
+                                <label class="required" for="member_nif">DNI</label>
                                 <input id="member_nid" class="form-control" type="text" name="nif" required="required"/>
                             </div>
                         </div>
                         <div class="form-group col-md-6">
                             <div class="form-group">
-                                <label class="required" for="member_birthday">Data de naixement*</label>
+                                <label class="required" for="member_birthday">Data de naixement</label>
                                 <input id="member_birthday" class="form-control" type="text" name="birthday" required="required"/>
                             </div>
                         </div>
@@ -92,19 +92,19 @@ class Form extends React.Component {
                     <div class="form-row">
                         <div class="form-group col-md-5">
                             <div class="form-group">
-                                <label class="required" for="member_city">Població*</label>
+                                <label class="required" for="member_city">Població</label>
                                 <input id="member_city" class="form-control" type="text" name="city" required="required"/>
                             </div>
                         </div>
                         <div class="form-group col-md-2">
                             <div class="form-group">
-                                <label class="required" for="member_zipcode">Codi postal*</label>
+                                <label class="required" for="member_zipcode">Codi postal</label>
                                 <input id="member_zipcode" class="form-control" type="text" name="zipcode" required="required"/>
                             </div>
                         </div>
                         <div class="form-group col-md-5">
                             <div class="form-group">
-                                <label class="required" for="member_province">Província*</label>
+                                <label class="required" for="member_province">Província</label>
                                 <input id="member_province" class="form-control" type="text" name="province" required="required"/>
                             </div>
                         </div>
@@ -112,13 +112,13 @@ class Form extends React.Component {
                     <div class="form-row">
                         <div class="form-group col-md-4">
                             <div class="form-group">
-                                <label class="required" for="member_phone">Telèfon*</label>
+                                <label class="required" for="member_phone">Telèfon</label>
                                 <input id="member_phone" class="form-control" type="text" name="phone" required="required"/>
                             </div>
                         </div>
                         <div class="form-group col-md-8">
                             <div class="form-group">
-                                <label class="required" for="member_email">Correu electrònic*</label>
+                                <label class="required" for="member_email">Correu electrònic</label>
                                 <input id="member_email" class="form-control" type="text" name="email" required="required"/>
                             </div>
                         </div>
