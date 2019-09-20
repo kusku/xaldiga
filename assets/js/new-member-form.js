@@ -88,10 +88,6 @@ class Form extends React.Component {
                         <input id="member_city" class="form-control" type="text" name="city" required="required"/>
                     </div>
                     <div class="form-group">
-                        <label class="required" for="member_city">Població*</label>
-                        <input id="member_city" class="form-control" type="text" name="city" required="required"/>
-                    </div>
-                    <div class="form-group">
                         <label class="required" for="member_zipcode">Codi postal*</label>
                         <input id="member_zipcode" class="form-control" type="text" name="zipcode" required="required"/>
                     </div>
