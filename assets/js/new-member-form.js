@@ -1,5 +1,7 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
+import DayPickerInput from 'react-day-picker/DayPickerInput';
+import 'react-day-picker/lib/style.css';
 
 class Form extends React.Component {
     constructor(props) {
@@ -81,7 +83,7 @@ class Form extends React.Component {
                         <div class="form-group col-md-6">
                             <div class="form-group">
                                 <label class="required" for="member_birthday">Data de naixement</label>
-                                <input id="member_birthday" class="form-control" type="text" name="birthday" required="required"/>
+                                <DayPickerInput onDayChange={day => console.log(day)} />
                             </div>
                         </div>
                     </div>
@@ -126,22 +128,6 @@ class Form extends React.Component {
                     <input class="btn btn-success btn-lg" type="submit" value="Enviar" />
                 </div>
             </form>
-            // <form onSubmit={this.handleSubmit}>
-            //     <label htmlFor="fullname">Fullname</label>
-            //     <input type="text" name='fullname' value={this.state.fullnameValue} onChange={this.handleChange} id="fullname" placeholder="Fullname" />
-            //     <small>{this.state.fullnameError}</small>
-
-            //     <label htmlFor="email">Email</label>
-            //     <input type="email" name='email' value={this.state.emailValue} onChange={this.handleChange} id="email" placeholder="Email" />
-            //     <small>{this.state.emailError}</small>
-            
-            //     <label htmlFor="password">Password</label>            
-            //     <input type="password" name='password' value={this.state.passwordValue} onChange={this.handleChange} id="password" placeholder="Password" />
-            //     <small>{this.state.passwordError}</small>            
-
-            //     <button type="submit">Sign up</button>
-            //     <span className='text-success'>{this.state.successMessage}</span>
-            // </form>
         );
     }
 }

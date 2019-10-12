@@ -25,6 +25,12 @@ Encore
      */
     .addEntry('app', './assets/js/app.js')
     .addEntry('new-member-form', './assets/js/new-member-form.js')
+    .addEntry('pages', './assets/css/pages.scss')
+    .addEntry('bootstrap', './assets/css/bootstrap.css')
+    .addEntry('header', './assets/css/header.css')
+    .addEntry('main', './assets/css/main.css')
+    .addEntry('moalImage', './assets/css/modalImage.css')
+    .addEntry('variables', './assets/css/variables.css')
     //.addEntry('page1', './assets/js/page1.js')
     //.addEntry('page2', './assets/js/page2.js')
 
@@ -55,7 +61,7 @@ Encore
     })
 
     // enables Sass/SCSS support
-    //.enableSassLoader()
+    .enableSassLoader()
 
     // uncomment if you use TypeScript
     //.enableTypeScriptLoader()

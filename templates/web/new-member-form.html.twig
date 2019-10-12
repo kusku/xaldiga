@@ -10,14 +10,14 @@
                     {{ 'tid_navbar_fer_soci_title'|trans|upper }}
                 </div>
             </div>
-                <div class="row">
-                    <div class="col-lg-7">
+                {# <div class="row"> #}
+                    {# <div class="col-lg-7"> #}
                         <div id="new-member-form"></div>
-                    </div>
+                    {# </div>
                     <div class="col-lg-5 content-image">
                         <img id='membres' src='/images/entitat/membres.jpg' onClick=clickedThumbImage('membres'); >
-                    </div>
-                </div>
+                    </div> #}
+                {# </div> #}
             </div>
 		</div>
 	</div>
@@ -27,4 +27,5 @@
 
 {% block customscripts %}
     {{ encore_entry_script_tags('new-member-form') }}
+    <script src="https://unpkg.com/react-day-picker/lib/daypicker.min.js"></script>
 {% endblock %}

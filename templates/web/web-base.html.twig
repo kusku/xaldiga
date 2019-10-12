@@ -1,13 +1,15 @@
 {% extends 'base.html.twig' %}
 
 {% block meta %}
-    <link href="{{ asset('/css/variables.css') }}" rel="stylesheet" type="text/css">
-    <link href="{{ asset('/css/main.css') }}" rel="stylesheet" type="text/css">
-    <link href="{{ asset('/css/header.css') }}" rel="stylesheet" type="text/css">
-    <link href="{{ asset('/css/pages.css') }}" rel="stylesheet" type="text/css">
-    <link href="{{ asset('/css/modalImage.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('/build/bootstrap.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('/build/pages.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('/build/header.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('/build/main.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('/build/modalImage.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('/build/variables.css') }}" rel="stylesheet" type="text/css">
     <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/react-day-picker/lib/style.css">
 {% endblock %}
 
 {% block mainbody %}

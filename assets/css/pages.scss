@@ -180,3 +180,13 @@
     color: var(--hover-button-color);
     transition: 0.3s;
 }
+
+.DayPickerInput {
+    display: block !important;
+}
+
+.DayPickerInput > input {
+    @extend .form-control;
+}
+
+@import "bootstrap";
