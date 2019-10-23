@@ -1,19 +1,23 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import DayPickerInput from 'react-day-picker/DayPickerInput';
-import 'react-day-picker/lib/style.css';
 
 class Form extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            fullnameValue: '',
+            nameValue: '',
+            dniValue: '',
+            birthdayValue: '',
+            addressValue: '',
+            cityValue: '',
+            zipcodeValue: '',
+            provinceValue: '',
+            phoneValue: '',
             emailValue: '',
             passwordValue: '',
             fullnameError: '',
             emailError: '',
-            passwordError: '',
-            successMessage: '',
+            successMessage: ''
         };
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -26,17 +30,55 @@ class Form extends React.Component {
             });
         }
 
+        if(e.target.name === 'dni') {
+            this.setState({
+                dniValue: e.target.value
+            });
+        }
+
+        if(e.target.name === 'address') {
+            this.setState({
+                addressValue: e.target.value
+            });
+        }
+
+        if(e.target.name === 'city') {
+            this.setState({
+                cityValue: e.target.value
+            });
+        }
+
+        if(e.target.name === 'zipcode') {
+            this.setState({
+                zipcodeValue: e.target.value
+            });
+        }
+
+        if(e.target.name === 'province') {
+            this.setState({
+                provinceValue: e.target.value
+            });
+        }
+
+        if(e.target.name === 'phone') {
+            this.setState({
+                phoneValue : e.target.value,
+            });
+        }
+
         if(e.target.name === 'email') {
             this.setState({
                 emailValue: e.target.value,
             });
         }
-        
-        if(e.target.name === 'password') {
-            this.setState({
-                passwordValue: e.target.value,
-            });
-        }        
+             
+    }
+
+    handleDate(date) {
+        console.log(date);
+        this.setState({
+            'birthdayValue': date
+        });
     }
 
     handleSubmit(e) {
@@ -48,14 +90,12 @@ class Form extends React.Component {
             data: {
                 fullname: this.state.fullnameValue,
                 email: this.state.emailValue,
-                password: this.state.passwordValue
             },
             dataType: 'json',
             success: function(response) {
                 this.setState({
                     fullnameError: response.fullnameError ? response.fullnameError : null,
                     emailError: response.emailError ? response.emailError : null,
-                    passwordError: response.passwordError ? response.passwordError : null,
                     successMessage: response.success_message ? response.success_message : null,
                 });
             }.bind(this),
@@ -65,68 +105,87 @@ class Form extends React.Component {
         });
     }
 
+    renderBasicFormPart() {
+        return (
+            <div id="basicFormPart">
+                <div class="form-group">
+                    <label class="required" for="member_name">Nom i cognoms</label>
+                    <input id="member_name" class="form-control" type="text" name="fullname" required="required"/>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <div class="form-group">
+                            <label class="required" for="member_dni">DNI</label>
+                            <input id="member_dni" class="form-control" type="text" name="dni" required="required"/>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <div class="form-group">
+                            <label class="required" for="member_birthday">Data de naixement</label>
+                            {/* Implement birthday */}
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="required" for="member_address">Adreça*</label>
+                    <input id="member_address" class="form-control" type="text" name="address" required="required"/>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-5">
+                        <div class="form-group">
+                            <label class="required" for="member_city">Població</label>
+                            <input id="member_city" class="form-control" type="text" name="city" required="required"/>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-2">
+                        <div class="form-group">
+                            <label class="required" for="member_zipcode">Codi postal</label>
+                            <input id="member_zipcode" class="form-control" type="text" name="zipcode" required="required"/>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-5">
+                        <div class="form-group">
+                            <label class="required" for="member_province">Província</label>
+                            <input id="member_province" class="form-control" type="text" name="province" required="required"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <div class="form-group">
+                            <label class="required" for="member_phone">Telèfon</label>
+                            <input id="member_phone" class="form-control" type="tel" name="phone" pattern="[6-9]{1}[0-9]{8}" required="required"/>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-8">
+                        <div class="form-group">
+                            <label class="required" for="member_email">Correu electrònic</label>
+                            <input id="member_email" class="form-control" type="email" name="email" required="required"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        );
+    }
+    
+    renderFormParentalPart() {
+        return (
+            <div id="paternForm">
+                <h2>Formulari patern</h2>
+                { this.renderBasicFormPart() }
+            </div>
+        );
+    }
+
     render() {
+        let parentalForm;
+        parentalForm = <div id="empty"></div>;
+
         return (
             <form onSubmit={this.handleSubmit}>
-                <div id="member">
-                    <div class="form-group">
-                        <label class="required" for="member_name">Nom i cognoms</label>
-                        <input id="member_name" class="form-control" type="text" name="fullname" required="required"/>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group col-md-6">
-                            <div class="form-group">
-                                <label class="required" for="member_nif">DNI</label>
-                                <input id="member_nid" class="form-control" type="text" name="nif" required="required"/>
-                            </div>
-                        </div>
-                        <div class="form-group col-md-6">
-                            <div class="form-group">
-                                <label class="required" for="member_birthday">Data de naixement</label>
-                                <DayPickerInput onDayChange={day => console.log(day)} />
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="required" for="member_direction">Adreça*</label>
-                        <input id="member_direction" class="form-control" type="text" name="direction" required="required"/>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group col-md-5">
-                            <div class="form-group">
-                                <label class="required" for="member_city">Població</label>
-                                <input id="member_city" class="form-control" type="text" name="city" required="required"/>
-                            </div>
-                        </div>
-                        <div class="form-group col-md-2">
-                            <div class="form-group">
-                                <label class="required" for="member_zipcode">Codi postal</label>
-                                <input id="member_zipcode" class="form-control" type="text" name="zipcode" required="required"/>
-                            </div>
-                        </div>
-                        <div class="form-group col-md-5">
-                            <div class="form-group">
-                                <label class="required" for="member_province">Província</label>
-                                <input id="member_province" class="form-control" type="text" name="province" required="required"/>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group col-md-4">
-                            <div class="form-group">
-                                <label class="required" for="member_phone">Telèfon</label>
-                                <input id="member_phone" class="form-control" type="text" name="phone" required="required"/>
-                            </div>
-                        </div>
-                        <div class="form-group col-md-8">
-                            <div class="form-group">
-                                <label class="required" for="member_email">Correu electrònic</label>
-                                <input id="member_email" class="form-control" type="text" name="email" required="required"/>
-                            </div>
-                        </div>
-                    </div>
-                    <input class="btn btn-success btn-lg" type="submit" value="Enviar" />
-                </div>
+                { this.renderBasicFormPart() }
+                { parentalForm }
+                <input class="btn btn-success btn-lg" type="submit" value="Enviar" />
             </form>
         );
     }
