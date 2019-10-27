@@ -82,7 +82,7 @@ class Form extends React.Component {
     handleDateChange(value, formattedValue) {
         this.setState({
           value: value, // ISO String, ex: "2016-11-19T12:00:00.000Z"
-          formattedValue: formattedValue // Formatted String, ex: "11/19/2016"
+          birthdayValue: formattedValue // Formatted String, ex: "11/19/2016"
         });
     }
 
@@ -108,6 +108,28 @@ class Form extends React.Component {
                 console.log(`An error occured: ${xhr.status} ${xhr.statusText}`);
             }
         });
+    }
+
+    isUnderaged() {
+        if(this.state.birthdayValue === '')
+        {
+            return false;
+        }
+
+        var age = 18;
+        var birthday = this.state.birthdayValue.split("/"); // [day, month, year]
+
+        var userDate = new Date();
+        userDate.setFullYear(birthday[2], birthday[1]-1, birthday[0]);
+        
+        var currdate = new Date();
+        currdate.setFullYear(currdate.getFullYear() - age);
+
+        if ((currdate - userDate) > 0) {
+            return false;
+        }
+
+        return true;
     }
 
     renderBasicFormPart() {
@@ -187,7 +209,12 @@ class Form extends React.Component {
 
     render() {
         let parentalForm;
-        parentalForm = <div id="empty"></div>;
+        if(this.isUnderaged()) {
+            parentalForm = this.renderFormParentalPart();
+        }
+        else {
+            parentalForm = <div id="empty"></div>;
+        }
 
         return (
             <form onSubmit={this.handleSubmit}>
