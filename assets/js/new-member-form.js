@@ -138,59 +138,59 @@ class Form extends React.Component {
 
         return (
             <div id="basicFormPart">
-                <div class="form-group">
-                    <label class="required" for="member_name">Nom i cognoms</label>
-                    <input id="member_name" class="form-control" type="text" name="fullname" required="required"/>
+                <div className="form-group">
+                    <label className="required" htmlFor="member_name">Nom i cognoms</label>
+                    <input id="member_name" className="form-control" type="text" name="fullname" required="required"/>
                 </div>
-                <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <div class="form-group">
-                            <label class="required" for="member_dni">DNI</label>
-                            <input id="member_dni" class="form-control" type="text" name="dni" required="required"/>
+                <div className="form-row">
+                    <div className="form-group col-md-6">
+                        <div className="form-group">
+                            <label className="required" htmlFor="member_dni">DNI</label>
+                            <input id="member_dni" className="form-control" type="text" name="dni" required="required"/>
                         </div>
                     </div>
-                    <div class="form-group col-md-6">
-                        <div class="form-group">
-                            <label class="required" for="member_birthday">Data de naixement</label>
+                    <div className="form-group col-md-6">
+                        <div className="form-group">
+                            <label className="required" htmlFor="member_birthday">Data de naixement</label>
                             <DatePicker id="member_datepicker" value={this.state.value} onChange={this.handleDateChange} monthLabels={months} dayLabels={days} showClearButton={false}/>
                         </div>
                     </div>
                 </div>
-                <div class="form-group">
-                    <label class="required" for="member_address">Adreça*</label>
-                    <input id="member_address" class="form-control" type="text" name="address" required="required"/>
+                <div className="form-group">
+                    <label className="required" htmlFor="member_address">Adreça*</label>
+                    <input id="member_address" className="form-control" type="text" name="address" required="required"/>
                 </div>
-                <div class="form-row">
-                    <div class="form-group col-md-5">
-                        <div class="form-group">
-                            <label class="required" for="member_city">Població</label>
-                            <input id="member_city" class="form-control" type="text" name="city" required="required"/>
+                <div className="form-row">
+                    <div className="form-group col-md-5">
+                        <div className="form-group">
+                            <label className="required" htmlFor="member_city">Població</label>
+                            <input id="member_city" className="form-control" type="text" name="city" required="required"/>
                         </div>
                     </div>
-                    <div class="form-group col-md-2">
-                        <div class="form-group">
-                            <label class="required" for="member_zipcode">Codi postal</label>
-                            <input id="member_zipcode" class="form-control" type="text" name="zipcode" required="required"/>
+                    <div className="form-group col-md-2">
+                        <div className="form-group">
+                            <label className="required" htmlFor="member_zipcode">Codi postal</label>
+                            <input id="member_zipcode" className="form-control" type="text" name="zipcode" required="required"/>
                         </div>
                     </div>
-                    <div class="form-group col-md-5">
-                        <div class="form-group">
-                            <label class="required" for="member_province">Província</label>
-                            <input id="member_province" class="form-control" type="text" name="province" required="required"/>
+                    <div className="form-group col-md-5">
+                        <div className="form-group">
+                            <label className="required" htmlFor="member_province">Província</label>
+                            <input id="member_province" className="form-control" type="text" name="province" required="required"/>
                         </div>
                     </div>
                 </div>
-                <div class="form-row">
-                    <div class="form-group col-md-4">
-                        <div class="form-group">
-                            <label class="required" for="member_phone">Telèfon</label>
-                            <input id="member_phone" class="form-control" type="tel" name="phone" pattern="[6-9]{1}[0-9]{8}" required="required"/>
+                <div className="form-row">
+                    <div className="form-group col-md-4">
+                        <div className="form-group">
+                            <label className="required" htmlFor="member_phone">Telèfon</label>
+                            <input id="member_phone" className="form-control" type="tel" name="phone" pattern="[6-9]{1}[0-9]{8}" required="required"/>
                         </div>
                     </div>
-                    <div class="form-group col-md-8">
-                        <div class="form-group">
-                            <label class="required" for="member_email">Correu electrònic</label>
-                            <input id="member_email" class="form-control" type="email" name="email" required="required"/>
+                    <div className="form-group col-md-8">
+                        <div className="form-group">
+                            <label className="required" htmlFor="member_email">Correu electrònic</label>
+                            <input id="member_email" className="form-control" type="email" name="email" required="required"/>
                         </div>
                     </div>
                 </div>
@@ -220,7 +220,7 @@ class Form extends React.Component {
             <form onSubmit={this.handleSubmit}>
                 { this.renderBasicFormPart() }
                 { parentalForm }
-                <input class="btn btn-success btn-lg" type="submit" value="Enviar" />
+                <input className="btn btn-success btn-lg" type="submit" value="Enviar" />
             </form>
         );
     }
