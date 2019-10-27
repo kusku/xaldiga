@@ -111,6 +111,9 @@ class Form extends React.Component {
     }
 
     renderBasicFormPart() {
+        const months = ['Gener', 'Febrer', 'Març', 'Abril', 'Maig', 'Juny', 'Juliol', 'Agost', 'Setembre', 'Octubre', 'Novembre', 'Desembre'];
+        const days = ['Dl', 'Dm', 'Dc', 'Dj', 'Dv', 'Ds', 'Dg'];
+
         return (
             <div id="basicFormPart">
                 <div class="form-group">
@@ -127,7 +130,7 @@ class Form extends React.Component {
                     <div class="form-group col-md-6">
                         <div class="form-group">
                             <label class="required" for="member_birthday">Data de naixement</label>
-                            <DatePicker id="example-datepicker" value={this.state.value} onChange={this.handleDateChange} />
+                            <DatePicker id="example-datepicker" value={this.state.value} onChange={this.handleDateChange} monthLabels={months} dayLabels={days}/>
                         </div>
                     </div>
                 </div>
