@@ -130,7 +130,7 @@ class Form extends React.Component {
                     <div class="form-group col-md-6">
                         <div class="form-group">
                             <label class="required" for="member_birthday">Data de naixement</label>
-                            <DatePicker id="example-datepicker" value={this.state.value} onChange={this.handleDateChange} monthLabels={months} dayLabels={days}/>
+                            <DatePicker id="member_datepicker" value={this.state.value} onChange={this.handleDateChange} monthLabels={months} dayLabels={days} showClearButton={false}/>
                         </div>
                     </div>
                 </div>
