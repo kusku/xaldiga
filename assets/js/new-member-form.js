@@ -1,5 +1,8 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
+import DatePicker from "react-bootstrap-date-picker";
+
+// var DatePicker = require("react-bootstrap-date-picker");
 
 class Form extends React.Component {
     constructor(props) {
@@ -17,10 +20,12 @@ class Form extends React.Component {
             passwordValue: '',
             fullnameError: '',
             emailError: '',
-            successMessage: ''
+            successMessage: '',
+            value: new Date().toISOString()
         };
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleDateChange = this.handleDateChange.bind(this)
     }
 
     handleChange(e) {
@@ -74,10 +79,10 @@ class Form extends React.Component {
              
     }
 
-    handleDate(date) {
-        console.log(date);
+    handleDateChange(value, formattedValue) {
         this.setState({
-            'birthdayValue': date
+          value: value, // ISO String, ex: "2016-11-19T12:00:00.000Z"
+          formattedValue: formattedValue // Formatted String, ex: "11/19/2016"
         });
     }
 
@@ -122,7 +127,7 @@ class Form extends React.Component {
                     <div class="form-group col-md-6">
                         <div class="form-group">
                             <label class="required" for="member_birthday">Data de naixement</label>
-                            {/* Implement birthday */}
+                            <DatePicker id="example-datepicker" value={this.state.value} onChange={this.handleDateChange} />
                         </div>
                     </div>
                 </div>

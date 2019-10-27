@@ -1,12 +1,12 @@
 {
     "devDependencies": {
-        "@babel/preset-react": "^7.0.0",
+        "@babel/preset-react": "^7.6.3",
         "@symfony/webpack-encore": "^0.28.0",
-        "core-js": "^3.0.0",
-        "node-sass": "^4.12.0",
-        "regenerator-runtime": "^0.13.2",
-        "sass-loader": "^7.0.1",
-        "webpack-notifier": "^1.6.0"
+        "core-js": "^3.3.4",
+        "node-sass": "^4.13.0",
+        "regenerator-runtime": "^0.13.3",
+        "sass-loader": "^8.0.0",
+        "webpack-notifier": "^1.8.0"
     },
     "license": "UNLICENSED",
     "private": true,
@@ -17,8 +17,13 @@
         "build": "encore production --progress"
     },
     "dependencies": {
+        "bootstrap": "^4.3.1",
+        "create-react-class": "^15.6.3",
+        "jquery": "^3.4.1",
         "prop-types": "^15.7.2",
-        "react": "^16.9.0",
-        "react-dom": "^16.9.0"
+        "react": "^16.11.0",
+        "react-bootstrap": "^0.31.5",
+        "react-bootstrap-date-picker": "github:maxaggedon/react-bootstrap-date-picker",
+        "react-dom": "^16.11.0"
     }
 }
