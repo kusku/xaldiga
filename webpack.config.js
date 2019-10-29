@@ -25,6 +25,7 @@ Encore
      */
     .addEntry('app', './assets/js/app.js')
     .addEntry('new-member-form', './assets/js/new-member-form.js')
+    .addEntry('user', './assets/js/user.js')
     .addEntry('pages', './assets/css/pages.scss')
     .addEntry('bootstrap', './assets/css/bootstrap.css')
     .addEntry('header', './assets/css/header.css')
