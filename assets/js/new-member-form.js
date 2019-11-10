@@ -235,7 +235,7 @@ class NewMemberForm extends React.Component {
             <div>
                 <h3>Seccions</h3>
                 <div className="form-group">
-                    <label className="required"><h4>A quin grup Infantil vols formar part?</h4></label>
+                    <label className="required">A quin grup Infantil vols formar part?</label>
                     <select class="form-control" id="correfocDropdown" name="section" onChange={(e) => this.handleChange(e.target.name, e.target.value, type)}>
                         <option value="4">Diablons</option>
                         <option value="5">Tabalons</option>
@@ -250,7 +250,7 @@ class NewMemberForm extends React.Component {
             <div>
                 <h3>Seccions</h3>
                 <div className="form-group">
-                    <label className="required"><h4>Vols participar al Correfoc de Manresa?</h4></label>
+                    <label className="required">Vols participar al Correfoc de Manresa?</label>
                     <select className="form-control" id="correfocDropdown" name="correfocGroup" onChange={(e) => this.handleChange(e.target.name, e.target.value, type)}>
                         <option value="0">No vull participar</option>
                         <option value="1">SAC</option>
@@ -272,7 +272,7 @@ class NewMemberForm extends React.Component {
                     </small>
                 </div>
                 <div className="form-group">
-                    <label className="required"><h4>T'agradaria formar part d'alguna secció durant l'any?</h4></label>
+                    <label className="required">T'agradaria formar part d'alguna secció durant l'any?</label>
                     <select className="form-control" id="sectionDropdown" name="section" onChange={(e) => this.handleChange(e.target.name, e.target.value, type)}>
                         <option value="0">No vull participar</option>
                         <option value="1">Diables</option>
