@@ -82,4 +82,20 @@ export default class User {
     get timestampBirthday() {
         return this._timestampBirthday;
     }
+
+    set correfocGroup(value) {
+        this._correfocGroup = value;
+    }
+
+    get correfocGroup() {
+        return this._correfocGroup;
+    }
+
+    set section(value) {
+        this._section = value;
+    }
+
+    get section() {
+        return this._section;
+    }
 }

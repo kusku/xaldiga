@@ -3,8 +3,6 @@ import * as ReactDOM from 'react-dom';
 import DatePicker from "react-bootstrap-date-picker";
 import User from './user';
 
-// var DatePicker = require("react-bootstrap-date-picker");
-
 const formType = {
     MEMBER: 0,
     PARENTAL_MEMBER: 1
@@ -18,22 +16,6 @@ class Form extends React.Component {
             users: [new User(), new User()]
         };
 
-        // this.state = {
-        //     nameValue: '',
-        //     dniValue: '',
-        //     birthdayValue: '',
-        //     addressValue: '',
-        //     cityValue: '',
-        //     zipcodeValue: '',
-        //     provinceValue: '',
-        //     phoneValue: '',
-        //     emailValue: '',
-        //     passwordValue: '',
-        //     fullnameError: '',
-        //     emailError: '',
-        //     successMessage: '',
-        //     value: new Date().toISOString()
-        // };
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleDateChange = this.handleDateChange.bind(this)
@@ -67,6 +49,12 @@ class Form extends React.Component {
                     break;
                 case 'email':
                     users[type].email = value;
+                    break;
+                case 'correfocGroup':
+                    users[type].correfocGroup = value;
+                    break;
+                case 'section':
+                    users[type].section = value;
                     break;
                 default:
                     break;
@@ -112,9 +100,17 @@ class Form extends React.Component {
         });
     }
 
+    isAgeDefined(type) {
+        if(this.state.users[type].birthday) {
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
     isUnderaged(type) {
-        if(!this.state.users[type].birthday)
-        {
+        if(!this.isAgeDefined(type)) {
             return false;
         }
 
@@ -140,6 +136,7 @@ class Form extends React.Component {
 
         return (
             <div id="basicFormPart">
+                <h3>Dades de soci</h3>
                 <div className="form-group">
                     <label className="required" htmlFor="member_name">Nom i cognoms</label>
                     <input id="member_name" className="form-control" type="text" name="fullname" required="required" onChange={(e) => this.handleChange(e.target.name, e.target.value, type)}/>
@@ -202,26 +199,114 @@ class Form extends React.Component {
     
     renderFormParentalPart(type) {
         return (
-            <div id="paternForm">
+            <div id="paternForm" className="mt-5 pt-5">
                 <h2>Formulari patern</h2>
+                <small id="paternFormHelp" class="form-text text-muted">
+                        Per a poder inscriure un menor d'edat a l'entitat, és necessari que el/la pare/mare/tutor/a s'inscrigui a l'entitat.
+                    </small>
                 { this.renderBasicFormPart(type) }
             </div>
         );
     }
 
+    renderUnderagedSections(type) {
+        return (
+            <div className="form-group">
+                <label className="required"><h4>A quin grup Infantil vols formar part?</h4></label>
+                <select class="form-control" id="correfocDropdown" name="section" onChange={(e) => this.handleChange(e.target.name, e.target.value, type)}>
+                    <option value="4">Diablons</option>
+                    <option value="5">Tabalons</option>
+                </select>
+            </div>
+        );
+    }
+
+    renderAdultSections(type) {
+        return (
+            <div>
+                <div className="form-group">
+                    <label className="required"><h4>Vols participar al Correfoc de Manresa?</h4></label>
+                    <select className="form-control" id="correfocDropdown" name="correfocGroup" onChange={(e) => this.handleChange(e.target.name, e.target.value, type)}>
+                        <option value="0">No vull participar</option>
+                        <option value="1">SAC</option>
+                        <option value="2">Tabalers</option>
+                        <option value="3">Capgirells</option>
+                        <option value="4">Moixogants</option>
+                        <option value="5">Fogueres i Fogaines</option>
+                        <option value="6">Asmodeu</option>
+                        <option value="7">Drac</option>
+                        <option value="8">Víbria</option>
+                        <option value="9">Gàrgola</option>
+                        <option value="10">Mulassa</option>
+                        <option value="11">Nas de Sutja</option>
+                        <option value="12">Coll-llarg</option>
+                    </select>
+                    <small id="correfocSelectorHelp" class="form-text text-muted">
+                        El teu primer Correfoc estaràs al grup de SAC per tal de conèixer la festa des de dins.<br/>
+                        Al primer any ja estaràs a la llista d'espera del grup seleccionat, on podràs formar-ne part, si hi ha places disponibles, a partir del segon Correfoc.
+                    </small>
+                </div>
+                <div className="form-group">
+                    <label className="required"><h4>T'agradaria formar part d'alguna secció durant l'any?</h4></label>
+                    <select className="form-control" id="sectionDropdown" name="section" onChange={(e) => this.handleChange(e.target.name, e.target.value, type)}>
+                        <option value="0">No vull participar</option>
+                        <option value="1">Diables</option>
+                        <option value="2">Histrions</option>
+                        <option value="3">Tabalers</option>
+                    </select>
+                </div>
+            </div>
+          );
+    }
+
+    renderAgreement() {
+        render (
+            // <Form>
+            // {['checkbox', 'radio'].map(type => (
+            //     <div key={`default-${type}`} className="mb-3">
+            //     <Form.Check 
+            //         type={type}
+            //         id={`default-${type}`}
+            //         label={`default ${type}`}
+            //     />
+
+            //     <Form.Check
+            //         disabled
+            //         type={type}
+            //         label={`disabled ${type}`}
+            //         id={`disabled-default-${type}`}
+            //     />
+            //     </div>
+            // ))}
+            // </Form>
+        );
+    }
+
     render() {
-        let parentalForm;
-        if(this.isUnderaged(formType.MEMBER)) {
-            parentalForm = this.renderFormParentalPart(formType.PARENTAL_MEMBER);
-        }
-        else {
-            parentalForm = <div id="empty"></div>;
+        const emptyDiv = <div id="empty"></div>;
+        let parentalForm = emptyDiv;
+        let userSectionsForm = emptyDiv;
+        let parentalSectionsForm = emptyDiv;
+
+        if(this.isAgeDefined(formType.MEMBER)) {
+            if(!this.isUnderaged(formType.MEMBER)) { 
+                userSectionsForm = this.renderAdultSections(formType.MEMBER);
+            }
+            else {
+                userSectionsForm = this.renderUnderagedSections(formType.MEMBER);
+                parentalForm = this.renderFormParentalPart(formType.PARENTAL_MEMBER);
+                parentalSectionsForm = this.renderAdultSections(formType.PARENTAL_MEMBER); 
+            }    
         }
 
         return (
             <form onSubmit={this.handleSubmit}>
                 { this.renderBasicFormPart(formType.MEMBER) }
+                <h3>Seccions</h3>
+                { userSectionsForm }
                 { parentalForm }
+                { parentalSectionsForm }
+                { this.renderAgreement() }
                 <input className="btn btn-success btn-lg" type="submit" value="Enviar" />
             </form>
         );
