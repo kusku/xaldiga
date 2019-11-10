@@ -27,7 +27,7 @@ Encore
     .addEntry('new-member-form', './assets/js/new-member-form.js')
     .addEntry('user', './assets/js/user.js')
     .addEntry('pages', './assets/css/pages.scss')
-    .addEntry('bootstrap', './assets/css/bootstrap.css')
+    // .addEntry('bootstrap', './assets/css/bootstrap.css')
     .addEntry('header', './assets/css/header.css')
     .addEntry('main', './assets/css/main.css')
     .addEntry('modalImage', './assets/css/modalImage.css')

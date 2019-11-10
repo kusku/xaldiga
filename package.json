@@ -19,11 +19,12 @@
     "dependencies": {
         "bootstrap": "^4.3.1",
         "create-react-class": "^15.6.3",
+        "date-fns": "^2.7.0",
         "jquery": "^3.4.1",
         "prop-types": "^15.7.2",
         "react": "^16.11.0",
-        "react-bootstrap": "^0.31.5",
-        "react-bootstrap-date-picker": "github:maxaggedon/react-bootstrap-date-picker",
+        "react-bootstrap": "^1.0.0-beta.14",
+        "react-day-picker": "^7.4.0",
         "react-dom": "^16.11.0"
     }
 }

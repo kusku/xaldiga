@@ -1,14 +1,36 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import DatePicker from "react-bootstrap-date-picker";
 import User from './user';
+import { DateUtils } from 'react-day-picker';
+import DayPickerInput from 'react-day-picker/DayPickerInput';
+import 'react-day-picker/lib/style.css';
+
+import Button from 'react-bootstrap/Button';
 
 const formType = {
     MEMBER: 0,
     PARENTAL_MEMBER: 1
 }
 
-class Form extends React.Component {
+import dateFnsFormat from 'date-fns/format';
+import dateFnsParse from 'date-fns/parse';
+import getMonth from 'date-fns/getMonth';
+import getDay from 'date-fns/getDay';
+import getYear from 'date-fns/getYear';
+
+function parseDate(str, format, locale) {
+  const parsed = dateFnsParse(str, format, new Date(), { locale });
+  if (DateUtils.isDate(parsed)) {
+    return parsed;
+  }
+  return undefined;
+}
+
+function formatDate(date, format, locale) {
+  return dateFnsFormat(date, format, { locale });
+}
+
+class NewMemberForm extends React.Component {
     constructor(props) {
         super(props);
 
@@ -66,10 +88,9 @@ class Form extends React.Component {
         console.log(this.state.users);
     }
 
-    handleDateChange(value, formattedValue, type) {
+    handleDateChange(date, type) {
         const updatesUsers = this.state.users;
-        updatesUsers[type].birthday = formattedValue;
-        updatesUsers[type].timestampBirthday = value;
+        updatesUsers[type].birthday = date;
 
         this.setState({
             users: updatesUsers
@@ -115,10 +136,10 @@ class Form extends React.Component {
         }
 
         var age = 18;
-        var birthday = this.state.users[type].birthday.split("/"); // [day, month, year]
+        var birthday = this.state.users[type].birthday;
 
         var userDate = new Date();
-        userDate.setFullYear(birthday[2], birthday[1]-1, birthday[0]);
+        userDate.setFullYear(getYear(birthday), getMonth(birthday), getDay(birthday));
         
         var currdate = new Date();
         currdate.setFullYear(currdate.getFullYear() - age);
@@ -151,7 +172,7 @@ class Form extends React.Component {
                     <div className="form-group col-md-6">
                         <div className="form-group">
                             <label className="required" htmlFor="member_birthday">Data de naixement</label>
-                            <DatePicker id="member_datepicker" value={this.state.users[type].timestampBirthday} onChange={(v, fv) => this.handleDateChange(v, fv, type)} monthLabels={months} dayLabels={days} showClearButton={false}/>
+                            <DayPickerInput formatDate={formatDate} format={'MM/dd/yyyy'} parseDate={parseDate} placeholder={`${dateFnsFormat(new Date(), 'MM/dd/yyyy')}`}  onDayChange={date => this.handleDateChange(date, type)}/>
                         </div>
                     </div>
                 </div>
@@ -211,12 +232,15 @@ class Form extends React.Component {
 
     renderUnderagedSections(type) {
         return (
-            <div className="form-group">
-                <label className="required"><h4>A quin grup Infantil vols formar part?</h4></label>
-                <select class="form-control" id="correfocDropdown" name="section" onChange={(e) => this.handleChange(e.target.name, e.target.value, type)}>
-                    <option value="4">Diablons</option>
-                    <option value="5">Tabalons</option>
-                </select>
+            <div>
+                <h3>Seccions</h3>
+                <div className="form-group">
+                    <label className="required"><h4>A quin grup Infantil vols formar part?</h4></label>
+                    <select class="form-control" id="correfocDropdown" name="section" onChange={(e) => this.handleChange(e.target.name, e.target.value, type)}>
+                        <option value="4">Diablons</option>
+                        <option value="5">Tabalons</option>
+                    </select>
+                </div>
             </div>
         );
     }
@@ -224,6 +248,7 @@ class Form extends React.Component {
     renderAdultSections(type) {
         return (
             <div>
+                <h3>Seccions</h3>
                 <div className="form-group">
                     <label className="required"><h4>Vols participar al Correfoc de Manresa?</h4></label>
                     <select className="form-control" id="correfocDropdown" name="correfocGroup" onChange={(e) => this.handleChange(e.target.name, e.target.value, type)}>
@@ -260,25 +285,27 @@ class Form extends React.Component {
     }
 
     renderAgreement() {
-        render (
-            // <Form>
-            // {['checkbox', 'radio'].map(type => (
-            //     <div key={`default-${type}`} className="mb-3">
-            //     <Form.Check 
-            //         type={type}
-            //         id={`default-${type}`}
-            //         label={`default ${type}`}
-            //     />
+        return (
+            <div>
+            <Form>
+            {['checkbox', 'radio'].map(type => (
+                <div key={`default-${type}`} className="mb-3">
+                <Form.Check 
+                    type={type}
+                    id={`default-${type}`}
+                    label={`default ${type}`}
+                />
 
-            //     <Form.Check
-            //         disabled
-            //         type={type}
-            //         label={`disabled ${type}`}
-            //         id={`disabled-default-${type}`}
-            //     />
-            //     </div>
-            // ))}
-            // </Form>
+                <Form.Check
+                    disabled
+                    type={type}
+                    label={`disabled ${type}`}
+                    id={`disabled-default-${type}`}
+                />
+                </div>
+            ))}
+            </Form>
+            </div>
         );
     }
 
@@ -300,17 +327,19 @@ class Form extends React.Component {
         }
 
         return (
+            <div>
             <form onSubmit={this.handleSubmit}>
                 { this.renderBasicFormPart(formType.MEMBER) }
-                <h3>Seccions</h3>
                 { userSectionsForm }
                 { parentalForm }
                 { parentalSectionsForm }
-                { this.renderAgreement() }
                 <input className="btn btn-success btn-lg" type="submit" value="Enviar" />
             </form>
+            {/* { this.renderAgreement() } */}
+            {/* <Button variant="primary">Primary</Button> */}
+            </div>
         );
     }
 }
 
-ReactDOM.render(<Form />, document.getElementById('new-member-form'));
+ReactDOM.render(<NewMemberForm />, document.getElementById('new-member-form'));
