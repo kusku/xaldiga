@@ -5,7 +5,8 @@ import { DateUtils } from 'react-day-picker';
 import DayPickerInput from 'react-day-picker/DayPickerInput';
 import 'react-day-picker/lib/style.css';
 
-import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
+import Col from 'react-bootstrap/Col';
 
 const formType = {
     MEMBER: 0,
@@ -158,62 +159,62 @@ class NewMemberForm extends React.Component {
         return (
             <div id="basicFormPart">
                 <h3>Dades de soci</h3>
-                <div className="form-group">
-                    <label className="required" htmlFor="member_name">Nom i cognoms</label>
-                    <input id="member_name" className="form-control" type="text" name="fullname" required="required" onChange={(e) => this.handleChange(e.target.name, e.target.value, type)}/>
-                </div>
-                <div className="form-row">
-                    <div className="form-group col-md-6">
-                        <div className="form-group">
-                            <label className="required" htmlFor="member_dni">DNI</label>
-                            <input id="member_dni" className="form-control" type="text" name="dni" required="required" onChange={(e) => this.handleChange(e.target.name, e.target.value, type)}/>
-                        </div>
-                    </div>
-                    <div className="form-group col-md-6">
-                        <div className="form-group">
-                            <label className="required" htmlFor="member_birthday">Data de naixement</label>
+                <Form.Group>
+                    <Form.Label htmlFor="member_name">Nom i cognoms</Form.Label>
+                    <Form.Control id="member_name" type="text" name="fullname" required="required" onChange={(e) => this.handleChange(e.target.name, e.target.value, type)}/>
+                </Form.Group>
+                <Form.Row>
+                    <Col md={6}>
+                        <Form.Group>
+                            <Form.Label htmlFor="member_dni">DNI</Form.Label>
+                            <Form.Control id="member_dni" type="text" name="dni" required="required" onChange={(e) => this.handleChange(e.target.name, e.target.value, type)}/>
+                        </Form.Group>
+                    </Col>
+                    <Col md={6}>
+                        <Form.Group>
+                            <Form.Label htmlFor="member_birthday">Data de naixement</Form.Label>
                             <DayPickerInput formatDate={formatDate} format={'MM/dd/yyyy'} parseDate={parseDate} placeholder={`${dateFnsFormat(new Date(), 'MM/dd/yyyy')}`}  onDayChange={date => this.handleDateChange(date, type)}/>
-                        </div>
-                    </div>
-                </div>
-                <div className="form-group">
-                    <label className="required" htmlFor="member_address">Adreça</label>
-                    <input id="member_address" className="form-control" type="text" name="address" required="required" onChange={(e) => this.handleChange(e.target.name, e.target.value, type)}/>
-                </div>
-                <div className="form-row">
-                    <div className="form-group col-md-5">
-                        <div className="form-group">
-                            <label className="required" htmlFor="member_city">Població</label>
-                            <input id="member_city" className="form-control" type="text" name="city" required="required" onChange={(e) => this.handleChange(e.target.name, e.target.value, type)}/>
-                        </div>
-                    </div>
-                    <div className="form-group col-md-2">
-                        <div className="form-group">
-                            <label className="required" htmlFor="member_zipcode">Codi postal</label>
-                            <input id="member_zipcode" className="form-control" type="text" name="zipcode" required="required" onChange={(e) => this.handleChange(e.target.name, e.target.value, type)}/>
-                        </div>
-                    </div>
-                    <div className="form-group col-md-5">
-                        <div className="form-group">
-                            <label className="required" htmlFor="member_province">Província</label>
-                            <input id="member_province" className="form-control" type="text" name="province" required="required" onChange={(e) => this.handleChange(e.target.name, e.target.value, type)}/>
-                        </div>
-                    </div>
-                </div>
-                <div className="form-row">
-                    <div className="form-group col-md-4">
-                        <div className="form-group">
-                            <label className="required" htmlFor="member_phone">Telèfon</label>
-                            <input id="member_phone" className="form-control" type="tel" name="phone" pattern="[6-9]{1}[0-9]{8}" required="required" onChange={(e) => this.handleChange(e.target.name, e.target.value, type)}/>
-                        </div>
-                    </div>
-                    <div className="form-group col-md-8">
-                        <div className="form-group">
-                            <label className="required" htmlFor="member_email">Correu electrònic</label>
-                            <input id="member_email" className="form-control" type="email" name="email" required="required" onChange={(e) => this.handleChange(e.target.name, e.target.value, type)}/>
-                        </div>
-                    </div>
-                </div>
+                        </Form.Group>
+                    </Col>
+                </Form.Row>
+                <Form.Group>
+                    <Form.Label htmlFor="member_address">Adreça</Form.Label>
+                    <Form.Control id="member_address" type="text" name="address" required="required" onChange={(e) => this.handleChange(e.target.name, e.target.value, type)}/>
+                </Form.Group>
+                <Form.Row>
+                    <Col md={5}>
+                        <Form.Group>
+                            <Form.Label htmlFor="member_city">Població</Form.Label>
+                            <Form.Control id="member_city" type="text" name="city" required="required" onChange={(e) => this.handleChange(e.target.name, e.target.value, type)}/>
+                        </Form.Group>
+                    </Col>
+                    <Col md={2}>
+                        <Form.Group>
+                            <Form.Label htmlFor="member_zipcode">Codi postal</Form.Label>
+                            <Form.Control id="member_zipcode"  type="text" name="zipcode" required="required" onChange={(e) => this.handleChange(e.target.name, e.target.value, type)}/>
+                        </Form.Group>
+                    </Col>
+                    <Col md={5}>
+                        <Form.Group>
+                            <Form.Label htmlFor="member_province">Província</Form.Label>
+                            <Form.Control id="member_province" type="text" name="province" required="required" onChange={(e) => this.handleChange(e.target.name, e.target.value, type)}/>
+                        </Form.Group>
+                    </Col>
+                </Form.Row>
+                <Form.Row>
+                    <Col md={4}>
+                        <Form.Group>
+                            <Form.Label htmlFor="member_phone">Telèfon</Form.Label>
+                            <Form.Control id="member_phone" type="tel" name="phone" pattern="[6-9]{1}[0-9]{8}" required="required" onChange={(e) => this.handleChange(e.target.name, e.target.value, type)}/>
+                        </Form.Group>
+                    </Col>
+                    <Col md={8}>
+                        <Form.Group>
+                            <Form.Label htmlFor="member_email">Correu electrònic</Form.Label>
+                            <Form.Control id="member_email" type="email" name="email" required="required" onChange={(e) => this.handleChange(e.target.name, e.target.value, type)}/>
+                        </Form.Group>
+                    </Col>
+                </Form.Row>
             </div>
         );
     }
@@ -222,9 +223,9 @@ class NewMemberForm extends React.Component {
         return (
             <div id="paternForm" className="mt-5 pt-5">
                 <h2>Formulari patern</h2>
-                <small id="paternFormHelp" class="form-text text-muted">
-                        Per a poder inscriure un menor d'edat a l'entitat, és necessari que el/la pare/mare/tutor/a s'inscrigui a l'entitat.
-                    </small>
+                <Form.Text className="text-muted">
+                    Per a poder inscriure un menor d'edat a l'entitat, és necessari que el/la pare/mare/tutor/a s'inscrigui a l'entitat.
+                </Form.Text>
                 { this.renderBasicFormPart(type) }
             </div>
         );
@@ -234,13 +235,13 @@ class NewMemberForm extends React.Component {
         return (
             <div>
                 <h3>Seccions</h3>
-                <div className="form-group">
-                    <label className="required">A quin grup Infantil vols formar part?</label>
-                    <select class="form-control" id="correfocDropdown" name="section" onChange={(e) => this.handleChange(e.target.name, e.target.value, type)}>
+                <Form.Group>
+                    <Form.Label>A quin grup Infantil vols formar part?</Form.Label>
+                    <Form.Control as="select" id="correfocDropdown" name="section" onChange={(e) => this.handleChange(e.target.name, e.target.value, type)}>
                         <option value="4">Diablons</option>
                         <option value="5">Tabalons</option>
-                    </select>
-                </div>
+                    </Form.Control>
+                </Form.Group>
             </div>
         );
     }
@@ -249,9 +250,9 @@ class NewMemberForm extends React.Component {
         return (
             <div>
                 <h3>Seccions</h3>
-                <div className="form-group">
-                    <label className="required">Vols participar al Correfoc de Manresa?</label>
-                    <select className="form-control" id="correfocDropdown" name="correfocGroup" onChange={(e) => this.handleChange(e.target.name, e.target.value, type)}>
+                <Form.Group>
+                    <Form.Label>Vols participar al Correfoc de Manresa?</Form.Label>
+                    <Form.Control as="select" id="correfocDropdown" name="correfocGroup" onChange={(e) => this.handleChange(e.target.name, e.target.value, type)}>
                         <option value="0">No vull participar</option>
                         <option value="1">SAC</option>
                         <option value="2">Tabalers</option>
@@ -265,21 +266,21 @@ class NewMemberForm extends React.Component {
                         <option value="10">Mulassa</option>
                         <option value="11">Nas de Sutja</option>
                         <option value="12">Coll-llarg</option>
-                    </select>
-                    <small id="correfocSelectorHelp" class="form-text text-muted">
+                    </Form.Control>
+                    <Form.Text className="text-muted">
                         El teu primer Correfoc estaràs al grup de SAC per tal de conèixer la festa des de dins.<br/>
                         Al primer any ja estaràs a la llista d'espera del grup seleccionat, on podràs formar-ne part, si hi ha places disponibles, a partir del segon Correfoc.
-                    </small>
-                </div>
-                <div className="form-group">
-                    <label className="required">T'agradaria formar part d'alguna secció durant l'any?</label>
-                    <select className="form-control" id="sectionDropdown" name="section" onChange={(e) => this.handleChange(e.target.name, e.target.value, type)}>
+                    </Form.Text>
+                </Form.Group>
+                <Form.Group>
+                    <Form.Label>T'agradaria formar part d'alguna secció durant l'any?</Form.Label>
+                    <Form.Control as="select" id="sectionDropdown" name="section" onChange={(e) => this.handleChange(e.target.name, e.target.value, type)}>
                         <option value="0">No vull participar</option>
                         <option value="1">Diables</option>
                         <option value="2">Histrions</option>
                         <option value="3">Tabalers</option>
-                    </select>
-                </div>
+                    </Form.Control>
+                </Form.Group>
             </div>
           );
     }
@@ -328,13 +329,13 @@ class NewMemberForm extends React.Component {
 
         return (
             <div>
-            <form onSubmit={this.handleSubmit}>
+            <Form onSubmit={this.handleSubmit}>
                 { this.renderBasicFormPart(formType.MEMBER) }
                 { userSectionsForm }
                 { parentalForm }
                 { parentalSectionsForm }
                 <input className="btn btn-success btn-lg" type="submit" value="Enviar" />
-            </form>
+            </Form>
             {/* { this.renderAgreement() } */}
             {/* <Button variant="primary">Primary</Button> */}
             </div>
