@@ -114,6 +114,10 @@ news:
   path: /news
   controller: App\Controller\EntitatController:newsAction
 
-new-member:
+new-member-form:
   path: /nou-soci
   controller: App\Controller\ContacteController:newMemberAction
+
+new-member:
+  path: /new/user
+  controller: App\Controller\ContacteController:newUserAction

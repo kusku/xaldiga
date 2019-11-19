@@ -19,62 +19,20 @@ class SignUp
      *     message="The fullname should only have letters"
      * )
      */
-    protected $fullname;
-    /**
-     * @Assert\NotBlank(message="Email address is required")
-     * @Assert\Email(
-     *     message="This email is not valid"
-     * )
-     */
-    protected $email;
-    /**
-     * @Assert\NotBlank(message="Password is required")
-     * @Assert\Length(
-     *     min = 6,
-     *     minMessage="The password should be at least 6 characters long",
-     * )
-     */
-    protected $password;    
+    protected $name;
+
     /**
      * @return mixed
      */
-    public function getFullname()
+    public function getName()
     {
-        return $this->fullname;
+        return $this->name;
     }
     /**
-     * @param mixed $fullname
+     * @param mixed $name
      */
-    public function setFullname($fullname): void
+    public function setName($name): void
     {
-        $this->fullname = $fullname;
+        $this->name = $name;
     }
-    /**
-     * @return mixed
-     */
-    public function getEmail()
-    {
-        return $this->email;
-    }
-    /**
-     * @param mixed $email
-     */
-    public function setEmail($email): void
-    {
-        $this->email = $email;
-    }
-    /**
-     * @return mixed
-     */
-    public function getPassword()
-    {
-        return $this->password;
-    }
-    /**
-     * @param mixed $email
-     */
-    public function setPassword($password): void
-    {
-        $this->password = $password;
-    }    
-} 
+}

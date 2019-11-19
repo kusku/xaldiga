@@ -1,6 +1,5 @@
 export default class User {
     constructor() {
-        this._timestampBirthday = new Date().toISOString();
     }
 
     set name(value) {
@@ -75,14 +74,6 @@ export default class User {
         return this._email;
     }
 
-    set timestampBirthday(value) {
-        return this._timestampBirthday = value;
-    }
-
-    get timestampBirthday() {
-        return this._timestampBirthday;
-    }
-
     set correfocGroup(value) {
         this._correfocGroup = value;
     }
@@ -97,5 +88,81 @@ export default class User {
 
     get section() {
         return this._section;
+    }
+
+    ////////////////////////
+    /// ERROR MANAGEMENT ///
+    ////////////////////////
+
+    set nameError(value) {
+        this._nameError = value;
+    }
+
+    get nameError() {
+        return this._nameError;
+    }
+
+    set dniError(value) {
+        this._dniError = value;
+    }
+
+    get dniError() {
+        return this._dniError;
+    }
+
+    set birthdayError(value) {
+        this._birthdayError = value;
+    }
+
+    get birthdayError() {
+        return this._birthdayError;
+    }
+
+    set addressError(value) {
+        this._addressError = value;
+    }
+
+    get addressError() {
+        return this._addressError;
+    }
+
+    set cityError(value) {
+        this._cityError = value;
+    }
+
+    get cityError() {
+        return this._cityError;
+    }
+
+    set zipcodeError(value) {
+        this._zipcodeError = value;
+    }
+
+    get zipcodeError() {
+        return this._zipcodeError;
+    }
+
+    set provinceError(value) {
+        this._provinceError = value;
+    }
+
+    get provinceError() {
+        return this._provinceError;
+    }
+
+    set phoneError(value) {
+        this._phoneError = value;
+    }
+
+    get phoneError() {
+        return this._phoneError;
+    }
+
+    set emailError(value) {
+        this._emailError;
+    }
+
+    get emailError() {
+        return this._emailError;
     }
 }

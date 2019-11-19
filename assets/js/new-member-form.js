@@ -101,20 +101,20 @@ class NewMemberForm extends React.Component {
     handleSubmit(e) {
         e.preventDefault();
 
+        console.log(JSON.stringify(this.state.users[0]));
         $.ajax({
-            url: 'http://127.0.0.1:8000/api/user',
-            type: 'POST',
+            method: 'POST',
+            url: '/new/user',
             data: {
-                fullname: this.state.fullnameValue,
-                email: this.state.emailValue,
+                name: this.state.users[0].name
             },
             dataType: 'json',
             success: function(response) {
+                const updatesUsers = this.state.users;
+                updatesUsers[0].nameError = response.nameError ? response.nameError : null;
                 this.setState({
-                    fullnameError: response.fullnameError ? response.fullnameError : null,
-                    emailError: response.emailError ? response.emailError : null,
-                    successMessage: response.success_message ? response.success_message : null,
-                });
+                    users: updatesUsers
+                })
             }.bind(this),
             error: function(xhr) {
                 console.log(`An error occured: ${xhr.status} ${xhr.statusText}`);
@@ -152,6 +152,46 @@ class NewMemberForm extends React.Component {
         return true;
     }
 
+    renderErrorMessage(message) {
+        return (
+            <span className="invalid-feedback d-block">
+                <span className="d-block">
+                    <span className="form-error-icon badge badge-danger text-uppercase">Error</span>
+                    <span className="form-error-message">{message}</span>
+                </span>
+            </span>
+        );
+    }
+
+    renderFormPartWithoutError(name, label, type, pattern) {
+        return(
+            <Form.Group>
+                <Form.Label htmlFor={name}>{label}</Form.Label>
+                <Form.Control id={name} type="text" name={name} pattern={pattern} required onChange={(e) => this.handleChange(e.target.name, e.target.value, type)}/>
+            </Form.Group>
+        );
+    }
+
+    renderFormPartWithError(name, label, type, pattern, error) {
+        return(
+            <Form.Group>
+                <Form.Label htmlFor={name}>{label}
+                    {this.renderErrorMessage(error)}
+                </Form.Label>
+                <Form.Control id={name} type="text" name={name} pattern={pattern} required onChange={(e) => this.handleChange(e.target.name, e.target.value, type)}/>
+            </Form.Group>
+        );
+    }
+
+    renderFormPart(name, label, type, error, pattern=".") {
+        if(error == null) {
+            return this.renderFormPartWithoutError(name, label, type, pattern);
+        }
+        else {
+            return this.renderFormPartWithError(name, label, type, pattern, error);
+        }
+    }
+
     renderBasicFormPart(type) {
         const months = ['Gener', 'Febrer', 'Març', 'Abril', 'Maig', 'Juny', 'Juliol', 'Agost', 'Setembre', 'Octubre', 'Novembre', 'Desembre'];
         const days = ['Dl', 'Dm', 'Dc', 'Dj', 'Dv', 'Ds', 'Dg'];
@@ -159,16 +199,10 @@ class NewMemberForm extends React.Component {
         return (
             <div id="basicFormPart">
                 <h3>Dades de soci</h3>
-                <Form.Group>
-                    <Form.Label htmlFor="member_name">Nom i cognoms</Form.Label>
-                    <Form.Control id="member_name" type="text" name="fullname" required="required" onChange={(e) => this.handleChange(e.target.name, e.target.value, type)}/>
-                </Form.Group>
+                {this.renderFormPart('fullname', 'Nom i cognoms', type, this.state.users[type].nameError) }
                 <Form.Row>
                     <Col md={6}>
-                        <Form.Group>
-                            <Form.Label htmlFor="member_dni">DNI</Form.Label>
-                            <Form.Control id="member_dni" type="text" name="dni" required="required" onChange={(e) => this.handleChange(e.target.name, e.target.value, type)}/>
-                        </Form.Group>
+                        {this.renderFormPart('dni', 'DNI', type, this.state.users[type].dniError) }
                     </Col>
                     <Col md={6}>
                         <Form.Group>
@@ -177,42 +211,28 @@ class NewMemberForm extends React.Component {
                         </Form.Group>
                     </Col>
                 </Form.Row>
-                <Form.Group>
-                    <Form.Label htmlFor="member_address">Adreça</Form.Label>
-                    <Form.Control id="member_address" type="text" name="address" required="required" onChange={(e) => this.handleChange(e.target.name, e.target.value, type)}/>
-                </Form.Group>
+                {this.renderFormPart('address', 'Adreça', type, this.state.users[type].addressError) }
                 <Form.Row>
                     <Col md={5}>
-                        <Form.Group>
-                            <Form.Label htmlFor="member_city">Població</Form.Label>
-                            <Form.Control id="member_city" type="text" name="city" required="required" onChange={(e) => this.handleChange(e.target.name, e.target.value, type)}/>
-                        </Form.Group>
+                        {this.renderFormPart('city', 'Població', type, this.state.users[type].cityError) }
                     </Col>
                     <Col md={2}>
-                        <Form.Group>
-                            <Form.Label htmlFor="member_zipcode">Codi postal</Form.Label>
-                            <Form.Control id="member_zipcode"  type="text" name="zipcode" required="required" onChange={(e) => this.handleChange(e.target.name, e.target.value, type)}/>
-                        </Form.Group>
+                        {this.renderFormPart('zipcode', 'Codi Postal', type, this.state.users[type].zipcodeError) }
                     </Col>
                     <Col md={5}>
-                        <Form.Group>
-                            <Form.Label htmlFor="member_province">Província</Form.Label>
-                            <Form.Control id="member_province" type="text" name="province" required="required" onChange={(e) => this.handleChange(e.target.name, e.target.value, type)}/>
-                        </Form.Group>
+                        {this.renderFormPart('province', 'Província', type, this.state.users[type].provinceError) }
                     </Col>
                 </Form.Row>
                 <Form.Row>
                     <Col md={4}>
-                        <Form.Group>
+                        {/* <Form.Group>
                             <Form.Label htmlFor="member_phone">Telèfon</Form.Label>
-                            <Form.Control id="member_phone" type="tel" name="phone" pattern="[6-9]{1}[0-9]{8}" required="required" onChange={(e) => this.handleChange(e.target.name, e.target.value, type)}/>
-                        </Form.Group>
+                            <Form.Control id="member_phone" type="tel" name="phone" pattern="[6-9]{1}[0-9]{8}"  onChange={(e) => this.handleChange(e.target.name, e.target.value, type)}/>
+                        </Form.Group> */}
+                        {this.renderFormPart('phone', 'Telèfon', type, this.state.users[type].phoneError, "[6-9]{1}[0-9]{8}") }
                     </Col>
                     <Col md={8}>
-                        <Form.Group>
-                            <Form.Label htmlFor="member_email">Correu electrònic</Form.Label>
-                            <Form.Control id="member_email" type="email" name="email" required="required" onChange={(e) => this.handleChange(e.target.name, e.target.value, type)}/>
-                        </Form.Group>
+                        {this.renderFormPart('email', 'Correu Electrònica', type, this.state.users[type].emailError) }
                     </Col>
                 </Form.Row>
             </div>
