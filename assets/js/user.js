@@ -1,5 +1,7 @@
 export default class User {
     constructor() {
+        this.correfocGroup = 0;
+        this.section = 0;
     }
 
     set name(value) {
@@ -10,12 +12,12 @@ export default class User {
         return this._name;
     }
 
-    set dni(value) {
-        this._dni = value;
+    set nif(value) {
+        this._nif = value;
     }
 
-    get dni() {
-        return this._dni;
+    get nif() {
+        return this._nif;
     }
 
     set birthday(value) {
@@ -102,12 +104,12 @@ export default class User {
         return this._nameError;
     }
 
-    set dniError(value) {
-        this._dniError = value;
+    set nifError(value) {
+        this._nifError = value;
     }
 
-    get dniError() {
-        return this._dniError;
+    get nifError() {
+        return this._nifError;
     }
 
     set birthdayError(value) {
@@ -164,5 +166,21 @@ export default class User {
 
     get emailError() {
         return this._emailError;
+    }
+
+    ////////////////////////
+    /////// METHODS ////////
+    ////////////////////////
+    validate(response) {
+        this._nameError = response.nameError ? response.nameError : null;
+        this._nifError = response.nifError ? response.nifError : null;
+        this._addressError = response.addressError ? response.addressError : null;
+        this._cityError = response.cityError ? response.cityError : null;
+        this._zipcodeError = response.zipcodeError ? response.zipcodeError : null;
+        this._provinceError = response.provinceError ? response.provinceError : null;
+        this._phoneError = response.phoneError ? response.phoneError : null;
+        this._emailError = response.emailError ? response.emailError : null;
+        this._correfocGroup = response.correfocGroup ? response.correfocGroup : null;
+        this._section = response.section ? response.section : null;
     }
 }

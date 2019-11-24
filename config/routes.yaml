@@ -116,8 +116,8 @@ news:
 
 new-member-form:
   path: /nou-soci
-  controller: App\Controller\ContacteController:newMemberAction
+  controller: App\Controller\NewMemberFormController:newMemberFormAction
 
 new-member:
   path: /new/user
-  controller: App\Controller\ContacteController:newUserAction
+  controller: App\Controller\NewMemberFormController:registerNewMember
