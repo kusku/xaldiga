@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import User from './user';
+import NewUser from './new-user';
 import { DateUtils } from 'react-day-picker';
 import DayPickerInput from 'react-day-picker/DayPickerInput';
 import 'react-day-picker/lib/style.css';
@@ -36,7 +36,7 @@ class NewMemberForm extends React.Component {
         super(props);
 
         this.state = {
-            users: [new User(), new User()]
+            users: [new NewUser(), new NewUser()]
         };
 
         this.handleChange = this.handleChange.bind(this);
@@ -102,20 +102,13 @@ class NewMemberForm extends React.Component {
             method: 'POST',
             url: '/new/user',
             data: {
-                name: this.state.users[0].name,
-                nif: this.state.users[0].nif,
-                address: this.state.users[0].address,
-                zipcode: this.state.users[0].zipcode,
-                province: this.state.users[0].province,
-                phone: this.state.users[0].phone,
-                email: this.state.users[0].email,
-                correfocGroup: this.state.users[0].correfocGroup,
-                section: this.state.users[0].section
+                user: this.state.users[0].serialize()
             },
             dataType: 'json',
             success: function(response) {
                 const updatesUsers = this.state.users;
                 updatesUsers[0].validate(response);
+                console.log(response);
                 this.setState({
                     users: updatesUsers
                 })
@@ -140,20 +133,7 @@ class NewMemberForm extends React.Component {
             return false;
         }
 
-        var age = 18;
-        var birthday = this.state.users[type].birthday;
-
-        var userDate = new Date();
-        userDate.setFullYear(getYear(birthday), getMonth(birthday), getDay(birthday));
-        
-        var currdate = new Date();
-        currdate.setFullYear(currdate.getFullYear() - age);
-
-        if ((currdate - userDate) > 0) {
-            return false;
-        }
-
-        return true;
+        return this.state.users[type].isUnderaged();
     }
 
     renderErrorMessage(message) {
@@ -180,9 +160,9 @@ class NewMemberForm extends React.Component {
         return(
             <Form.Group>
                 <Form.Label htmlFor={name}>{label}
-                    {this.renderErrorMessage(error)}
                 </Form.Label>
                 <Form.Control id={name} type="text" className="is-invalid" name={name} onChange={(e) => this.handleChange(e.target.name, e.target.value, type)}/>
+                {this.renderErrorMessage(error)}
             </Form.Group>
         );
     }

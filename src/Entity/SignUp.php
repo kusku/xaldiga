@@ -116,9 +116,9 @@ class SignUp
         /**
      * @Assert\NotBlank(message="El correu electrònic és obligatori")
      * @Assert\Length(
-     *     min = 9,
+     *     min = 6,
      *     minMessage="Massa curt",
-     *     max = 9,
+     *     max = 50,
      *     maxMessage="Massa llarg"
      * )
      * @Assert\Regex(
@@ -315,6 +315,20 @@ class SignUp
     public function  setSection($section): void
     {
         $this->section = $section;
+    }
+
+    public function fill($data)
+    {
+        $this->name = array_key_exists('name', $data) ? $data['name'] : "";
+        $this->nif = array_key_exists('nif', $data) ? $data['nif'] : "";
+        $this->address = array_key_exists('address', $data) ? $data['address'] : "";
+        $this->city = array_key_exists('city', $data) ? $data['city'] : "";
+        $this->zipcode = array_key_exists('zipcode', $data) ? $data['zipcode'] : "";
+        $this->province = array_key_exists('province', $data) ? $data['province'] : "";
+        $this->phone = array_key_exists('phone', $data) ? $data['phone'] : "";
+        $this->email = array_key_exists('email', $data) ? $data['email'] : "";
+        $this->correfocGroup = array_key_exists('correfocGroup', $data) ? $data['correfocGroup'] : "";
+        $this->section = array_key_exists('section', $data) ? $data['section'] : "";
     }
 
     public function validate(ValidatorInterface $validator) 
