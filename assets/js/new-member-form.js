@@ -15,9 +15,6 @@ const formType = {
 
 import dateFnsFormat from 'date-fns/format';
 import dateFnsParse from 'date-fns/parse';
-import getMonth from 'date-fns/getMonth';
-import getDay from 'date-fns/getDay';
-import getYear from 'date-fns/getYear';
 
 function parseDate(str, format, locale) {
   const parsed = dateFnsParse(str, format, new Date(), { locale });
@@ -98,17 +95,23 @@ class NewMemberForm extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
+
         $.ajax({
             method: 'POST',
             url: '/new/user',
             data: {
-                user: this.state.users[0].serialize()
+                user: this.state.users[formType.MEMBER].serialize(),
+                parentalUser: this.state.users[formType.PARENTAL_MEMBER].serialize()
             },
             dataType: 'json',
             success: function(response) {
-                const updatesUsers = this.state.users;
-                updatesUsers[0].validate(response);
                 console.log(response);
+                const updatesUsers = this.state.users;
+                updatesUsers[formType.MEMBER].validate(response.user);
+
+                if(this.isUnderaged(formType.MEMBER)) {
+                    updatesUsers[formType.PARENTAL_MEMBER].validate(response.parentalUser);
+                }
                 this.setState({
                     users: updatesUsers
                 })

@@ -1,3 +1,7 @@
+import getMonth from 'date-fns/getMonth';
+import getDay from 'date-fns/getDay';
+import getYear from 'date-fns/getYear';
+
 export default class NewUser {
     constructor() {
         this.correfocGroup = 0;

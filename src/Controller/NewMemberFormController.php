@@ -11,9 +11,18 @@ class NewMemberFormController extends AbstractController
 {
     public function registerNewMember(Request $request, ValidatorInterface $validator)
     {
-        $signUp = new SignUp();
-        $signUp->fill($request->request->get('user'));
-        $formErrors = $signUp->validate($validator);
+        $formErrors = [];
+
+        $signUpUser = new SignUp();
+        $signUpUser->fill($request->request->get('user'));
+        $signUpUserErrors = $signUpUser->validate($validator);
+
+        $signUpParentalUser = new SignUp();
+        $signUpParentalUser->fill($request->request->get('parentalUser'));
+        $signUpParentalUserErrors = $signUpParentalUser->validate($validator);
+
+        $formErrors['user'] = $signUpUserErrors;
+        $formErrors['parentalUser'] = $signUpParentalUserErrors;
 
         if($formErrors) {
             return new JsonResponse($formErrors);
