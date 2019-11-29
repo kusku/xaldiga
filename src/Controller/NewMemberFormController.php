@@ -9,7 +9,7 @@ use App\Entity\SignUp;
 
 class NewMemberFormController extends AbstractController
 {
-    public function registerNewMember(Request $request, ValidatorInterface $validator)
+    public function registerNewMember(Request $request, ValidatorInterface $validator, \Swift_Mailer $mailer)
     {
         $formErrors = [];
 
@@ -23,6 +23,28 @@ class NewMemberFormController extends AbstractController
 
         $formErrors['user'] = $signUpUserErrors;
         $formErrors['parentalUser'] = $signUpParentalUserErrors;
+
+        $data = [
+            'user' => $signUpUser->toArray()
+        ];
+
+        if($signUpUser->isUnderaged())
+        {
+            $data += ["parentalUser" => $signUpParentalUser->toArray()];
+        }
+
+        $message = (new \Swift_Message('Test Formulari Nou Membre'))
+            ->setFrom('xaldiga@xaldiga.cat')
+            ->setTo('xaldigatallerdefestes@gmail.com')
+            ->setBody(
+                $this->renderView(
+                    'web/signup-form-email.html.twig',
+                    $data
+                ),
+                'text/html'
+            );
+        
+        $mailer->send($message);
 
         if($formErrors) {
             return new JsonResponse($formErrors);

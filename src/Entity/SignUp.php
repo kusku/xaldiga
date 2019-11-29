@@ -39,6 +39,17 @@ class SignUp
     protected $nif;
 
     /**
+     * @Assert\NotBlank(message="La data de naixement és obligatòria")
+     * @Assert\Length(
+     *     min = 0,
+     *     minMessage="La longitud és errònia",
+     *     max = 50,
+     *     maxMessage="La longitud és errònia"
+     * )
+     */
+    protected $birthday;
+
+    /**
      * @Assert\NotBlank(message="L'adreça és obligatòria")
      * @Assert\Length(
      *     min = 5,
@@ -120,10 +131,6 @@ class SignUp
      *     minMessage="Massa curt",
      *     max = 50,
      *     maxMessage="Massa llarg"
-     * )
-     * @Assert\Regex(
-     *     pattern="/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/",
-     *     message="El format ha de ser exemple@exemple.com"
      * )
      */
     protected $email;
@@ -387,5 +394,27 @@ class SignUp
         }
 
          return $formErrors;
+    }
+
+    public function toArray()
+    {
+        return array(
+            "name" => $this->name,
+            "nif" => $this->nif,
+            "birthday" => $this->birthday,
+            "address" => $this->address,
+            "city" => $this->city,
+            "zipcode" => $this->zipcode,
+            "province" => $this->province,
+            "email" => $this->email,
+            "phone" => $this->phone,
+            "correfocGroup" => $this->correfocGroup,
+            "section" => $this->section
+        );
+    }
+
+    public function isUnderaged()
+    {
+        return true;
     }
 }

@@ -288,6 +288,24 @@ tid_contacte_email_reminder: "No oblideu respondre la consulta!"
 tid_contacte_email_footer: "Gràcies!\n\nAdministració web\n\nXàldiga Taller de Festes"
 tid_contacte_send_button: "Enviar"
 
+# NEW MEMBER FORM --------------------------------------
+tid_new_member_form_welcome: "Hola!\n\n
+                            Hem rebut les dades per donar d'alta un soci nou a l'entitat:\n"
+tid_new_member_form_name: "Nom i cognoms: "
+tid_new_member_form_nif: "DNI: "
+tid_new_member_form_birthday: "Data de Naixement: "
+tid_new_member_form_address: "Adreça: "
+tid_new_member_form_city: "Població: "
+tid_new_member_form_zipcode: "Codi Postal: "
+tid_new_member_form_province: "Província: "
+tid_new_member_form_email: "Correu electrònic: "
+tid_new_member_form_phone: "Telèfon: "
+tid_new_member_form_correfoc_group: "Grup de Correfoc: "
+tid_new_member_form_section: "Secció: "
+tid_new_member_form_parental_desc: "L'usuari és menor, així que també s'apunta un major d'edat:\n"
+tid_new_member_form_reminder: "No oblideu d'apuntar-lo a les llistes d'espera corresponents!"
+
+
 # CALENDARI --------------------------------------
 tid_calendari_main_page_title: "Properes actuacions"
 tid_calendari_mes_actes: "Veure més actes"

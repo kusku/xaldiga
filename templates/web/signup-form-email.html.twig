@@ -1,0 +1,37 @@
+<p>{{'tid_new_member_form_welcome'|trans|nl2br}}</p>
+
+<ul>
+	<li><b>{{'tid_new_member_form_name'|trans|nl2br}}</b>{{user.name}}</li>
+	<li><b>{{'tid_new_member_form_nif'|trans|nl2br}}</b>{{user.nif}}</li>
+	<li><b>{{'tid_new_member_form_birthday'|trans|nl2br}}</b>{{user.birthday}}</li>
+	<li><b>{{'tid_new_member_form_address'|trans|nl2br}}</b>{{user.address}}</li>
+	<li><b>{{'tid_new_member_form_city'|trans|nl2br}}</b>{{user.city}}</li>
+	<li><b>{{'tid_new_member_form_zipcode'|trans|nl2br}}</b>{{user.zipcode}}</li>
+	<li><b>{{'tid_new_member_form_province'|trans|nl2br}}</b>{{user.province}}</li>
+	<li><b>{{'tid_new_member_form_email'|trans|nl2br}}</b>{{user.email}}</li>
+	<li><b>{{'tid_new_member_form_phone'|trans|nl2br}}</b>{{user.phone}}</li>
+	<li><b>{{'tid_new_member_form_correfoc_group'|trans|nl2br}}</b>{{user.correfocGroup}}</li>
+	<li><b>{{'tid_new_member_form_section'|trans|nl2br}}</b>{{user.section}}</li>
+</ul>
+
+{% if parentalUser is defined %}
+<p>{{'tid_new_member_form_parental_desc'|trans|nl2br}}</p>
+
+<ul>
+	<li><b>{{'tid_new_member_form_name'|trans|nl2br}}</b>{{parentalUser.name}}</li>
+	<li><b>{{'tid_new_member_form_nif'|trans|nl2br}}</b>{{parentalUser.nif}}</li>
+	<li><b>{{'tid_new_member_form_birthday'|trans|nl2br}}</b>{{parentalUser.birthday}}</li>
+	<li><b>{{'tid_new_member_form_address'|trans|nl2br}}</b>{{parentalUser.address}}</li>
+	<li><b>{{'tid_new_member_form_city'|trans|nl2br}}</b>{{parentalUser.city}}</li>
+	<li><b>{{'tid_new_member_form_zipcode'|trans|nl2br}}</b>{{parentalUser.zipcode}}</li>
+	<li><b>{{'tid_new_member_form_province'|trans|nl2br}}</b>{{parentalUser.province}}</li>
+	<li><b>{{'tid_new_member_form_email'|trans|nl2br}}</b>{{parentalUser.email}}</li>
+	<li><b>{{'tid_new_member_form_phone'|trans|nl2br}}</b>{{parentalUser.phone}}</li>
+	<li><b>{{'tid_new_member_form_correfoc_group'|trans|nl2br}}</b>{{parentalUser.correfocGroup}}</li>
+	<li><b>{{'tid_new_member_form_section'|trans|nl2br}}</b>{{parentalUser.section}}</li>
+</ul>
+{% endif %}
+
+<p><h3>{{'tid_new_member_form_reminder'|trans|nl2br}}</h3></p>
+<p>{{'tid_contacte_email_footer'|trans|nl2br}}</p>
+
