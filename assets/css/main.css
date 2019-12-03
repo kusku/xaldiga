@@ -278,3 +278,17 @@ background-color: #555;
 		padding-bottom: 20px;
 	}
 }
+
+.custom-link {
+    color: var(--font-p-color);
+	font-size: 1rem;
+	font-weight: 400;
+	font-family: jfallaone-regular, sans-serif;
+	text-decoration: none;
+}
+
+.custom-link:hover {
+    color: var(--hover-button-color);
+	transition: 0.3s;
+	text-decoration: none;
+}

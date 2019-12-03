@@ -40,11 +40,7 @@ class SignUp
 
     /**
      * @Assert\NotBlank(message="La data de naixement és obligatòria")
-     * @Assert\Length(
-     *     min = 0,
-     *     minMessage="La longitud és errònia",
-     *     max = 50,
-     *     maxMessage="La longitud és errònia"
+     * @Assert\Date(message="La data no és vàlida")
      * )
      */
     protected $birthday;
@@ -132,6 +128,7 @@ class SignUp
      *     max = 50,
      *     maxMessage="Massa llarg"
      * )
+     * @Assert\Email(message="El correu no és vàlid")
      */
     protected $email;
 
@@ -194,6 +191,22 @@ class SignUp
     public function  setNif($nif): void
     {
         $this->nif = $nif;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getBirhtday()
+    {
+        return $this->birthday;
+    }
+
+    /**
+     * @param mixed $birthday
+     */
+    public function  setBirthday($birthday): void
+    {
+        $this->birthday = $birthday;
     }
 
     /**
@@ -328,6 +341,7 @@ class SignUp
     {
         $this->name = array_key_exists('name', $data) ? $data['name'] : "";
         $this->nif = array_key_exists('nif', $data) ? $data['nif'] : "";
+        $this->birthday = array_key_exists('birthday', $data) ? $data['birthday'] : "";
         $this->address = array_key_exists('address', $data) ? $data['address'] : "";
         $this->city = array_key_exists('city', $data) ? $data['city'] : "";
         $this->zipcode = array_key_exists('zipcode', $data) ? $data['zipcode'] : "";
@@ -342,6 +356,7 @@ class SignUp
     {
         $nameError = $validator->validateProperty($this, 'name');
         $nifError = $validator->validateProperty($this, 'nif');
+        $birthdayError = $validator->validateProperty($this, 'birthday');
         $addressError = $validator->validateProperty($this, 'address');
         $cityError = $validator->validateProperty($this, 'city');
         $zipcodeError = $validator->validateProperty($this, 'zipcode');
@@ -359,6 +374,10 @@ class SignUp
         
         if(count($nifError) > 0) {
             $formErrors['nifError'] = $nifError[0]->getMessage();
+        }
+
+        if(count($birthdayError) > 0) {
+            $formErrors['birthdayError'] = $birthdayError[0]->getMessage();
         }
 
         if(count($addressError) > 0) {

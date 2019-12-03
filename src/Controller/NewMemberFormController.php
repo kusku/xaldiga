@@ -44,7 +44,7 @@ class NewMemberFormController extends AbstractController
                 'text/html'
             );
         
-        $mailer->send($message);
+        //$mailer->send($message);
 
         if($formErrors) {
             return new JsonResponse($formErrors);

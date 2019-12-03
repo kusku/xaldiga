@@ -1,5 +1,6 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
+import { Link } from 'react-router-dom';
 import NewUser from './new-user';
 import { DateUtils } from 'react-day-picker';
 import DayPickerInput from 'react-day-picker/DayPickerInput';
@@ -87,7 +88,6 @@ class NewMemberForm extends React.Component {
     handleDateChange(date, type) {
         const updatesUsers = this.state.users;
         updatesUsers[type].birthday = date;
-
         this.setState({
             users: updatesUsers
         });
@@ -96,6 +96,7 @@ class NewMemberForm extends React.Component {
     handleSubmit(e) {
         e.preventDefault();
 
+        console.log(this.state.users[0]);
         $.ajax({
             method: 'POST',
             url: '/new/user',
@@ -150,7 +151,7 @@ class NewMemberForm extends React.Component {
         );
     }
 
-    renderFormPartWithoutError(name, label, type, pattern) {
+    renderFormPartWithoutError(name, label, type) {
         return(
             <Form.Group>
                 <Form.Label htmlFor={name}>{label}</Form.Label>
@@ -159,7 +160,7 @@ class NewMemberForm extends React.Component {
         );
     }
 
-    renderFormPartWithError(name, label, type, pattern, error) {
+    renderFormPartWithError(name, label, type, error) {
         return(
             <Form.Group>
                 <Form.Label htmlFor={name}>{label}
@@ -170,19 +171,44 @@ class NewMemberForm extends React.Component {
         );
     }
 
-    renderFormPart(name, label, type, error, pattern="[A-Za-z0-9 ]{3,60}") {
+    renderFormPart(name, label, type, error) {
         if(error == null) {
-            return this.renderFormPartWithoutError(name, label, type, pattern);
+            return this.renderFormPartWithoutError(name, label, type);
         }
         else {
-            return this.renderFormPartWithError(name, label, type, pattern, error);
+            return this.renderFormPartWithError(name, label, type, error);
+        }
+    }
+
+    renderDatePickerWithError(name, label, type, error) {
+        return (
+        <Form.Group>
+            <Form.Label htmlFor={name}>{label}</Form.Label>
+            <DayPickerInput className="is-invalid" formatDate={formatDate} format={'dd/MM/yyyy'} parseDate={parseDate} placeholder='dd/mm/aaaa'  onDayChange={date => this.handleDateChange(date, type)}/>
+            {this.renderErrorMessage(error)}
+        </Form.Group>
+        );
+    }
+
+    renderDatePickerWithoutError(name, label, type) {
+        return (
+        <Form.Group>
+            <Form.Label htmlFor={name}>{label}</Form.Label>
+            <DayPickerInput formatDate={formatDate} format={'dd/MM/yyyy'} parseDate={parseDate} placeholder='dd/mm/aaaa'  onDayChange={date => this.handleDateChange(date, type)}/>
+        </Form.Group>
+        );
+    }
+
+    renderDatePicker(name, label, type, error) {
+        if(error == null) {
+            return this.renderDatePickerWithoutError(name, label, type);
+        }
+        else {
+            return this.renderDatePickerWithError(name, label, type, error);
         }
     }
 
     renderBasicFormPart(type) {
-        const months = ['Gener', 'Febrer', 'Març', 'Abril', 'Maig', 'Juny', 'Juliol', 'Agost', 'Setembre', 'Octubre', 'Novembre', 'Desembre'];
-        const days = ['Dl', 'Dm', 'Dc', 'Dj', 'Dv', 'Ds', 'Dg'];
-
         return (
             <div id="basicFormPart">
                 <h3>Dades de soci</h3>
@@ -192,10 +218,7 @@ class NewMemberForm extends React.Component {
                         {this.renderFormPart('nif', 'DNI', type, this.state.users[type].nifError) }
                     </Col>
                     <Col md={6}>
-                        <Form.Group>
-                            <Form.Label htmlFor="member_birthday">Data de naixement</Form.Label>
-                            <DayPickerInput formatDate={formatDate} format={'MM/dd/yyyy'} parseDate={parseDate} placeholder={`${dateFnsFormat(new Date(), 'MM/dd/yyyy')}`}  onDayChange={date => this.handleDateChange(date, type)}/>
-                        </Form.Group>
+                        {this.renderDatePicker('birthday', 'Data de Naixement', type, this.state.users[type].birthdayError)}
                     </Col>
                 </Form.Row>
                 {this.renderFormPart('address', 'Adreça', type, this.state.users[type].addressError) }
@@ -289,26 +312,10 @@ class NewMemberForm extends React.Component {
     }
 
     renderAgreement() {
+        var link = <a href="/avis-legal" className="custom-link">Accepto la Política de Protecció de Dades de Xàldiga Taller de Festes</a>;
         return (
-            <div>
-            <Form>
-            {['checkbox', 'radio'].map(type => (
-                <div key={`default-${type}`} className="mb-3">
-                <Form.Check 
-                    type={type}
-                    id={`default-${type}`}
-                    label={`default ${type}`}
-                />
-
-                <Form.Check
-                    disabled
-                    type={type}
-                    label={`disabled ${type}`}
-                    id={`disabled-default-${type}`}
-                />
-                </div>
-            ))}
-            </Form>
+            <div key="custom-checkbox" className="mb-3">
+                <Form.Check custom type="checkbox" id="custom-checkbox" label={link}/>
             </div>
         );
     }
@@ -337,9 +344,9 @@ class NewMemberForm extends React.Component {
                 { userSectionsForm }
                 { parentalForm }
                 { parentalSectionsForm }
+                { this.renderAgreement() }
                 <input className="btn btn-success btn-lg" type="submit" value="Enviar" />
             </Form>
-            {/* { this.renderAgreement() } */}
             {/* <Button variant="primary">Primary</Button> */}
             </div>
         );

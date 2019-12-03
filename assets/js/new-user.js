@@ -1,6 +1,7 @@
 import getMonth from 'date-fns/getMonth';
 import getDay from 'date-fns/getDay';
 import getYear from 'date-fns/getYear';
+import format from 'date-fns/fp/format'
 
 export default class NewUser {
     constructor() {
@@ -178,6 +179,7 @@ export default class NewUser {
     validate(response) {
         this._nameError = response.nameError ? response.nameError : null;
         this._nifError = response.nifError ? response.nifError : null;
+        this._birthdayError = response.birthdayError ? response.birthdayError : null;
         this._addressError = response.addressError ? response.addressError : null;
         this._cityError = response.cityError ? response.cityError : null;
         this._zipcodeError = response.zipcodeError ? response.zipcodeError : null;
@@ -189,9 +191,12 @@ export default class NewUser {
     }
 
     serialize() {
+        console.log("serialize");
+        console.log(this._birthday);
         return {
             name: this._name,
             nif: this._nif, 
+            birthday: this._birthday ? format('yyyy-MM-dd', this._birthday) : null,
             address: this._address,
             city: this._city,
             zipcode: this._zipcode,
