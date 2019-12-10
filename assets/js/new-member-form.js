@@ -331,7 +331,7 @@ class NewMemberForm extends React.Component {
         var link = <a href="/avis-legal" className="custom-link">Accepto la Política de Protecció de Dades de Xàldiga Taller de Festes</a>;
         return (
             <div key="custom-checkbox" className="mb-3">
-                <Form.Check custom type="checkbox" id="custom-checkbox" label={link}/>
+                <Form.Check custom type="checkbox" id="custom-checkbox" label={link} required/>
             </div>
         );
     }
