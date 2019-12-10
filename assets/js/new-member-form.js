@@ -96,7 +96,6 @@ class NewMemberForm extends React.Component {
     handleSubmit(e) {
         e.preventDefault();
 
-        console.log(this.state.users[0]);
         $.ajax({
             method: 'POST',
             url: '/new/user',
@@ -106,7 +105,6 @@ class NewMemberForm extends React.Component {
             },
             dataType: 'json',
             success: function(response) {
-                console.log(response);
                 const updatesUsers = this.state.users;
                 updatesUsers[formType.MEMBER].validate(response.user);
 
@@ -151,61 +149,35 @@ class NewMemberForm extends React.Component {
         );
     }
 
-    renderFormPartWithoutError(name, label, type) {
-        return(
-            <Form.Group>
-                <Form.Label htmlFor={name}>{label}</Form.Label>
-                <Form.Control id={name} type="text" name={name} onChange={(e) => this.handleChange(e.target.name, e.target.value, type)}/>
-            </Form.Group>
-        );
-    }
+    renderFormPart(name, label, type, error) {
+        let errorMessage;
+        if(error != null) {
+            errorMessage = this.renderErrorMessage(error);
+        }
 
-    renderFormPartWithError(name, label, type, error) {
         return(
             <Form.Group>
                 <Form.Label htmlFor={name}>{label}
                 </Form.Label>
-                <Form.Control id={name} type="text" className="is-invalid" name={name} onChange={(e) => this.handleChange(e.target.name, e.target.value, type)}/>
-                {this.renderErrorMessage(error)}
+                <Form.Control id={name} type="text" name={name} onChange={(e) => this.handleChange(e.target.name, e.target.value, type)}/>
+                {errorMessage}
             </Form.Group>
         );
     }
 
-    renderFormPart(name, label, type, error) {
-        if(error == null) {
-            return this.renderFormPartWithoutError(name, label, type);
-        }
-        else {
-            return this.renderFormPartWithError(name, label, type, error);
-        }
-    }
-
-    renderDatePickerWithError(name, label, type, error) {
-        return (
-        <Form.Group>
-            <Form.Label htmlFor={name}>{label}</Form.Label>
-            <DayPickerInput className="is-invalid" formatDate={formatDate} format={'dd/MM/yyyy'} parseDate={parseDate} placeholder='dd/mm/aaaa'  onDayChange={date => this.handleDateChange(date, type)}/>
-            {this.renderErrorMessage(error)}
-        </Form.Group>
-        );
-    }
-
-    renderDatePickerWithoutError(name, label, type) {
-        return (
-        <Form.Group>
-            <Form.Label htmlFor={name}>{label}</Form.Label>
-            <DayPickerInput formatDate={formatDate} format={'dd/MM/yyyy'} parseDate={parseDate} placeholder='dd/mm/aaaa'  onDayChange={date => this.handleDateChange(date, type)}/>
-        </Form.Group>
-        );
-    }
-
     renderDatePicker(name, label, type, error) {
-        if(error == null) {
-            return this.renderDatePickerWithoutError(name, label, type);
+        let errorMessage;
+        if(error != null) {
+            errorMessage = this.renderErrorMessage(error);
         }
-        else {
-            return this.renderDatePickerWithError(name, label, type, error);
-        }
+
+        return (
+            <Form.Group>
+                <Form.Label htmlFor={name}>{label}</Form.Label>
+                <DayPickerInput formatDate={formatDate} format={'dd/MM/yyyy'} parseDate={parseDate} placeholder='dd/mm/aaaa'  onDayChange={date => this.handleDateChange(date, type)}/>
+                {errorMessage}
+            </Form.Group>
+            );
     }
 
     renderBasicFormPart(type) {
