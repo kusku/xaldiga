@@ -173,6 +173,14 @@ export default class NewUser {
         return this._emailError;
     }
 
+    set correfocGroupError(value) {
+        this._correfocGroupError = value;
+    }
+
+    get sectionError() {
+        return this._sectionError;
+    }
+
     ////////////////////////
     /////// METHODS ////////
     ////////////////////////
@@ -186,8 +194,8 @@ export default class NewUser {
         this._provinceError = response.provinceError ? response.provinceError : null;
         this._phoneError = response.phoneError ? response.phoneError : null;
         this._emailError = response.emailError ? response.emailError : null;
-        this._correfocGroup = response.correfocGroup ? response.correfocGroup : null;
-        this._section = response.section ? response.section : null;
+        this._correfocGroupError = response.correfocGroupError ? response.correfocGroupError : null;
+        this._sectionError = response.sectionError ? response.sectionError : null;
     }
 
     serialize() {

@@ -257,7 +257,12 @@ class NewMemberForm extends React.Component {
         );
     }
 
-    renderUnderagedSections(type) {
+    renderUnderagedSections(type, error) {
+        let errorMessage;
+        if(error != null) {
+              errorMessage = this.renderErrorMessage(error);              
+        }
+
         return (
             <div>
                 <h3>Seccions</h3>
@@ -267,12 +272,21 @@ class NewMemberForm extends React.Component {
                         <option value="4">Diablons</option>
                         <option value="5">Tabalons</option>
                     </Form.Control>
+                    {errorMessage}
                 </Form.Group>
             </div>
         );
     }
 
-    renderAdultSections(type) {
+    renderAdultSections(type, correfocError, sectionError) {
+        let correfocErrorMessage;
+        let sectionErrorMessage;
+        if(correfocError != null) {
+            correfocErrorMessage = this.renderErrorMessage(correfocError);              
+        }
+        if(sectionError != null) {
+            sectionErrorMessage = this.renderErrorMessage(sectionError);              
+        }
         return (
             <div>
                 <h3>Seccions</h3>
@@ -293,6 +307,7 @@ class NewMemberForm extends React.Component {
                         <option value="11">Nas de Sutja</option>
                         <option value="12">Coll-llarg</option>
                     </Form.Control>
+                    {correfocError}
                     <Form.Text className="text-muted">
                         El teu primer Correfoc estaràs al grup de SAC per tal de conèixer la festa des de dins.<br/>
                         Al primer any ja estaràs a la llista d'espera del grup seleccionat, on podràs formar-ne part, si hi ha places disponibles, a partir del segon Correfoc.
@@ -306,6 +321,7 @@ class NewMemberForm extends React.Component {
                         <option value="2">Histrions</option>
                         <option value="3">Tabalers</option>
                     </Form.Control>
+                    {sectionErrorMessage}
                 </Form.Group>
             </div>
           );
@@ -328,12 +344,16 @@ class NewMemberForm extends React.Component {
 
         if(this.isAgeDefined(formType.MEMBER)) {
             if(!this.isUnderaged(formType.MEMBER)) { 
-                userSectionsForm = this.renderAdultSections(formType.MEMBER);
+                var user = this.state.users[formType.MEMBER];
+                userSectionsForm = this.renderAdultSections(formType.MEMBER, user.correfocGroupError, user.sectionError);
             }
             else {
+                var user = this.state.users[formType.MEMBER];
+                var parentalUser = this.state.users[formType.PARENTAL_MEMBER];
+
                 userSectionsForm = this.renderUnderagedSections(formType.MEMBER);
-                parentalForm = this.renderFormParentalPart(formType.PARENTAL_MEMBER);
-                parentalSectionsForm = this.renderAdultSections(formType.PARENTAL_MEMBER); 
+                parentalForm = this.renderFormParentalPart(formType.PARENTAL_MEMBER, user.sectionError);
+                parentalSectionsForm = this.renderAdultSections(formType.PARENTAL_MEMBER, parentalUser.correfocGroupError, parentalUser.sectionError); 
             }    
         }
 
