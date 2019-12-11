@@ -24,30 +24,31 @@ class NewMemberFormController extends AbstractController
         $formErrors['user'] = $signUpUserErrors;
         $formErrors['parentalUser'] = $signUpParentalUserErrors;
 
-        $data = [
-            'user' => $signUpUser->toArray()
-        ];
-
-        if($signUpUser->isUnderaged())
-        {
-            $data += ["parentalUser" => $signUpParentalUser->toArray()];
-        }
-
-        $message = (new \Swift_Message('Test Formulari Nou Membre'))
-            ->setFrom('xaldiga@xaldiga.cat')
-            ->setTo('xaldigatallerdefestes@gmail.com')
-            ->setBody(
-                $this->renderView(
-                    'web/signup-form-email.html.twig',
-                    $data
-                ),
-                'text/html'
-            );
-        
-        //$mailer->send($message);
-
         if($formErrors) {
             return new JsonResponse($formErrors);
+        }
+        else {
+            $data = [
+                'user' => $signUpUser->toArray()
+            ];
+    
+            if($signUpUser->isUnderaged())
+            {
+                $data += ["parentalUser" => $signUpParentalUser->toArray()];
+            }
+    
+            $message = (new \Swift_Message('Test Formulari Nou Membre'))
+                ->setFrom('xaldiga@xaldiga.cat')
+                ->setTo('xaldigatallerdefestes@gmail.com')
+                ->setBody(
+                    $this->renderView(
+                        'web/signup-form-email.html.twig',
+                        $data
+                    ),
+                    'text/html'
+                );
+            
+            $mailer->send($message);
         }
 
         return new JsonResponse([

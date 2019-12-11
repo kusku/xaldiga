@@ -134,31 +134,11 @@ class SignUp
 
     /**
      * @Assert\NotBlank(message="El grup de Correfoc és obligatori")
-     * @Assert\Length(
-     *     min = 1,
-     *     minMessage="Massa curt",
-     *     max = 1,
-     *     maxMessage="Massa llarg"
-     * )
-     * @Assert\Regex(
-     *     pattern="/^[0-9]{1}$/",
-     *     message="Només pot contenir números"
-     * )
      */
     protected $correfocGroup;
 
     /**
      * @Assert\NotBlank(message="La secció és obligatòria")
-     * @Assert\Length(
-     *     min = 1,
-     *     minMessage="Massa curt",
-     *     max = 1,
-     *     maxMessage="Massa llarg"
-     * )
-     * @Assert\Regex(
-     *     pattern="/^[0-9]{1}$/",
-     *     message="Només pot contenir números"
-     * )
      */
     protected $section;
 
@@ -417,7 +397,7 @@ class SignUp
 
     public function toArray()
     {
-        return array(
+        $array = array(
             "name" => $this->name,
             "nif" => $this->nif,
             "birthday" => $this->birthday,
@@ -427,13 +407,75 @@ class SignUp
             "province" => $this->province,
             "email" => $this->email,
             "phone" => $this->phone,
-            "correfocGroup" => $this->correfocGroup,
-            "section" => $this->section
+            "section" => $this->getSectionName()
         );
+
+        if(!$this->isUnderaged())
+        {
+            $array["correfocGroup"] = $this->getCorrefocSectionName();
+        }
+        return $array;
     }
 
     public function isUnderaged()
     {
-        return true;
+        $validDate = (date("Y")-18).date("-m-d");
+        return ($this->birthday > $validDate);
+    }
+
+    private function getCorrefocSectionName()
+    {
+        switch($this->correfocGroup)
+        {
+            case 0:
+                return "No";
+            case 1:
+                return "SAC";
+            case 2:
+                return "Tabalers";
+            case 3:
+                return "Capgirells";
+            case 4:
+                return "Moixogants";
+            case 5:
+                return "Fogueres i Fogaines";
+            case 6:
+                return "Asmodeu";
+            case 7:
+                return "Drac";
+            case 8:
+                return "Víbria";
+            case 9:
+                return "Gàrgola";
+            case 10:
+                return "Mulassa";
+            case 11:
+                return "Nas de Sutja";
+            case 12:
+                return "Coll-llarg";
+            default:
+                return "SAC";
+        }
+    }
+
+    private function getSectionName()
+    {
+        switch($this->section)
+        {
+            case 0:
+                return "No";
+            case 1:
+                return "Diables";
+            case 2:
+                return "Histrions";
+            case 3:
+                return "Tabalers";
+            case 4:
+                return "Diablons";
+            case 5:
+                return "Tabalons";
+            default:
+                return "No";
+        }
     }
 }

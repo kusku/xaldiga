@@ -10,8 +10,11 @@
 	<li><b>{{'tid_new_member_form_province'|trans|nl2br}}</b>{{user.province}}</li>
 	<li><b>{{'tid_new_member_form_email'|trans|nl2br}}</b>{{user.email}}</li>
 	<li><b>{{'tid_new_member_form_phone'|trans|nl2br}}</b>{{user.phone}}</li>
-	<li><b>{{'tid_new_member_form_correfoc_group'|trans|nl2br}}</b>{{user.correfocGroup}}</li>
 	<li><b>{{'tid_new_member_form_section'|trans|nl2br}}</b>{{user.section}}</li>
+	{% if user.correfocGroup is defined %}
+		<li><b>{{'tid_new_member_form_correfoc_group'|trans|nl2br}}</b>{{user.correfocGroup}}</li>
+	{% endif %}
+
 </ul>
 
 {% if parentalUser is defined %}

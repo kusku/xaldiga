@@ -159,7 +159,7 @@ class NewMemberForm extends React.Component {
             <Form.Group>
                 <Form.Label htmlFor={name}>{label}
                 </Form.Label>
-                <Form.Control id={name} type="text" name={name} onChange={(e) => this.handleChange(e.target.name, e.target.value, type)}/>
+                <Form.Control id={name} type="text" isInvalid={errorMessage} name={name} onChange={(e) => this.handleChange(e.target.name, e.target.value, type)} required/>
                 {errorMessage}
             </Form.Group>
         );
@@ -167,14 +167,22 @@ class NewMemberForm extends React.Component {
 
     renderDatePicker(name, label, type, error) {
         let errorMessage;
+        let classNames;
         if(error != null) {
             errorMessage = this.renderErrorMessage(error);
+            classNames = "is-invalid";
         }
 
         return (
             <Form.Group>
                 <Form.Label htmlFor={name}>{label}</Form.Label>
-                <DayPickerInput formatDate={formatDate} format={'dd/MM/yyyy'} parseDate={parseDate} placeholder='dd/mm/aaaa'  onDayChange={date => this.handleDateChange(date, type)}/>
+                <DayPickerInput formatDate={formatDate} format={'dd/MM/yyyy'} parseDate={parseDate} placeholder='dd/mm/aaaa'  onDayChange={date => this.handleDateChange(date, type)} 
+                    inputProps={
+                        {   required: true,
+                            isInvalid: true
+                        }
+                    } 
+                />
                 {errorMessage}
             </Form.Group>
             );
@@ -241,6 +249,7 @@ class NewMemberForm extends React.Component {
                 <Form.Group>
                     <Form.Label>A quin grup Infantil vols formar part?</Form.Label>
                     <Form.Control as="select" id="correfocDropdown" name="section" onChange={(e) => this.handleChange(e.target.name, e.target.value, type)}>
+                        <option value="0">No vull participar</option>
                         <option value="4">Diablons</option>
                         <option value="5">Tabalons</option>
                     </Form.Control>
@@ -279,7 +288,7 @@ class NewMemberForm extends React.Component {
                         <option value="11">Nas de Sutja</option>
                         <option value="12">Coll-llarg</option>
                     </Form.Control>
-                    {correfocError}
+                    {correfocErrorMessage}
                     <Form.Text className="text-muted">
                         El teu primer Correfoc estaràs al grup de SAC per tal de conèixer la festa des de dins.<br/>
                         Al primer any ja estaràs a la llista d'espera del grup seleccionat, on podràs formar-ne part, si hi ha places disponibles, a partir del segon Correfoc.

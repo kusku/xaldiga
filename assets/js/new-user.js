@@ -199,8 +199,6 @@ export default class NewUser {
     }
 
     serialize() {
-        console.log("serialize");
-        console.log(this._birthday);
         return {
             name: this._name,
             nif: this._nif, 
