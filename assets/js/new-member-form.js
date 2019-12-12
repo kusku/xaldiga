@@ -1,6 +1,5 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { Link } from 'react-router-dom';
 import NewUser from './new-user';
 import { DateUtils } from 'react-day-picker';
 import DayPickerInput from 'react-day-picker/DayPickerInput';
@@ -8,10 +7,18 @@ import 'react-day-picker/lib/style.css';
 
 import Form from 'react-bootstrap/Form';
 import Col from 'react-bootstrap/Col';
+import Button from 'react-bootstrap/Button';
+import Spinner from 'react-bootstrap/Spinner';
 
 const formType = {
     MEMBER: 0,
     PARENTAL_MEMBER: 1
+}
+
+const FormState = {
+    EDITING: 0,
+    SENDING: 1,
+    VALIDATED: 2
 }
 
 import dateFnsFormat from 'date-fns/format';
@@ -34,12 +41,13 @@ class NewMemberForm extends React.Component {
         super(props);
 
         this.state = {
-            users: [new NewUser(), new NewUser()]
+            users: [new NewUser(), new NewUser()],
+            status: FormState.EDITING
         };
 
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
-        this.handleDateChange = this.handleDateChange.bind(this)
+        this.handleDateChange = this.handleDateChange.bind(this);
     }
 
     handleChange(name, value, type) {
@@ -96,6 +104,10 @@ class NewMemberForm extends React.Component {
     handleSubmit(e) {
         e.preventDefault();
 
+        this.setState ({
+            status: FormState.SENDING
+        });
+
         $.ajax({
             method: 'POST',
             url: '/new/user',
@@ -105,14 +117,25 @@ class NewMemberForm extends React.Component {
             },
             dataType: 'json',
             success: function(response) {
+                console.log(response);
+                let errorFound = false;
+                let status = FormState.VALIDATED;
                 const updatesUsers = this.state.users;
-                updatesUsers[formType.MEMBER].validate(response.user);
+                errorFound = updatesUsers[formType.MEMBER].validate(response.user);
 
                 if(this.isUnderaged(formType.MEMBER)) {
-                    updatesUsers[formType.PARENTAL_MEMBER].validate(response.parentalUser);
+                    errorFound |= updatesUsers[formType.PARENTAL_MEMBER].validate(response.parentalUser);
                 }
+                console.log(updatesUsers[formType.MEMBER]);
+                if(!errorFound) {
+                    updatesUsers[formType.MEMBER].reset();
+                    updatesUsers[formType.PARENTAL_MEMBER].reset();
+                    status = FormState.EDITING;
+                }
+
                 this.setState({
-                    users: updatesUsers
+                    users: updatesUsers,
+                    status: status
                 })
             }.bind(this),
             error: function(xhr) {
@@ -159,7 +182,7 @@ class NewMemberForm extends React.Component {
             <Form.Group>
                 <Form.Label htmlFor={name}>{label}
                 </Form.Label>
-                <Form.Control id={name} type="text" isInvalid={errorMessage} name={name} onChange={(e) => this.handleChange(e.target.name, e.target.value, type)} required/>
+                <Form.Control id={name} type="text" isInvalid={errorMessage} name={name} onChange={(e) => this.handleChange(e.target.name, e.target.value, type)} />
                 {errorMessage}
             </Form.Group>
         );
@@ -178,8 +201,7 @@ class NewMemberForm extends React.Component {
                 <Form.Label htmlFor={name}>{label}</Form.Label>
                 <DayPickerInput formatDate={formatDate} format={'dd/MM/yyyy'} parseDate={parseDate} placeholder='dd/mm/aaaa'  onDayChange={date => this.handleDateChange(date, type)} 
                     inputProps={
-                        {   required: true,
-                            isInvalid: true
+                        {   required: true
                         }
                     } 
                 />
@@ -322,6 +344,7 @@ class NewMemberForm extends React.Component {
         let parentalForm = emptyDiv;
         let userSectionsForm = emptyDiv;
         let parentalSectionsForm = emptyDiv;
+        let buttonContent = "Enviar";
 
         if(this.isAgeDefined(formType.MEMBER)) {
             if(!this.isUnderaged(formType.MEMBER)) { 
@@ -338,6 +361,10 @@ class NewMemberForm extends React.Component {
             }    
         }
 
+        if(this.state.status == FormState.SENDING) {
+            buttonContent = <Spinner as="span" animation="border" size="lg" role="status" aria-hidden="true"/>;
+        }
+
         return (
             <div>
             <Form onSubmit={this.handleSubmit}>
@@ -346,9 +373,8 @@ class NewMemberForm extends React.Component {
                 { parentalForm }
                 { parentalSectionsForm }
                 { this.renderAgreement() }
-                <input className="btn btn-success btn-lg" type="submit" value="Enviar" />
+                <Button variant="success" size="lg" type="submit">{ buttonContent }</Button>
             </Form>
-            {/* <Button variant="primary">Primary</Button> */}
             </div>
         );
     }

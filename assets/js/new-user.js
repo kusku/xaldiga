@@ -5,8 +5,7 @@ import format from 'date-fns/fp/format'
 
 export default class NewUser {
     constructor() {
-        this.correfocGroup = 0;
-        this.section = 0;
+        this.reset();
     }
 
     set name(value) {
@@ -185,17 +184,65 @@ export default class NewUser {
     /////// METHODS ////////
     ////////////////////////
     validate(response) {
-        this._nameError = response.nameError ? response.nameError : null;
-        this._nifError = response.nifError ? response.nifError : null;
-        this._birthdayError = response.birthdayError ? response.birthdayError : null;
-        this._addressError = response.addressError ? response.addressError : null;
-        this._cityError = response.cityError ? response.cityError : null;
-        this._zipcodeError = response.zipcodeError ? response.zipcodeError : null;
-        this._provinceError = response.provinceError ? response.provinceError : null;
-        this._phoneError = response.phoneError ? response.phoneError : null;
-        this._emailError = response.emailError ? response.emailError : null;
-        this._correfocGroupError = response.correfocGroupError ? response.correfocGroupError : null;
-        this._sectionError = response.sectionError ? response.sectionError : null;
+        this.resetErrors();
+        let errorsFound = false;
+
+        if(response.nameError) {
+            this._nameError = response.nameError;
+            errorsFound = true;
+        }
+
+        if(response.nifError) {
+            this._nifError = response.nifError;
+            errorsFound = true;
+        }
+
+        if(response.birthdayError) {
+            this._birthdayError = response.birthdayError;
+            errorsFound = true;
+        }
+
+        if(response.addressError) {
+            this._addressError = response.addressError;
+            errorsFound = true;
+        }
+
+        if(response.cityError) {
+            this._cityError = response.cityError;
+            errorsFound = true;
+        }
+
+        if(response.zipcodeError) {
+            this._zipcodeError = response.zipcodeError;
+            errorsFound = true;
+        }
+
+        if(response.provinceError) {
+            this._provinceError = response.provinceError;
+            errorsFound = true;
+        }
+
+        if(response.phoneError) {
+            this._phoneError = response.phoneError;
+            errorsFound = true;
+        }
+
+        if(response.emailError) {
+            this._emailError = response.emailError;
+            errorsFound = true;
+        }
+
+        if(response.correfocGroupError) {
+            this._correfocGroupError = response.correfocGroupError;
+            errorsFound = true;
+        }
+
+        if(response.sectionError) {
+            this._sectionError = response.sectionError;
+            errorsFound = true;
+        }
+
+        return errorsFound;
     }
 
     serialize() {
@@ -223,5 +270,35 @@ export default class NewUser {
         currentDate.setFullYear(currentDate.getFullYear() - age);
 
         return (currentDate - userDate) <= 0;
+    }
+
+    reset() {
+        this._name = null;
+        this._nif = null;
+        this._birthday = null;
+        this._address = null;
+        this._city = null;
+        this._zipcode = null;
+        this._province = null;
+        this._phone = null;
+        this._email = null;
+        this._correfocGroup = 0;
+        this._section = 0;
+
+        this.resetErrors();
+    }
+
+    resetErrors() {
+        this._nameError = null;
+        this._nifError = null;
+        this._birthdayError = null;
+        this._addressError = null;
+        this._cityError = null;
+        this._zipcodeError = null;
+        this._provinceError = null;
+        this._phoneError = null;
+        this._emailError = null;
+        this._correfocGroupError = null;
+        this._sectionError = null;
     }
 }
