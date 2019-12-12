@@ -9,6 +9,8 @@ import Form from 'react-bootstrap/Form';
 import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
 import Spinner from 'react-bootstrap/Spinner';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
 
 const formType = {
     MEMBER: 0,
@@ -117,7 +119,6 @@ class NewMemberForm extends React.Component {
             },
             dataType: 'json',
             success: function(response) {
-                console.log(response);
                 let errorFound = false;
                 let status = FormState.VALIDATED;
                 const updatesUsers = this.state.users;
@@ -126,7 +127,7 @@ class NewMemberForm extends React.Component {
                 if(this.isUnderaged(formType.MEMBER)) {
                     errorFound |= updatesUsers[formType.PARENTAL_MEMBER].validate(response.parentalUser);
                 }
-                console.log(updatesUsers[formType.MEMBER]);
+
                 if(!errorFound) {
                     updatesUsers[formType.MEMBER].reset();
                     updatesUsers[formType.PARENTAL_MEMBER].reset();
@@ -339,7 +340,7 @@ class NewMemberForm extends React.Component {
         );
     }
 
-    render() {
+    renderForm() {
         const emptyDiv = <div id="empty"></div>;
         let parentalForm = emptyDiv;
         let userSectionsForm = emptyDiv;
@@ -366,17 +367,37 @@ class NewMemberForm extends React.Component {
         }
 
         return (
-            <div>
-            <Form onSubmit={this.handleSubmit}>
-                { this.renderBasicFormPart(formType.MEMBER) }
-                { userSectionsForm }
-                { parentalForm }
-                { parentalSectionsForm }
-                { this.renderAgreement() }
-                <Button variant="success" size="lg" type="submit">{ buttonContent }</Button>
-            </Form>
-            </div>
+            <Container>
+                <Form onSubmit={this.handleSubmit}>
+                    { this.renderBasicFormPart(formType.MEMBER) }
+                    { userSectionsForm }
+                    { parentalForm }
+                    { parentalSectionsForm }
+                    { this.renderAgreement() }
+                    <Button variant="success" size="lg" type="submit">{ buttonContent }</Button>
+                </Form>
+            </Container>
         );
+    }
+
+    renderSuccess() {
+        return (
+            <Container>
+                <Row>
+                <h4>Formulari enviat correctament!</h4>
+                <p>Moltes gràcies per apuntar-te a Xàldiga Taller de Festes. En breu un membre de la secció corresponent es posarà en contacte amb tu.</p>
+                </Row>
+            </Container>
+        );
+    }
+
+    render() {
+        if(this.state.status == FormState.VALIDATED) {
+            return this.renderSuccess();
+        }
+        else {
+            return this.renderForm();
+        }
     }
 }
 
