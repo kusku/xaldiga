@@ -61,10 +61,7 @@ class NewMemberFormController extends AbstractController
                 ->setFrom('xaldiga@xaldiga.cat')
                 ->setTo($signUpUser->getEmail())
                 ->setBody(
-                    $this->renderView(
-                        'web/signup-form-email.html.twig',
-                        $data
-                    ),
+                    $this->renderView('web/signup-copy-email.html.twig'),
                     'text/html'
                 );
             

@@ -304,6 +304,8 @@ tid_new_member_form_correfoc_group: "Grup de Correfoc: "
 tid_new_member_form_section: "Secció anual: "
 tid_new_member_form_parental_desc: "L'usuari és menor, així que també s'apunta un major d'edat:\n"
 tid_new_member_form_reminder: "No oblideu d'apuntar-lo a les llistes d'espera corresponents!"
+tid_new_member_copy_message: "Gràcies per l'interès amb l'entitat Xàldiga Taller de Festes.\n
+                              Hem rebut la teva sol·licitud! Un dels membres de l'entitat es posarà en contacte per començar a formar-ne part."
 
 
 # CALENDARI --------------------------------------
