@@ -21,6 +21,7 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
+use Symfony\Component\DependencyInjection\Compiler\ServiceLocatorTagPass;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException;
 use Symfony\Component\DependencyInjection\Loader\XmlFileLoader;
@@ -58,6 +59,8 @@ class ContainerDebugCommand extends Command
                 new InputOption('parameter', null, InputOption::VALUE_REQUIRED, 'Displays a specific parameter for an application'),
                 new InputOption('parameters', null, InputOption::VALUE_NONE, 'Displays parameters for an application'),
                 new InputOption('types', null, InputOption::VALUE_NONE, 'Displays types (classes/interfaces) available in the container'),
+                new InputOption('env-var', null, InputOption::VALUE_REQUIRED, 'Displays a specific environment variable used in the container'),
+                new InputOption('env-vars', null, InputOption::VALUE_NONE, 'Displays environment variables used in the container'),
                 new InputOption('format', null, InputOption::VALUE_REQUIRED, 'The output format (txt, xml, json, or md)', 'txt'),
                 new InputOption('raw', null, InputOption::VALUE_NONE, 'To output raw description'),
             ])
@@ -74,6 +77,14 @@ To get specific information about a service, specify its name:
 To see available types that can be used for autowiring, use the <info>--types</info> flag:
 
   <info>php %command.full_name% --types</info>
+
+To see environment variables used by the container, use the <info>--env-vars</info> flag:
+
+  <info>php %command.full_name% --env-vars</info>
+
+Display a specific environment variable by specifying its name with the <info>--env-var</info> option:
+
+  <info>php %command.full_name% --env-var=APP_ENV</info>
 
 Use the --tags option to display tagged <comment>public</comment> services grouped by tag:
 
@@ -116,7 +127,11 @@ EOF
         $this->validateInput($input);
         $object = $this->getContainerBuilder();
 
-        if ($input->getOption('types')) {
+        if ($input->getOption('env-vars')) {
+            $options = ['env-vars' => true];
+        } elseif ($envVar = $input->getOption('env-var')) {
+            $options = ['env-vars' => true, 'name' => $envVar];
+        } elseif ($input->getOption('types')) {
             $options = [];
             $options['filter'] = [$this, 'filterToServiceTypes'];
         } elseif ($input->getOption('parameters')) {
@@ -157,7 +172,7 @@ EOF
             throw $e;
         }
 
-        if (!$input->getArgument('name') && !$input->getOption('tag') && !$input->getOption('parameter') && $input->isInteractive()) {
+        if (!$input->getArgument('name') && !$input->getOption('tag') && !$input->getOption('parameter') && !$input->getOption('env-vars') && !$input->getOption('env-var') && $input->isInteractive()) {
             if ($input->getOption('tags')) {
                 $errorIo->comment('To search for a specific tag, re-run this command with a search term. (e.g. <comment>debug:container --tag=form.type</comment>)');
             } elseif ($input->getOption('parameters')) {
@@ -215,6 +230,8 @@ EOF
             $container->compile();
         } else {
             (new XmlFileLoader($container = new ContainerBuilder(), new FileLocator()))->load($kernel->getContainer()->getParameter('debug.container.dump'));
+            $locatorPass = new ServiceLocatorTagPass();
+            $locatorPass->process($container);
         }
 
         return $this->containerBuilder = $container;

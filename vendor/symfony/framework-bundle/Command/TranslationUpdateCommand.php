@@ -44,8 +44,10 @@ class TranslationUpdateCommand extends Command
     private $defaultLocale;
     private $defaultTransPath;
     private $defaultViewsPath;
+    private $transPaths;
+    private $viewsPaths;
 
-    public function __construct(TranslationWriterInterface $writer, TranslationReaderInterface $reader, ExtractorInterface $extractor, string $defaultLocale, string $defaultTransPath = null, string $defaultViewsPath = null)
+    public function __construct(TranslationWriterInterface $writer, TranslationReaderInterface $reader, ExtractorInterface $extractor, string $defaultLocale, string $defaultTransPath = null, string $defaultViewsPath = null, array $transPaths = [], array $viewsPaths = [])
     {
         parent::__construct();
 
@@ -55,6 +57,8 @@ class TranslationUpdateCommand extends Command
         $this->defaultLocale = $defaultLocale;
         $this->defaultTransPath = $defaultTransPath;
         $this->defaultViewsPath = $defaultViewsPath;
+        $this->transPaths = $transPaths;
+        $this->viewsPaths = $viewsPaths;
     }
 
     /**
@@ -73,6 +77,7 @@ class TranslationUpdateCommand extends Command
                 new InputOption('no-backup', null, InputOption::VALUE_NONE, 'Should backup be disabled'),
                 new InputOption('clean', null, InputOption::VALUE_NONE, 'Should clean not found messages'),
                 new InputOption('domain', null, InputOption::VALUE_OPTIONAL, 'Specify the domain to update'),
+                new InputOption('xliff-version', null, InputOption::VALUE_OPTIONAL, 'Override the default xliff version', '1.2'),
             ])
             ->setDescription('Updates the translation file')
             ->setHelp(<<<'EOF'
@@ -121,7 +126,7 @@ EOF
         $rootDir = $kernel->getContainer()->getParameter('kernel.root_dir');
 
         // Define Root Paths
-        $transPaths = [];
+        $transPaths = $this->transPaths;
         if (is_dir($dir = $rootDir.'/Resources/translations')) {
             if ($dir !== $this->defaultTransPath) {
                 $notice = sprintf('Storing translations in the "%s" directory is deprecated since Symfony 4.2, ', $dir);
@@ -132,7 +137,7 @@ EOF
         if ($this->defaultTransPath) {
             $transPaths[] = $this->defaultTransPath;
         }
-        $viewsPaths = [];
+        $viewsPaths = $this->viewsPaths;
         if (is_dir($dir = $rootDir.'/Resources/views')) {
             if ($dir !== $this->defaultViewsPath) {
                 $notice = sprintf('Storing templates in the "%s" directory is deprecated since Symfony 4.2, ', $dir);
@@ -194,22 +199,22 @@ EOF
             }
         }
 
-        $errorIo->title('Translation Messages Extractor and Dumper');
-        $errorIo->comment(sprintf('Generating "<info>%s</info>" translation files for "<info>%s</info>"', $input->getArgument('locale'), $currentName));
+        $io->title('Translation Messages Extractor and Dumper');
+        $io->comment(sprintf('Generating "<info>%s</info>" translation files for "<info>%s</info>"', $input->getArgument('locale'), $currentName));
 
         // load any messages from templates
         $extractedCatalogue = new MessageCatalogue($input->getArgument('locale'));
-        $errorIo->comment('Parsing templates...');
+        $io->comment('Parsing templates...');
         $this->extractor->setPrefix($input->getOption('prefix'));
         foreach ($viewsPaths as $path) {
-            if (is_dir($path)) {
+            if (is_dir($path) || is_file($path)) {
                 $this->extractor->extract($path, $extractedCatalogue);
             }
         }
 
         // load any existing messages from the translation files
         $currentCatalogue = new MessageCatalogue($input->getArgument('locale'));
-        $errorIo->comment('Loading translation files...');
+        $io->comment('Loading translation files...');
         foreach ($transPaths as $path) {
             if (is_dir($path)) {
                 $this->reader->read($path, $currentCatalogue);
@@ -230,7 +235,7 @@ EOF
         if (!\count($operation->getDomains())) {
             $errorIo->warning('No translation messages were found.');
 
-            return;
+            return null;
         }
 
         $resultMessage = 'Translation files were successfully updated';
@@ -262,7 +267,7 @@ EOF
             }
 
             if ('xlf' === $input->getOption('output-format')) {
-                $errorIo->comment('Xliff output version is <info>1.2</info>');
+                $io->comment(sprintf('Xliff output version is <info>%s</info>', $input->getOption('xliff-version')));
             }
 
             $resultMessage = sprintf('%d message%s successfully extracted', $extractedMessagesCount, $extractedMessagesCount > 1 ? 's were' : ' was');
@@ -274,7 +279,7 @@ EOF
 
         // save the files
         if (true === $input->getOption('force')) {
-            $errorIo->comment('Writing files...');
+            $io->comment('Writing files...');
 
             $bundleTransPath = false;
             foreach ($transPaths as $path) {
@@ -287,14 +292,16 @@ EOF
                 $bundleTransPath = end($transPaths);
             }
 
-            $this->writer->write($operation->getResult(), $input->getOption('output-format'), ['path' => $bundleTransPath, 'default_locale' => $this->defaultLocale]);
+            $this->writer->write($operation->getResult(), $input->getOption('output-format'), ['path' => $bundleTransPath, 'default_locale' => $this->defaultLocale, 'xliff_version' => $input->getOption('xliff-version')]);
 
             if (true === $input->getOption('dump-messages')) {
                 $resultMessage .= ' and translation files were updated';
             }
         }
 
-        $errorIo->success($resultMessage.'.');
+        $io->success($resultMessage.'.');
+
+        return null;
     }
 
     private function filterCatalogue(MessageCatalogue $catalogue, string $domain): MessageCatalogue

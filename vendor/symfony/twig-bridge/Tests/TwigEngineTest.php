@@ -17,6 +17,9 @@ use Symfony\Component\Templating\TemplateReference;
 use Twig\Environment;
 use Twig\Loader\ArrayLoader;
 
+/**
+ * @group legacy
+ */
 class TwigEngineTest extends TestCase
 {
     public function testExistsWithTemplateInstances()
@@ -58,11 +61,9 @@ class TwigEngineTest extends TestCase
         $this->assertSame('foo', $engine->render(new TemplateReference('index')));
     }
 
-    /**
-     * @expectedException \Twig\Error\SyntaxError
-     */
     public function testRenderWithError()
     {
+        $this->expectException('Twig\Error\SyntaxError');
         $engine = $this->getTwig();
 
         $engine->render(new TemplateReference('error'));

@@ -17,6 +17,7 @@ use Symfony\Component\Intl\Intl;
 /**
  * @author Bernhard Schussek <bschussek@gmail.com>
  * @group intl-data
+ * @group legacy
  */
 abstract class AbstractScriptDataProviderTest extends AbstractDataProviderTest
 {
@@ -212,15 +213,15 @@ abstract class AbstractScriptDataProviderTest extends AbstractDataProviderTest
         'Zsym',
         'Zxxx',
         'Zyyy',
-        'Zzzz',
     ];
 
     /**
      * @var ScriptDataProvider
      */
     protected $dataProvider;
+    private $defaultLocale;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
 
@@ -228,6 +229,15 @@ abstract class AbstractScriptDataProviderTest extends AbstractDataProviderTest
             $this->getDataDirectory().'/'.Intl::SCRIPT_DIR,
             $this->createEntryReader()
         );
+
+        $this->defaultLocale = \Locale::getDefault();
+    }
+
+    protected function tearDown(): void
+    {
+        parent::tearDown();
+
+        \Locale::setDefault($this->defaultLocale);
     }
 
     abstract protected function getDataDirectory();

@@ -15,16 +15,19 @@ use Symfony\Bundle\FrameworkBundle\Templating\TemplateFilenameParser;
 use Symfony\Bundle\FrameworkBundle\Templating\TemplateReference;
 use Symfony\Bundle\FrameworkBundle\Tests\TestCase;
 
+/**
+ * @group legacy
+ */
 class TemplateFilenameParserTest extends TestCase
 {
     protected $parser;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->parser = new TemplateFilenameParser();
     }
 
-    protected function tearDown()
+    protected function tearDown(): void
     {
         $this->parser = null;
     }

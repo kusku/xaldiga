@@ -18,6 +18,8 @@ use Symfony\Component\Intl\Locale;
 
 /**
  * @author Bernhard Schussek <bschussek@gmail.com>
+ *
+ * @group legacy
  */
 abstract class AbstractDataProviderTest extends TestCase
 {
@@ -341,6 +343,7 @@ abstract class AbstractDataProviderTest extends TestCase
         'fy',
         'fy_NL',
         'ga',
+        'ga_GB',
         'ga_IE',
         'gd',
         'gd_GB',
@@ -701,7 +704,7 @@ abstract class AbstractDataProviderTest extends TestCase
 
     private static $rootLocales;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         \Locale::setDefault('en');
         Locale::setDefaultFallback('en');

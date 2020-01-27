@@ -19,12 +19,12 @@ class MoneyToLocalizedStringTransformerTest extends TestCase
 {
     private $previousLocale;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->previousLocale = setlocale(LC_ALL, '0');
     }
 
-    protected function tearDown()
+    protected function tearDown(): void
     {
         setlocale(LC_ALL, $this->previousLocale);
     }
@@ -45,7 +45,7 @@ class MoneyToLocalizedStringTransformerTest extends TestCase
     {
         $transformer = new MoneyToLocalizedStringTransformer(null, null, null, 100);
 
-        $this->{method_exists($this, $_ = 'expectException') ? $_ : 'setExpectedException'}('Symfony\Component\Form\Exception\TransformationFailedException');
+        $this->expectException('Symfony\Component\Form\Exception\TransformationFailedException');
 
         $transformer->transform('abcd');
     }
@@ -73,7 +73,7 @@ class MoneyToLocalizedStringTransformerTest extends TestCase
     {
         $transformer = new MoneyToLocalizedStringTransformer(null, null, null, 100);
 
-        $this->{method_exists($this, $_ = 'expectException') ? $_ : 'setExpectedException'}('Symfony\Component\Form\Exception\TransformationFailedException');
+        $this->expectException('Symfony\Component\Form\Exception\TransformationFailedException');
 
         $transformer->reverseTransform(12345);
     }

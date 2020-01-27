@@ -14,21 +14,24 @@ namespace Symfony\Bundle\FrameworkBundle\Tests\Translation;
 use PHPUnit\Framework\TestCase;
 use Psr\Container\ContainerInterface;
 use Symfony\Bundle\FrameworkBundle\Translation\Translator;
+use Symfony\Component\Config\Resource\DirectoryResource;
+use Symfony\Component\Config\Resource\FileExistenceResource;
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\Translation\Formatter\MessageFormatter;
+use Symfony\Component\Translation\Loader\YamlFileLoader;
 use Symfony\Component\Translation\MessageCatalogue;
 
 class TranslatorTest extends TestCase
 {
     protected $tmpDir;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->tmpDir = sys_get_temp_dir().'/sf_translation';
         $this->deleteTmpDir();
     }
 
-    protected function tearDown()
+    protected function tearDown(): void
     {
         $this->deleteTmpDir();
     }
@@ -132,12 +135,10 @@ class TranslatorTest extends TestCase
         $this->assertEquals('other choice 1 (PT-BR)', $translator->transChoice('other choice', 1));
     }
 
-    /**
-     * @expectedException \InvalidArgumentException
-     * @expectedExceptionMessage Invalid "invalid locale" locale.
-     */
     public function testTransWithCachingWithInvalidLocale()
     {
+        $this->expectException('InvalidArgumentException');
+        $this->expectExceptionMessage('Invalid "invalid locale" locale.');
         $loader = $this->getMockBuilder('Symfony\Component\Translation\Loader\LoaderInterface')->getMock();
         $translator = $this->getTranslator($loader, ['cache_dir' => $this->tmpDir], 'loader', '\Symfony\Bundle\FrameworkBundle\Tests\Translation\TranslatorWithInvalidLocale');
 
@@ -167,12 +168,10 @@ class TranslatorTest extends TestCase
         $this->assertSame('en', $translator->getLocale());
     }
 
-    /**
-     * @expectedException \Symfony\Component\Translation\Exception\InvalidArgumentException
-     * @expectedExceptionMessage The Translator does not support the following options: 'foo'
-     */
     public function testInvalidOptions()
     {
+        $this->expectException('Symfony\Component\Translation\Exception\InvalidArgumentException');
+        $this->expectExceptionMessage('The Translator does not support the following options: \'foo\'');
         $container = $this->getMockBuilder('Symfony\Component\DependencyInjection\ContainerInterface')->getMock();
 
         (new Translator($container, new MessageFormatter(), 'en', [], ['foo' => 'bar']));
@@ -221,6 +220,68 @@ class TranslatorTest extends TestCase
             [false, true],
             [true, true],
         ];
+    }
+
+    public function testCatalogResourcesAreAddedForScannedDirectories()
+    {
+        $loader = new \Symfony\Component\Translation\Loader\YamlFileLoader();
+        $resourceFiles = [
+            'fr' => [
+                __DIR__.'/../Fixtures/Resources/translations/messages.fr.yml',
+            ],
+        ];
+
+        /** @var Translator $translator */
+        $translator = $this->getTranslator($loader, [
+            'resource_files' => $resourceFiles,
+            'scanned_directories' => [__DIR__, '/tmp/I/sure/hope/this/does/not/exist'],
+        ], 'yml');
+
+        $catalogue = $translator->getCatalogue('fr');
+
+        $resources = $catalogue->getResources();
+
+        $this->assertEquals(new DirectoryResource(__DIR__), $resources[1]);
+        $this->assertEquals(new FileExistenceResource('/tmp/I/sure/hope/this/does/not/exist'), $resources[2]);
+    }
+
+    public function testCachedCatalogueIsReDumpedWhenScannedDirectoriesChange()
+    {
+        /** @var Translator $translator */
+        $translator = $this->getTranslator(new YamlFileLoader(), [
+            'cache_dir' => $this->tmpDir,
+            'resource_files' => [
+                'fr' => [
+                    __DIR__.'/../Fixtures/Resources/translations/messages.fr.yml',
+                ],
+            ],
+            'cache_vary' => [
+                'scanned_directories' => [
+                    '/Fixtures/Resources/translations/',
+                ],
+            ],
+        ], 'yml');
+
+        // Cached catalogue is dumped
+        $this->assertSame('répertoire', $translator->trans('folder', [], 'messages', 'fr'));
+
+        $translator = $this->getTranslator(new YamlFileLoader(), [
+            'cache_dir' => $this->tmpDir,
+            'resource_files' => [
+                'fr' => [
+                    __DIR__.'/../Fixtures/Resources/translations/messages.fr.yml',
+                    __DIR__.'/../Fixtures/Resources/translations2/ccc.fr.yml',
+                ],
+            ],
+            'cache_vary' => [
+                'scanned_directories' => [
+                    '/Fixtures/Resources/translations/',
+                    '/Fixtures/Resources/translations2/',
+                ],
+            ],
+        ], 'yml');
+
+        $this->assertSame('bar', $translator->trans('foo', [], 'ccc', 'fr'));
     }
 
     protected function getCatalogue($locale, $messages, $resources = [])

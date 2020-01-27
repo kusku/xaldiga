@@ -99,7 +99,6 @@
         </service>
         <service id="Symfony\Component\Security\Core\Role\RoleHierarchyInterface" alias="security.role_hierarchy" />
 
-
         <!-- Security Voters -->
         <service id="security.access.simple_role_voter" class="Symfony\Component\Security\Core\Authorization\Voter\RoleVoter">
             <tag name="security.voter" priority="245" />
@@ -149,15 +148,15 @@
             <argument />                   <!-- name -->
             <argument />                   <!-- user_checker -->
             <argument />                   <!-- request_matcher -->
-            <argument />                   <!-- security enabled -->
-            <argument />                   <!-- stateless -->
+            <argument>false</argument>     <!-- security enabled -->
+            <argument>false</argument>     <!-- stateless -->
             <argument />                   <!-- provider -->
             <argument />                   <!-- context -->
             <argument />                   <!-- entry_point -->
             <argument />                   <!-- access_denied_handler -->
             <argument />                   <!-- access_denied_url -->
             <argument type="collection" /> <!-- listeners -->
-            <argument />                   <!-- switch_user -->
+            <argument>null</argument>      <!-- switch_user -->
         </service>
 
         <service id="security.logout_url_generator" class="Symfony\Component\Security\Http\Logout\LogoutUrlGenerator">

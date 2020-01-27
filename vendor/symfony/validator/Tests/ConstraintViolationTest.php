@@ -13,6 +13,7 @@ namespace Symfony\Component\Validator\Tests;
 
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Validator\ConstraintViolation;
+use Symfony\Component\Validator\Tests\Fixtures\CustomArrayObject;
 
 class ConstraintViolationTest extends TestCase
 {
@@ -107,5 +108,47 @@ EOF;
         );
 
         $this->assertSame($expected, (string) $violation);
+    }
+
+    public function testMessageCannotBeArray()
+    {
+        $this->expectException(\TypeError::class);
+        new ConstraintViolation(
+            ['cannot be an array'],
+            '',
+            [],
+            'Root',
+            'property.path',
+            null
+        );
+    }
+
+    public function testMessageObjectMustBeStringable()
+    {
+        $this->expectException(\TypeError::class);
+        new ConstraintViolation(
+            new CustomArrayObject(),
+            '',
+            [],
+            'Root',
+            'property.path',
+            null
+        );
+    }
+
+    public function testNonStringCode()
+    {
+        $violation = new ConstraintViolation(
+            '42 cannot be used here',
+            'this is the message template',
+            [],
+            ['some_value' => 42],
+            'some_value',
+            null,
+            null,
+            42
+        );
+
+        self::assertSame(42, $violation->getCode());
     }
 }

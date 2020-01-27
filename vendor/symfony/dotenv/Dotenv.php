@@ -35,6 +35,21 @@ final class Dotenv
     private $data;
     private $end;
     private $values;
+    private $usePutenv;
+
+    /**
+     * @var bool If `putenv()` should be used to define environment variables or not.
+     *           Beware that `putenv()` is not thread safe and this setting will default
+     *           to `false` in Symfony 5.0.
+     */
+    public function __construct(bool $usePutenv = true)
+    {
+        if (!\func_num_args()) {
+            @trigger_error(sprintf('The default value of "$usePutenv" argument of "%s" will be changed from "true" to "false" in Symfony 5.0. You should define its value explicitly.', __METHOD__), E_USER_DEPRECATED);
+        }
+
+        $this->usePutenv = $usePutenv;
+    }
 
     /**
      * Loads one or several .env files.
@@ -126,7 +141,10 @@ final class Dotenv
                 continue;
             }
 
-            putenv("$name=$value");
+            if ($this->usePutenv) {
+                putenv("$name=$value");
+            }
+
             $_ENV[$name] = $value;
             if ($notHttpName) {
                 $_SERVER[$name] = $value;
@@ -140,7 +158,11 @@ final class Dotenv
         if ($updateLoadedVars) {
             unset($loadedVars['']);
             $loadedVars = implode(',', array_keys($loadedVars));
-            putenv('SYMFONY_DOTENV_VARS='.$_ENV['SYMFONY_DOTENV_VARS'] = $_SERVER['SYMFONY_DOTENV_VARS'] = $loadedVars);
+            $_ENV['SYMFONY_DOTENV_VARS'] = $_SERVER['SYMFONY_DOTENV_VARS'] = $loadedVars;
+
+            if ($this->usePutenv) {
+                putenv('SYMFONY_DOTENV_VARS='.$loadedVars);
+            }
         }
     }
 
@@ -235,32 +257,30 @@ final class Dotenv
             throw $this->createFormatException('Whitespace are not supported before the value');
         }
 
+        $loadedVars = array_flip(explode(',', isset($_SERVER['SYMFONY_DOTENV_VARS']) ? $_SERVER['SYMFONY_DOTENV_VARS'] : (isset($_ENV['SYMFONY_DOTENV_VARS']) ? $_ENV['SYMFONY_DOTENV_VARS'] : '')));
+        unset($loadedVars['']);
         $v = '';
 
         do {
             if ("'" === $this->data[$this->cursor]) {
-                $value = '';
-                ++$this->cursor;
+                $len = 0;
 
-                while ("\n" !== $this->data[$this->cursor]) {
-                    if ("'" === $this->data[$this->cursor]) {
-                        break;
-                    }
-                    $value .= $this->data[$this->cursor];
-                    ++$this->cursor;
+                do {
+                    if ($this->cursor + ++$len === $this->end) {
+                        $this->cursor += $len;
 
-                    if ($this->cursor === $this->end) {
                         throw $this->createFormatException('Missing quote to end the value');
                     }
-                }
-                if ("\n" === $this->data[$this->cursor]) {
-                    throw $this->createFormatException('Missing quote to end the value');
-                }
-                ++$this->cursor;
-                $v .= $value;
+                } while ("'" !== $this->data[$this->cursor + $len]);
+
+                $v .= substr($this->data, 1 + $this->cursor, $len - 1);
+                $this->cursor += 1 + $len;
             } elseif ('"' === $this->data[$this->cursor]) {
                 $value = '';
-                ++$this->cursor;
+
+                if (++$this->cursor === $this->end) {
+                    throw $this->createFormatException('Missing quote to end the value');
+                }
 
                 while ('"' !== $this->data[$this->cursor] || ('\\' === $this->data[$this->cursor - 1] && '\\' !== $this->data[$this->cursor - 2])) {
                     $value .= $this->data[$this->cursor];
@@ -270,14 +290,11 @@ final class Dotenv
                         throw $this->createFormatException('Missing quote to end the value');
                     }
                 }
-                if ("\n" === $this->data[$this->cursor]) {
-                    throw $this->createFormatException('Missing quote to end the value');
-                }
                 ++$this->cursor;
                 $value = str_replace(['\\"', '\r', '\n'], ['"', "\r", "\n"], $value);
                 $resolvedValue = $value;
-                $resolvedValue = $this->resolveVariables($resolvedValue);
-                $resolvedValue = $this->resolveCommands($resolvedValue);
+                $resolvedValue = $this->resolveVariables($resolvedValue, $loadedVars);
+                $resolvedValue = $this->resolveCommands($resolvedValue, $loadedVars);
                 $resolvedValue = str_replace('\\\\', '\\', $resolvedValue);
                 $v .= $resolvedValue;
             } else {
@@ -299,8 +316,8 @@ final class Dotenv
                 }
                 $value = rtrim($value);
                 $resolvedValue = $value;
-                $resolvedValue = $this->resolveVariables($resolvedValue);
-                $resolvedValue = $this->resolveCommands($resolvedValue);
+                $resolvedValue = $this->resolveVariables($resolvedValue, $loadedVars);
+                $resolvedValue = $this->resolveCommands($resolvedValue, $loadedVars);
                 $resolvedValue = str_replace('\\\\', '\\', $resolvedValue);
 
                 if ($resolvedValue === $value && preg_match('/\s+/', $value)) {
@@ -353,7 +370,7 @@ final class Dotenv
         }
     }
 
-    private function resolveCommands($value)
+    private function resolveCommands($value, $loadedVars)
     {
         if (false === strpos($value, '$')) {
             return $value;
@@ -369,7 +386,7 @@ final class Dotenv
             )
         /x';
 
-        return preg_replace_callback($regex, function ($matches) {
+        return preg_replace_callback($regex, function ($matches) use ($loadedVars) {
             if ('\\' === $matches[1]) {
                 return substr($matches[0], 1);
             }
@@ -384,7 +401,15 @@ final class Dotenv
 
             $process = method_exists(Process::class, 'fromShellCommandline') ? Process::fromShellCommandline('echo '.$matches[0]) : new Process('echo '.$matches[0]);
             $process->inheritEnvironmentVariables(true);
-            $process->setEnv($this->values);
+
+            $env = [];
+            foreach ($this->values as $name => $value) {
+                if (isset($loadedVars[$name]) || (!isset($_ENV[$name]) && !(isset($_SERVER[$name]) && 0 !== strpos($name, 'HTTP_')))) {
+                    $env[$name] = $value;
+                }
+            }
+            $process->setEnv($env);
+
             try {
                 $process->mustRun();
             } catch (ProcessException $e) {
@@ -395,7 +420,7 @@ final class Dotenv
         }, $value);
     }
 
-    private function resolveVariables($value)
+    private function resolveVariables($value, array $loadedVars)
     {
         if (false === strpos($value, '$')) {
             return $value;
@@ -411,7 +436,7 @@ final class Dotenv
             (?P<closing_brace>\})?             # optional closing brace
         /x';
 
-        $value = preg_replace_callback($regex, function ($matches) {
+        $value = preg_replace_callback($regex, function ($matches) use ($loadedVars) {
             // odd number of backslashes means the $ character is escaped
             if (1 === \strlen($matches['backslashes']) % 2) {
                 return substr($matches[0], 1);
@@ -427,12 +452,14 @@ final class Dotenv
             }
 
             $name = $matches['name'];
-            if (isset($this->values[$name])) {
+            if (isset($loadedVars[$name]) && isset($this->values[$name])) {
                 $value = $this->values[$name];
-            } elseif (isset($_SERVER[$name]) && 0 !== strpos($name, 'HTTP_')) {
-                $value = $_SERVER[$name];
             } elseif (isset($_ENV[$name])) {
                 $value = $_ENV[$name];
+            } elseif (isset($_SERVER[$name]) && 0 !== strpos($name, 'HTTP_')) {
+                $value = $_SERVER[$name];
+            } elseif (isset($this->values[$name])) {
+                $value = $this->values[$name];
             } else {
                 $value = (string) getenv($name);
             }

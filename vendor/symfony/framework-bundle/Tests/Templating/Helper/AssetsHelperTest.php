@@ -17,11 +17,14 @@ use Symfony\Component\Asset\Package;
 use Symfony\Component\Asset\Packages;
 use Symfony\Component\Asset\VersionStrategy\StaticVersionStrategy;
 
+/**
+ * @group legacy
+ */
 class AssetsHelperTest extends TestCase
 {
     private $helper;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $fooPackage = new Package(new StaticVersionStrategy('42', '%s?v=%s'));
         $barPackage = new Package(new StaticVersionStrategy('22', '%s?%s'));

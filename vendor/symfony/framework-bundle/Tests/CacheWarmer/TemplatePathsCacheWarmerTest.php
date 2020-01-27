@@ -19,6 +19,9 @@ use Symfony\Bundle\FrameworkBundle\Tests\TestCase;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\Filesystem\Filesystem;
 
+/**
+ * @group legacy
+ */
 class TemplatePathsCacheWarmerTest extends TestCase
 {
     /** @var Filesystem */
@@ -35,7 +38,7 @@ class TemplatePathsCacheWarmerTest extends TestCase
 
     private $tmpDir;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->templateFinder = $this
             ->getMockBuilder(TemplateFinderInterface::class)
@@ -56,7 +59,7 @@ class TemplatePathsCacheWarmerTest extends TestCase
         $this->filesystem->mkdir($this->tmpDir);
     }
 
-    protected function tearDown()
+    protected function tearDown(): void
     {
         $this->filesystem->remove($this->tmpDir);
     }

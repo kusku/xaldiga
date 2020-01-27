@@ -18,7 +18,7 @@ use Symfony\Component\Form\Exception\BadMethodCallException;
  *
  * @author Bernhard Schussek <bschussek@gmail.com>
  */
-class FormError implements \Serializable
+class FormError
 {
     protected $messageTemplate;
     protected $messageParameters;
@@ -127,32 +127,10 @@ class FormError implements \Serializable
     /**
      * Returns the form that caused this error.
      *
-     * @return FormInterface The form that caused this error
+     * @return FormInterface|null The form that caused this error
      */
     public function getOrigin()
     {
         return $this->origin;
-    }
-
-    /**
-     * @internal
-     */
-    public function serialize()
-    {
-        return serialize([
-            $this->message,
-            $this->messageTemplate,
-            $this->messageParameters,
-            $this->messagePluralization,
-            $this->cause,
-        ]);
-    }
-
-    /**
-     * @internal
-     */
-    public function unserialize($serialized)
-    {
-        list($this->message, $this->messageTemplate, $this->messageParameters, $this->messagePluralization, $this->cause) = unserialize($serialized, ['allowed_classes' => false]);
     }
 }

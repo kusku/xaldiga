@@ -16,12 +16,14 @@ use Symfony\Component\Security\Core\Encoder\Argon2iPasswordEncoder;
 
 /**
  * @author Zan Baldwin <hello@zanbaldwin.com>
+ *
+ * @group legacy
  */
 class Argon2iPasswordEncoderTest extends TestCase
 {
     const PASSWORD = 'password';
 
-    protected function setUp()
+    protected function setUp(): void
     {
         if (!Argon2iPasswordEncoder::isSupported()) {
             $this->markTestSkipped('Argon2i algorithm is not supported.');
@@ -44,11 +46,9 @@ class Argon2iPasswordEncoderTest extends TestCase
         $this->assertFalse($encoder->isPasswordValid($result, 'anotherPassword', null));
     }
 
-    /**
-     * @expectedException \Symfony\Component\Security\Core\Exception\BadCredentialsException
-     */
     public function testEncodePasswordLength()
     {
+        $this->expectException('Symfony\Component\Security\Core\Exception\BadCredentialsException');
         $encoder = new Argon2iPasswordEncoder();
         $encoder->encodePassword(str_repeat('a', 4097), 'salt');
     }

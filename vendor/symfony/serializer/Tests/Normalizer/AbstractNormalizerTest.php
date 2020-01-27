@@ -2,6 +2,7 @@
 
 namespace Symfony\Component\Serializer\Tests\Normalizer;
 
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Serializer\Mapping\AttributeMetadata;
 use Symfony\Component\Serializer\Mapping\ClassMetadata;
@@ -13,7 +14,6 @@ use Symfony\Component\Serializer\Serializer;
 use Symfony\Component\Serializer\Tests\Fixtures\AbstractNormalizerDummy;
 use Symfony\Component\Serializer\Tests\Fixtures\Dummy;
 use Symfony\Component\Serializer\Tests\Fixtures\NullableConstructorArgumentDummy;
-use Symfony\Component\Serializer\Tests\Fixtures\ProxyDummy;
 use Symfony\Component\Serializer\Tests\Fixtures\StaticConstructorDummy;
 use Symfony\Component\Serializer\Tests\Fixtures\StaticConstructorNormalizer;
 use Symfony\Component\Serializer\Tests\Fixtures\VariadicConstructorTypedArgsDummy;
@@ -31,11 +31,11 @@ class AbstractNormalizerTest extends TestCase
     private $normalizer;
 
     /**
-     * @var ClassMetadataFactoryInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @var ClassMetadataFactoryInterface|MockObject
      */
     private $classMetadata;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $loader = $this->getMockBuilder('Symfony\Component\Serializer\Mapping\Loader\LoaderChain')->setConstructorArgs([[]])->getMock();
         $this->classMetadata = $this->getMockBuilder('Symfony\Component\Serializer\Mapping\Factory\ClassMetadataFactory')->setConstructorArgs([$loader])->getMock();
@@ -101,18 +101,6 @@ class AbstractNormalizerTest extends TestCase
 
         $result = $this->normalizer->getAllowedAttributes('c', [AbstractNormalizer::GROUPS => ['other']], false);
         $this->assertEquals([$a3, $a4], $result);
-    }
-
-    public function testObjectToPopulateWithProxy()
-    {
-        $proxyDummy = new ProxyDummy();
-
-        $context = [AbstractNormalizer::OBJECT_TO_POPULATE => $proxyDummy];
-
-        $normalizer = new ObjectNormalizer();
-        $normalizer->denormalize(['foo' => 'bar'], 'Symfony\Component\Serializer\Tests\Fixtures\ToBeProxyfiedDummy', null, $context);
-
-        $this->assertSame('bar', $proxyDummy->getFoo());
     }
 
     public function testObjectWithStaticConstructor()

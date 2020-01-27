@@ -12,8 +12,11 @@
 namespace Symfony\Bundle\FrameworkBundle\Tests\Console;
 
 use Symfony\Bundle\FrameworkBundle\Console\Application;
+use Symfony\Bundle\FrameworkBundle\EventListener\SuggestMissingPackageSubscriber;
 use Symfony\Bundle\FrameworkBundle\Tests\TestCase;
 use Symfony\Component\Console\Command\Command;
+use Symfony\Component\Console\Event\ConsoleErrorEvent;
+use Symfony\Component\Console\Exception\CommandNotFoundException;
 use Symfony\Component\Console\Input\ArrayInput;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\NullOutput;
@@ -164,9 +167,9 @@ class ApplicationTest extends TestCase
         $output = $tester->getDisplay();
 
         $this->assertSame(0, $tester->getStatusCode());
-        $this->assertContains('Some commands could not be registered:', $output);
-        $this->assertContains('throwing', $output);
-        $this->assertContains('fine', $output);
+        $this->assertStringContainsString('Some commands could not be registered:', $output);
+        $this->assertStringContainsString('throwing', $output);
+        $this->assertStringContainsString('fine', $output);
     }
 
     public function testRegistrationErrorsAreDisplayedOnCommandNotFound()
@@ -192,8 +195,8 @@ class ApplicationTest extends TestCase
         $output = $tester->getDisplay();
 
         $this->assertSame(1, $tester->getStatusCode());
-        $this->assertContains('Some commands could not be registered:', $output);
-        $this->assertContains('Command "fine" is not defined.', $output);
+        $this->assertStringContainsString('Some commands could not be registered:', $output);
+        $this->assertStringContainsString('Command "fine" is not defined.', $output);
     }
 
     public function testRunOnlyWarnsOnUnregistrableCommandAtTheEnd()
@@ -204,6 +207,7 @@ class ApplicationTest extends TestCase
         $container->setParameter('console.command.ids', [ThrowingCommand::class => ThrowingCommand::class]);
 
         $kernel = $this->getMockBuilder(KernelInterface::class)->getMock();
+        $kernel->expects($this->once())->method('boot');
         $kernel
             ->method('getBundles')
             ->willReturn([$this->createBundleMock(
@@ -222,7 +226,35 @@ class ApplicationTest extends TestCase
         $this->assertSame(0, $tester->getStatusCode());
         $display = explode('Lists commands', $tester->getDisplay());
 
-        $this->assertContains(trim('[WARNING] Some commands could not be registered:'), trim($display[1]));
+        $this->assertStringContainsString(trim('[WARNING] Some commands could not be registered:'), trim($display[1]));
+    }
+
+    public function testSuggestingPackagesWithExactMatch()
+    {
+        $result = $this->createEventForSuggestingPackages('server:dump', []);
+        $this->assertRegExp('/You may be looking for a command provided by/', $result);
+    }
+
+    public function testSuggestingPackagesWithPartialMatchAndNoAlternatives()
+    {
+        $result = $this->createEventForSuggestingPackages('server', []);
+        $this->assertRegExp('/You may be looking for a command provided by/', $result);
+    }
+
+    public function testSuggestingPackagesWithPartialMatchAndAlternatives()
+    {
+        $result = $this->createEventForSuggestingPackages('server', ['server:run']);
+        $this->assertNotRegExp('/You may be looking for a command provided by/', $result);
+    }
+
+    private function createEventForSuggestingPackages(string $command, array $alternatives = []): string
+    {
+        $error = new CommandNotFoundException('', $alternatives);
+        $event = new ConsoleErrorEvent(new ArrayInput([$command]), new NullOutput(), $error);
+        $subscriber = new SuggestMissingPackageSubscriber();
+        $subscriber->onConsoleError($event);
+
+        return $event->getError()->getMessage();
     }
 
     private function getKernel(array $bundles, $useDispatcher = false)
@@ -256,6 +288,7 @@ class ApplicationTest extends TestCase
         ;
 
         $kernel = $this->getMockBuilder('Symfony\Component\HttpKernel\KernelInterface')->getMock();
+        $kernel->expects($this->once())->method('boot');
         $kernel
             ->expects($this->any())
             ->method('getBundles')

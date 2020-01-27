@@ -21,6 +21,9 @@ use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\HttpFoundation\Session\Storage\MockArraySessionStorage;
 use Symfony\Component\Templating\TemplateNameParser;
 
+/**
+ * @group legacy
+ */
 class PhpEngineTest extends TestCase
 {
     public function testEvaluateAddsAppGlobal()
@@ -43,11 +46,9 @@ class PhpEngineTest extends TestCase
         $this->assertEmpty($globals['app']->getRequest());
     }
 
-    /**
-     * @expectedException \InvalidArgumentException
-     */
     public function testGetInvalidHelper()
     {
+        $this->expectException('InvalidArgumentException');
         $container = $this->getContainer();
         $loader = $this->getMockForAbstractClass('Symfony\Component\Templating\Loader\Loader');
         $engine = new PhpEngine(new TemplateNameParser(), $container, $loader);

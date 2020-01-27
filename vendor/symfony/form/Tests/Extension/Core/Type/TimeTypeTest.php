@@ -80,6 +80,22 @@ class TimeTypeTest extends BaseTypeTest
         $this->assertEquals($input, $form->getViewData());
     }
 
+    public function testSubmitStringWithCustomFormat()
+    {
+        $form = $this->factory->create(static::TESTED_TYPE, '11:33', [
+            'model_timezone' => 'UTC',
+            'view_timezone' => 'UTC',
+            'widget' => 'single_text',
+            'input' => 'string',
+            'input_format' => 'H:i',
+        ]);
+
+        $form->submit('03:24');
+
+        $this->assertEquals('03:24', $form->getData());
+        $this->assertEquals('03:24', $form->getViewData());
+    }
+
     public function testSubmitTimestamp()
     {
         $form = $this->factory->create(static::TESTED_TYPE, null, [
@@ -705,42 +721,34 @@ class TimeTypeTest extends BaseTypeTest
         $this->assertSame([$error], iterator_to_array($form->getErrors()));
     }
 
-    /**
-     * @expectedException \Symfony\Component\Form\Exception\InvalidConfigurationException
-     */
     public function testInitializeWithSecondsAndWithoutMinutes()
     {
+        $this->expectException('Symfony\Component\Form\Exception\InvalidConfigurationException');
         $this->factory->create(static::TESTED_TYPE, null, [
             'with_minutes' => false,
             'with_seconds' => true,
         ]);
     }
 
-    /**
-     * @expectedException \Symfony\Component\OptionsResolver\Exception\InvalidOptionsException
-     */
     public function testThrowExceptionIfHoursIsInvalid()
     {
+        $this->expectException('Symfony\Component\OptionsResolver\Exception\InvalidOptionsException');
         $this->factory->create(static::TESTED_TYPE, null, [
             'hours' => 'bad value',
         ]);
     }
 
-    /**
-     * @expectedException \Symfony\Component\OptionsResolver\Exception\InvalidOptionsException
-     */
     public function testThrowExceptionIfMinutesIsInvalid()
     {
+        $this->expectException('Symfony\Component\OptionsResolver\Exception\InvalidOptionsException');
         $this->factory->create(static::TESTED_TYPE, null, [
             'minutes' => 'bad value',
         ]);
     }
 
-    /**
-     * @expectedException \Symfony\Component\OptionsResolver\Exception\InvalidOptionsException
-     */
     public function testThrowExceptionIfSecondsIsInvalid()
     {
+        $this->expectException('Symfony\Component\OptionsResolver\Exception\InvalidOptionsException');
         $this->factory->create(static::TESTED_TYPE, null, [
             'seconds' => 'bad value',
         ]);

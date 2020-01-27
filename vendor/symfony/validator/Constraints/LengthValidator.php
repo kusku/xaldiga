@@ -27,7 +27,7 @@ class LengthValidator extends ConstraintValidator
     public function validate($value, Constraint $constraint)
     {
         if (!$constraint instanceof Length) {
-            throw new UnexpectedTypeException($constraint, __NAMESPACE__.'\Length');
+            throw new UnexpectedTypeException($constraint, Length::class);
         }
 
         if (null === $value || '' === $value) {
@@ -39,6 +39,10 @@ class LengthValidator extends ConstraintValidator
         }
 
         $stringValue = (string) $value;
+
+        if (null !== $constraint->normalizer) {
+            $stringValue = ($constraint->normalizer)($stringValue);
+        }
 
         if (!$invalidCharset = !@mb_check_encoding($stringValue, $constraint->charset)) {
             $length = mb_strlen($stringValue, $constraint->charset);

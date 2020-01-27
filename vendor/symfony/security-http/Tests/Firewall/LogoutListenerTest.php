@@ -14,13 +14,14 @@ namespace Symfony\Component\Security\Http\Tests\Firewall;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Event\RequestEvent;
 use Symfony\Component\Security\Http\Firewall\LogoutListener;
 
 class LogoutListenerTest extends TestCase
 {
     public function testHandleUnmatchedPath()
     {
-        list($listener, $tokenStorage, $httpUtils, $options) = $this->getListener();
+        list($listener, , $httpUtils, $options) = $this->getListener();
 
         list($event, $request) = $this->getGetResponseEvent();
 
@@ -32,7 +33,7 @@ class LogoutListenerTest extends TestCase
             ->with($request, $options['logout_path'])
             ->willReturn(false);
 
-        $listener->handle($event);
+        $listener($event);
     }
 
     public function testHandleMatchedPathWithSuccessHandlerAndCsrfValidation()
@@ -79,7 +80,7 @@ class LogoutListenerTest extends TestCase
 
         $listener->addHandler($handler);
 
-        $listener->handle($event);
+        $listener($event);
     }
 
     public function testHandleMatchedPathWithoutSuccessHandlerAndCsrfValidation()
@@ -119,17 +120,18 @@ class LogoutListenerTest extends TestCase
 
         $listener->addHandler($handler);
 
-        $listener->handle($event);
+        $listener($event);
     }
 
     /**
-     * @expectedException \RuntimeException
+     * @group legacy
      */
     public function testSuccessHandlerReturnsNonResponse()
     {
+        $this->expectException('RuntimeException');
         $successHandler = $this->getSuccessHandler();
 
-        list($listener, $tokenStorage, $httpUtils, $options) = $this->getListener($successHandler);
+        list($listener, , $httpUtils, $options) = $this->getListener($successHandler);
 
         list($event, $request) = $this->getGetResponseEvent();
 
@@ -143,17 +145,15 @@ class LogoutListenerTest extends TestCase
             ->with($request)
             ->willReturn(null);
 
-        $listener->handle($event);
+        $listener($event);
     }
 
-    /**
-     * @expectedException \Symfony\Component\Security\Core\Exception\LogoutException
-     */
     public function testCsrfValidationFails()
     {
+        $this->expectException('Symfony\Component\Security\Core\Exception\LogoutException');
         $tokenManager = $this->getTokenManager();
 
-        list($listener, $tokenStorage, $httpUtils, $options) = $this->getListener(null, $tokenManager);
+        list($listener, , $httpUtils, $options) = $this->getListener(null, $tokenManager);
 
         list($event, $request) = $this->getGetResponseEvent();
 
@@ -168,7 +168,7 @@ class LogoutListenerTest extends TestCase
             ->method('isTokenValid')
             ->willReturn(false);
 
-        $listener->handle($event);
+        $listener($event);
     }
 
     private function getTokenManager()
@@ -183,7 +183,7 @@ class LogoutListenerTest extends TestCase
 
     private function getGetResponseEvent()
     {
-        $event = $this->getMockBuilder('Symfony\Component\HttpKernel\Event\GetResponseEvent')
+        $event = $this->getMockBuilder(RequestEvent::class)
             ->disableOriginalConstructor()
             ->getMock();
 

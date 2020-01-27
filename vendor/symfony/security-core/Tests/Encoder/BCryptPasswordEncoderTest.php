@@ -16,25 +16,23 @@ use Symfony\Component\Security\Core\Encoder\BCryptPasswordEncoder;
 
 /**
  * @author Elnur Abdurrakhimov <elnur@elnur.pro>
+ *
+ * @group legacy
  */
 class BCryptPasswordEncoderTest extends TestCase
 {
     const PASSWORD = 'password';
     const VALID_COST = '04';
 
-    /**
-     * @expectedException \InvalidArgumentException
-     */
     public function testCostBelowRange()
     {
+        $this->expectException('InvalidArgumentException');
         new BCryptPasswordEncoder(3);
     }
 
-    /**
-     * @expectedException \InvalidArgumentException
-     */
     public function testCostAboveRange()
     {
+        $this->expectException('InvalidArgumentException');
         new BCryptPasswordEncoder(32);
     }
 
@@ -69,11 +67,9 @@ class BCryptPasswordEncoderTest extends TestCase
         $this->assertFalse($encoder->isPasswordValid($result, 'anotherPassword', null));
     }
 
-    /**
-     * @expectedException \Symfony\Component\Security\Core\Exception\BadCredentialsException
-     */
     public function testEncodePasswordLength()
     {
+        $this->expectException('Symfony\Component\Security\Core\Exception\BadCredentialsException');
         $encoder = new BCryptPasswordEncoder(self::VALID_COST);
 
         $encoder->encodePassword(str_repeat('a', 73), 'salt');

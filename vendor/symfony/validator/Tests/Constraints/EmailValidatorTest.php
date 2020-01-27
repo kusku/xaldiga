@@ -39,12 +39,10 @@ class EmailValidatorTest extends ConstraintValidatorTestCase
         $this->assertNoViolation();
     }
 
-    /**
-     * @expectedException \InvalidArgumentException
-     * @expectedExceptionMessage The "defaultMode" parameter value is not valid.
-     */
     public function testUnknownDefaultModeTriggerException()
     {
+        $this->expectException('InvalidArgumentException');
+        $this->expectExceptionMessage('The "defaultMode" parameter value is not valid.');
         new EmailValidator('Unknown Mode');
     }
 
@@ -62,11 +60,9 @@ class EmailValidatorTest extends ConstraintValidatorTestCase
         $this->assertNoViolation();
     }
 
-    /**
-     * @expectedException \Symfony\Component\Validator\Exception\UnexpectedValueException
-     */
     public function testExpectsStringCompatibleType()
     {
+        $this->expectException('Symfony\Component\Validator\Exception\UnexpectedValueException');
         $this->validator->validate(new \stdClass(), new Email());
     }
 
@@ -91,6 +87,28 @@ class EmailValidatorTest extends ConstraintValidatorTestCase
             ['example@example.co..uk'],
             ['example@-example.com'],
             [sprintf('example@%s.com', str_repeat('a', 64))],
+        ];
+    }
+
+    /**
+     * @dataProvider getValidEmailsWithWhitespaces
+     */
+    public function testValidNormalizedEmails($email)
+    {
+        $this->validator->validate($email, new Email(['normalizer' => 'trim']));
+
+        $this->assertNoViolation();
+    }
+
+    public function getValidEmailsWithWhitespaces()
+    {
+        return [
+            ["\x20example@example.co.uk\x20"],
+            ["\x09\x09example@example.co..uk\x09\x09"],
+            ["\x0A{}~!@!@£$%%^&*().!@£$%^&*()\x0A"],
+            ["\x0D\x0Dexample@example.co..uk\x0D\x0D"],
+            ["\x00example@-example.com"],
+            ["example@example.com\x0B\x0B"],
         ];
     }
 
@@ -211,12 +229,10 @@ class EmailValidatorTest extends ConstraintValidatorTestCase
         $this->assertNoViolation();
     }
 
-    /**
-     * @expectedException \InvalidArgumentException
-     * @expectedExceptionMessage The Symfony\Component\Validator\Constraints\Email::$mode parameter value is not valid.
-     */
     public function testUnknownModesOnValidateTriggerException()
     {
+        $this->expectException('InvalidArgumentException');
+        $this->expectExceptionMessage('The Symfony\Component\Validator\Constraints\Email::$mode parameter value is not valid.');
         $constraint = new Email();
         $constraint->mode = 'Unknown Mode';
 

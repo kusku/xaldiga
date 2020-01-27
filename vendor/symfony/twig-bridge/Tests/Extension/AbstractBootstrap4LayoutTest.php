@@ -197,6 +197,89 @@ abstract class AbstractBootstrap4LayoutTest extends AbstractBootstrap3LayoutTest
         );
     }
 
+    public function testHelpHtmlDefaultIsFalse()
+    {
+        $form = $this->factory->createNamed('name', 'Symfony\Component\Form\Extension\Core\Type\TextType', null, [
+            'help' => 'Help <b>text</b> test!',
+        ]);
+
+        $view = $form->createView();
+        $html = $this->renderHelp($view);
+
+        $this->assertMatchesXpath($html,
+            '/small
+    [@id="name_help"]
+    [@class="form-text text-muted"]
+    [.="[trans]Help <b>text</b> test![/trans]"]
+'
+        );
+
+        $this->assertMatchesXpath($html,
+            '/small
+    [@id="name_help"]
+    [@class="form-text text-muted"]
+    /b
+    [.="text"]
+', 0
+        );
+    }
+
+    public function testHelpHtmlIsFalse()
+    {
+        $form = $this->factory->createNamed('name', 'Symfony\Component\Form\Extension\Core\Type\TextType', null, [
+            'help' => 'Help <b>text</b> test!',
+            'help_html' => false,
+        ]);
+
+        $view = $form->createView();
+        $html = $this->renderHelp($view);
+
+        $this->assertMatchesXpath($html,
+            '/small
+    [@id="name_help"]
+    [@class="form-text text-muted"]
+    [.="[trans]Help <b>text</b> test![/trans]"]
+'
+        );
+
+        $this->assertMatchesXpath($html,
+            '/small
+    [@id="name_help"]
+    [@class="form-text text-muted"]
+    /b
+    [.="text"]
+', 0
+        );
+    }
+
+    public function testHelpHtmlIsTrue()
+    {
+        $form = $this->factory->createNamed('name', 'Symfony\Component\Form\Extension\Core\Type\TextType', null, [
+            'help' => 'Help <b>text</b> test!',
+            'help_html' => true,
+        ]);
+
+        $view = $form->createView();
+        $html = $this->renderHelp($view);
+
+        $this->assertMatchesXpath($html,
+            '/small
+    [@id="name_help"]
+    [@class="form-text text-muted"]
+    [.="[trans]Help <b>text</b> test![/trans]"]
+', 0
+        );
+
+        $this->assertMatchesXpath($html,
+            '/small
+    [@id="name_help"]
+    [@class="form-text text-muted"]
+    /b
+    [.="text"]
+'
+        );
+    }
+
     public function testErrors()
     {
         $form = $this->factory->createNamed('name', TextType::class);
@@ -334,6 +417,21 @@ abstract class AbstractBootstrap4LayoutTest extends AbstractBootstrap3LayoutTest
         ./input[@type="checkbox"][@name="name"][@id="my&id"][@class="my&class form-check-input"][@value="foo&bar"]
         /following-sibling::label
             [.="[trans]Name[/trans]"]
+    ]
+'
+        );
+    }
+
+    public function testCheckboxRowWithHelp()
+    {
+        $form = $this->factory->createNamed('name', 'Symfony\Component\Form\Extension\Core\Type\CheckboxType');
+        $html = $this->renderRow($form->createView(), ['label' => 'foo', 'help' => 'really helpful text']);
+
+        $this->assertMatchesXpath($html,
+            '/div
+    [@class="form-group"]
+    [
+        ./small[text() = "[trans]really helpful text[/trans]"]
     ]
 '
         );
@@ -944,6 +1042,21 @@ abstract class AbstractBootstrap4LayoutTest extends AbstractBootstrap3LayoutTest
         );
     }
 
+    public function testRadioRowWithHelp()
+    {
+        $form = $this->factory->createNamed('name', 'Symfony\Component\Form\Extension\Core\Type\RadioType', false);
+        $html = $this->renderRow($form->createView(), ['label' => 'foo', 'help' => 'really helpful text']);
+
+        $this->assertMatchesXpath($html,
+'/div
+    [@class="form-group"]
+    [
+        ./small[text() = "[trans]really helpful text[/trans]"]
+    ]
+'
+        );
+    }
+
     public function testButtonAttributeNameRepeatedIfTrue()
     {
         $form = $this->factory->createNamed('button', ButtonType::class, null, [
@@ -999,7 +1112,7 @@ abstract class AbstractBootstrap4LayoutTest extends AbstractBootstrap3LayoutTest
         ]);
 
         $this->assertWidgetMatchesXpath($form->createView(), ['id' => 'my&id', 'attr' => ['class' => 'my&class']],
-            '/div
+'/div
     [@class="input-group"]
     [
         ./div
@@ -1025,7 +1138,7 @@ abstract class AbstractBootstrap4LayoutTest extends AbstractBootstrap3LayoutTest
         $form = $this->factory->createNamed('name', PercentType::class, 0.1);
 
         $this->assertWidgetMatchesXpath($form->createView(), ['id' => 'my&id', 'attr' => ['class' => 'my&class']],
-            '/div
+'/div
     [@class="input-group"]
     [
         ./input
@@ -1040,6 +1153,45 @@ abstract class AbstractBootstrap4LayoutTest extends AbstractBootstrap3LayoutTest
                     ./span
                     [@class="input-group-text"]
                     [contains(.., "%")]
+                ]
+    ]
+'
+        );
+    }
+
+    public function testPercentNoSymbol()
+    {
+        $form = $this->factory->createNamed('name', PercentType::class, 0.1, ['symbol' => false]);
+        $this->assertWidgetMatchesXpath($form->createView(), ['id' => 'my&id', 'attr' => ['class' => 'my&class']],
+'/input
+    [@id="my&id"]
+    [@type="text"]
+    [@name="name"]
+    [@class="my&class form-control"]
+    [@value="10"]
+'
+        );
+    }
+
+    public function testPercentCustomSymbol()
+    {
+        $form = $this->factory->createNamed('name', PercentType::class, 0.1, ['symbol' => '‱']);
+        $this->assertWidgetMatchesXpath($form->createView(), ['id' => 'my&id', 'attr' => ['class' => 'my&class']],
+'/div
+    [@class="input-group"]
+    [
+        ./input
+            [@id="my&id"]
+            [@type="text"]
+            [@name="name"]
+            [@class="my&class form-control"]
+            [@value="10"]
+            /following-sibling::div
+                [@class="input-group-append"]
+                [
+                    ./span
+                    [@class="input-group-text"]
+                    [contains(.., "‱")]
                 ]
     ]
 '

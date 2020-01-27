@@ -16,11 +16,14 @@ use Symfony\Bundle\FrameworkBundle\Templating\TemplateReference;
 use Symfony\Bundle\FrameworkBundle\Tests\TestCase;
 use Symfony\Component\Templating\TemplateReference as BaseTemplateReference;
 
+/**
+ * @group legacy
+ */
 class TemplateNameParserTest extends TestCase
 {
     protected $parser;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $kernel = $this->getMockBuilder('Symfony\Component\HttpKernel\KernelInterface')->getMock();
         $kernel
@@ -37,7 +40,7 @@ class TemplateNameParserTest extends TestCase
         $this->parser = new TemplateNameParser($kernel);
     }
 
-    protected function tearDown()
+    protected function tearDown(): void
     {
         $this->parser = null;
     }
@@ -74,11 +77,9 @@ class TemplateNameParserTest extends TestCase
         ];
     }
 
-    /**
-     * @expectedException \InvalidArgumentException
-     */
     public function testParseValidNameWithNotFoundBundle()
     {
+        $this->expectException('InvalidArgumentException');
         $this->parser->parse('BarBundle:Post:index.html.php');
     }
 }

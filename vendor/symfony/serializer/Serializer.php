@@ -173,7 +173,7 @@ class Serializer implements SerializerInterface, ContextAwareNormalizerInterface
             throw new NotNormalizableValueException(sprintf('Could not normalize object of type %s, no supporting normalizer found.', \get_class($data)));
         }
 
-        throw new NotNormalizableValueException(sprintf('An unexpected value could not be normalized: %s', var_export($data, true)));
+        throw new NotNormalizableValueException(sprintf('An unexpected value could not be normalized: %s', !\is_resource($data) ? var_export($data, true) : sprintf('%s resource', get_resource_type($data))));
     }
 
     /**
@@ -250,6 +250,8 @@ class Serializer implements SerializerInterface, ContextAwareNormalizerInterface
                 return $normalizer;
             }
         }
+
+        return null;
     }
 
     /**
@@ -291,6 +293,8 @@ class Serializer implements SerializerInterface, ContextAwareNormalizerInterface
                 return $normalizer;
             }
         }
+
+        return null;
     }
 
     /**

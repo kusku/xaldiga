@@ -12,6 +12,7 @@
 namespace Symfony\Component\HttpKernel\Tests\Debug;
 
 use PHPUnit\Framework\TestCase;
+use Symfony\Component\EventDispatcher\Event;
 use Symfony\Component\EventDispatcher\EventDispatcher;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
@@ -61,15 +62,13 @@ class TraceableEventDispatcherTest extends TestCase
     public function testStopwatchStopControllerOnRequestEvent()
     {
         $stopwatch = $this->getMockBuilder('Symfony\Component\Stopwatch\Stopwatch')
-            ->setMethods(['isStarted', 'stop', 'stopSection'])
+            ->setMethods(['isStarted', 'stop'])
             ->getMock();
         $stopwatch->expects($this->once())
             ->method('isStarted')
             ->willReturn(true);
         $stopwatch->expects($this->once())
             ->method('stop');
-        $stopwatch->expects($this->once())
-            ->method('stopSection');
 
         $dispatcher = new TraceableEventDispatcher(new EventDispatcher(), $stopwatch);
 
@@ -89,10 +88,10 @@ class TraceableEventDispatcherTest extends TestCase
                 $called2 = true;
             });
         });
-        $dispatcher->dispatch('my-event');
+        $dispatcher->dispatch(new Event(), 'my-event');
         $this->assertTrue($called1);
         $this->assertFalse($called2);
-        $dispatcher->dispatch('my-event');
+        $dispatcher->dispatch(new Event(), 'my-event');
         $this->assertTrue($called2);
     }
 
@@ -104,7 +103,7 @@ class TraceableEventDispatcherTest extends TestCase
         };
         $eventDispatcher->addListener('foo', $listener1);
         $eventDispatcher->addListener('foo', function () {});
-        $eventDispatcher->dispatch('foo');
+        $eventDispatcher->dispatch(new Event(), 'foo');
 
         $this->assertCount(1, $eventDispatcher->getListeners('foo'), 'expected listener1 to be removed');
     }

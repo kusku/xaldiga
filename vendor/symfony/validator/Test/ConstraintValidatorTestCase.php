@@ -30,7 +30,7 @@ use Symfony\Contracts\Translation\TranslatorInterface;
  */
 abstract class ConstraintValidatorTestCase extends TestCase
 {
-    use TestCaseSetUpTearDownTrait;
+    use ForwardCompatTestTrait;
 
     /**
      * @var ExecutionContextInterface
@@ -178,7 +178,8 @@ abstract class ConstraintValidatorTestCase extends TestCase
             ->willReturn($validator);
         $validator->expects($this->at(2 * $i + 1))
             ->method('validate')
-            ->with($value, $this->logicalOr(null, [], $this->isInstanceOf('\Symfony\Component\Validator\Constraints\Valid')), $group);
+            ->with($value, $this->logicalOr(null, [], $this->isInstanceOf('\Symfony\Component\Validator\Constraints\Valid')), $group)
+            ->willReturn($validator);
     }
 
     protected function expectValidateValueAt($i, $propertyPath, $value, $constraints, $group = null)
@@ -190,7 +191,8 @@ abstract class ConstraintValidatorTestCase extends TestCase
             ->willReturn($contextualValidator);
         $contextualValidator->expects($this->at(2 * $i + 1))
             ->method('validate')
-            ->with($value, $constraints, $group);
+            ->with($value, $constraints, $group)
+            ->willReturn($contextualValidator);
     }
 
     protected function assertNoViolation()
