@@ -21,8 +21,15 @@ class NewMemberFormController extends AbstractController
         $signUpParentalUser->fill($request->request->get('parentalUser'));
         $signUpParentalUserErrors = $signUpParentalUser->validate($validator);
 
-        $formErrors['user'] = $signUpUserErrors;
-        $formErrors['parentalUser'] = $signUpParentalUserErrors;
+        if(count($signUpUserErrors) > 0) 
+        {
+            $formErrors['user'] = $signUpUserErrors;
+        }
+
+        if($signUpUser->isUnderaged() && count($signUpParentalUserErrors) > 0) 
+        {
+            $formErrors['parentalUser'] = $signUpParentalUserErrors;
+        }
 
         if($formErrors) {
             return new JsonResponse($formErrors);
@@ -49,10 +56,23 @@ class NewMemberFormController extends AbstractController
                 );
             
             $mailer->send($message);
+
+            $message = (new \Swift_Message('Test Usuari Registrat'))
+                ->setFrom('xaldiga@xaldiga.cat')
+                ->setTo($signUpUser->getEmail())
+                ->setBody(
+                    $this->renderView(
+                        'web/signup-form-email.html.twig',
+                        $data
+                    ),
+                    'text/html'
+                );
+            
+            $mailer->send($message);
         }
 
         return new JsonResponse([
-            'success_message' => 'Thank you for registering'
+            'success' => 'Thank you for registering'
         ]);
     }
 

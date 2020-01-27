@@ -119,19 +119,22 @@ class NewMemberForm extends React.Component {
             },
             dataType: 'json',
             success: function(response) {
-                let errorFound = false;
+                console.log(response);
                 let status = FormState.VALIDATED;
                 const updatesUsers = this.state.users;
-                errorFound = updatesUsers[formType.MEMBER].validate(response.user);
+                if(!response.success) {
+                    let errorFound = false;
+                    errorFound = updatesUsers[formType.MEMBER].validate(response.user);
 
-                if(this.isUnderaged(formType.MEMBER)) {
-                    errorFound |= updatesUsers[formType.PARENTAL_MEMBER].validate(response.parentalUser);
-                }
+                    if(this.isUnderaged(formType.MEMBER)) {
+                        errorFound |= updatesUsers[formType.PARENTAL_MEMBER].validate(response.parentalUser);
+                    }
 
-                if(!errorFound) {
-                    updatesUsers[formType.MEMBER].reset();
-                    updatesUsers[formType.PARENTAL_MEMBER].reset();
-                    status = FormState.EDITING;
+                    if(!errorFound) {
+                        updatesUsers[formType.MEMBER].reset();
+                        updatesUsers[formType.PARENTAL_MEMBER].reset();
+                        status = FormState.EDITING;
+                    }
                 }
 
                 this.setState({
