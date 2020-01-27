@@ -13,13 +13,6 @@ namespace PackageVersions;
 final class Versions
 {
     public const ROOT_PACKAGE_NAME = '__root__';
-    /**
-     * Array of all available composer packages.
-     * Dont read this array from your calling code, but use the \PackageVersions\Versions::getVersion() method instead.
-     *
-     * @var array<string, string>
-     * @internal
-     */
     public const VERSIONS          = array (
   'doctrine/annotations' => 'v1.8.0@904dca4eb10715b92569fbcd79e201d5c349b6bc',
   'doctrine/cache' => '1.10.0@382e7f4db9a12dc6c19431743a2b096041bcdd62',
@@ -106,6 +99,8 @@ final class Versions
   'webmozart/assert' => '1.6.0@573381c0a64f155a0d9a23f4b0c797194805b925',
   'zendframework/zend-code' => '3.4.1@268040548f92c2bfcba164421c1add2ba43abaaa',
   'zendframework/zend-eventmanager' => '3.2.1@a5e2583a211f73604691586b8406ff7296a946dd',
+  'doctrine/data-fixtures' => '1.4.2@39e9777c9089351a468f780b01cffa3cb0a42907',
+  'doctrine/doctrine-fixtures-bundle' => '3.3.0@8f07fcfdac7f3591f3c4bf13a50cbae05f65ed70',
   'easycorp/easy-log-handler' => 'v1.0.9@224e1dfcf9455aceee89cd0af306ac097167fac1',
   'nikic/php-parser' => 'v4.3.0@9a9981c347c5c49d6dfe5cf826bb882b824080dc',
   'symfony/browser-kit' => 'v4.3.10@66d301ce3458b522e3b1f2a76ecfccd1834dcf90',
@@ -120,13 +115,13 @@ final class Versions
   'symfony/var-dumper' => 'v4.3.10@c688afb42ae9f1c5ba45318ecfabc0d5e4fcc9ce',
   'symfony/web-profiler-bundle' => 'v4.3.10@ef55f4aac938cdf8c2051ead22e18ad80ed4e4f8',
   'symfony/web-server-bundle' => 'v4.3.10@2338445b78f1fb212a96f4286abdc77ee1e92607',
-  'paragonie/random_compat' => '2.*@2ba4b65159f4d5240e1c97cf7d84bcb98af9d53d',
-  'symfony/polyfill-ctype' => '*@2ba4b65159f4d5240e1c97cf7d84bcb98af9d53d',
-  'symfony/polyfill-iconv' => '*@2ba4b65159f4d5240e1c97cf7d84bcb98af9d53d',
-  'symfony/polyfill-php71' => '*@2ba4b65159f4d5240e1c97cf7d84bcb98af9d53d',
-  'symfony/polyfill-php70' => '*@2ba4b65159f4d5240e1c97cf7d84bcb98af9d53d',
-  'symfony/polyfill-php56' => '*@2ba4b65159f4d5240e1c97cf7d84bcb98af9d53d',
-  '__root__' => 'dev-master@2ba4b65159f4d5240e1c97cf7d84bcb98af9d53d',
+  'paragonie/random_compat' => '2.*@2409ac13489bd4827a4f467d9d2abbffa743d084',
+  'symfony/polyfill-ctype' => '*@2409ac13489bd4827a4f467d9d2abbffa743d084',
+  'symfony/polyfill-iconv' => '*@2409ac13489bd4827a4f467d9d2abbffa743d084',
+  'symfony/polyfill-php71' => '*@2409ac13489bd4827a4f467d9d2abbffa743d084',
+  'symfony/polyfill-php70' => '*@2409ac13489bd4827a4f467d9d2abbffa743d084',
+  'symfony/polyfill-php56' => '*@2409ac13489bd4827a4f467d9d2abbffa743d084',
+  '__root__' => 'dev-master@2409ac13489bd4827a4f467d9d2abbffa743d084',
 );
 
     private function __construct()
@@ -135,8 +130,6 @@ final class Versions
 
     /**
      * @throws \OutOfBoundsException If a version cannot be located.
-     *
-     * @psalm-param key-of<self::VERSIONS> $packageName
      */
     public static function getVersion(string $packageName) : string
     {
