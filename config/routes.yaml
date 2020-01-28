@@ -121,3 +121,7 @@ new-member-form:
 new-member:
   path: /new/user
   controller: App\Controller\NewMemberFormController:registerNewMember
+
+intranet:
+  path: /intranet
+  controller: App\Controller\IntranetController:intranetAction

@@ -1,8 +1,8 @@
 <?php
 
 namespace App\DataFixtures;
-namespace App\Entity\User;
 
+use App\Entity\User;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
@@ -22,10 +22,10 @@ class UserFixtures extends Fixture
 
         $user->setUuid(1);
 
-        $password = $this->encoder->encodePassword($user, 'gratis');
+        $password = $this->passwordEncoder->encodePassword($user, 'gratis');
         $user->setPassword($password);
 
-        $manager->persist($product);
+        $manager->persist($user);
         $manager->flush();
     }
 }
