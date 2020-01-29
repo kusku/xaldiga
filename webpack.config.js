@@ -32,6 +32,7 @@ Encore
     .addEntry('main', './assets/css/main.css')
     .addEntry('modalImage', './assets/css/modalImage.css')
     .addEntry('variables', './assets/css/variables.css')
+    .addEntry('intranet/main', './assets/css/intranet/main.css')
 
     // When enabled, Webpack "splits" your files into smaller pieces for greater optimization.
     .splitEntryChunks()
