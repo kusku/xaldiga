@@ -10,5 +10,4 @@ class IntranetController extends AbstractController
     {
         return $this->render('intranet/main.html.twig');
     }
-
 }

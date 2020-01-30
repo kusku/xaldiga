@@ -1821,7 +1821,7 @@ STYLE SWITCHER FOR DEMO
   color: rgba(255, 255, 255, 0.5);
 }
 
-/*
+/* /*
  * 2. BUTTONS
  */
 .btn {
@@ -1830,7 +1830,7 @@ STYLE SWITCHER FOR DEMO
   padding: 0.45rem 0.75rem;
   font-size: 0.9rem;
   line-height: 1.5;
-  border-radius: 0;
+  /* border-radius: 0; */
   -webkit-transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
@@ -2398,7 +2398,7 @@ STYLE SWITCHER FOR DEMO
   font-size: 0.875rem;
   line-height: 1.5;
   border-radius: 0;
-}
+} */
 
 /*
  * 3. TYPE  

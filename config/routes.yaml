@@ -125,3 +125,7 @@ new-member:
 intranet:
   path: /intranet
   controller: App\Controller\IntranetController:intranetAction
+
+intranet-calendar:
+  path: /intranet/calendar
+  controller: App\Controller\IntranetCalendarController:showCalendarListAction
