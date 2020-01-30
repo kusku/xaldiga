@@ -129,3 +129,7 @@ intranet:
 intranet-calendar:
   path: /intranet/calendar
   controller: App\Controller\IntranetCalendarController:showCalendarListAction
+
+intranet-create-calendar-event:
+  path: /intranet/calendar/create
+  controller: App\Controller\IntranetCalendarController:createCalendarEventAction
