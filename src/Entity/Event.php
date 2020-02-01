@@ -105,4 +105,19 @@ class Event
 
         return $this;
     }
+
+    public function toArray()
+    {
+        $array = array(
+            "id" => $this->id,
+            "date" => $this->ts->format("d/m/Y"),
+            "time" => $this->ts->format("H:i"),
+            "title" => $this->title,
+            "address" => $this->address,
+            "city" => $this->city,
+            "description" => $this->description
+        );
+
+        return $array;
+    }
 }

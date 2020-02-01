@@ -119,7 +119,6 @@ class NewMemberForm extends React.Component {
             },
             dataType: 'json',
             success: function(response) {
-                console.log(response);
                 let status = FormState.VALIDATED;
                 const updatesUsers = this.state.users;
                 if(!response.success) {

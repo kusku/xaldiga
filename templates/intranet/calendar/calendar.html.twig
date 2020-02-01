@@ -20,20 +20,10 @@
             <h4>Actes programats</h4>
           </div>
           <div class="card-body">
-            <div class="table-responsive">
-              <table class="table">
-                <thead>
-                  <tr>
-                    <th>Data</th>
-                    <th>Títol</th>
-                    <th>Hora</th>
-                    <th>Ubicació</th>
-                    <th>Ciutat</th>
-                    <th>Descrpició</th>
-                    <th></th>
-                  </tr>
-                </thead>
-                <tbody>
+            
+            <div id="intranet-calendar"></div>
+                  
+                {# <tbody>
                   {% for event in events %}
                     <tr>
                       <td>{{event.ts |date('d/m/Y') }}</td>
@@ -48,8 +38,7 @@
                       </td>
                     </tr>
                   {% endfor %}
-                </tbody>
-              </table>
+                </tbody> #}
             </div>
           </div>
         </div>
@@ -59,3 +48,6 @@
 </section>
 {% endblock %}
 
+{% block scripts %}
+  {{ encore_entry_script_tags('intranet/calendar/calendar') }}
+{% endblock %}

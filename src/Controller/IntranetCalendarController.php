@@ -6,14 +6,13 @@ use App\Form\CreateEventType;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 class IntranetCalendarController extends AbstractController
 {
     public function showCalendarListAction()
     {
-        $repository = $this->getDoctrine()->getRepository(Event::class);
-        $events = $repository->findAll();
-        return $this->render('intranet/calendar/calendar.html.twig', ['events' => $events]);
+        return $this->render('intranet/calendar/calendar.html.twig');
     }
 
     public function createCalendarEventAction(Request $request)
@@ -40,5 +39,19 @@ class IntranetCalendarController extends AbstractController
         }
 
         return $this->render('intranet/calendar/edit-calendar.html.twig', ['form' => $form->createView()]);
+    }
+
+    public function getEvents(Request $request)
+    {
+        $repository = $this->getDoctrine()->getRepository(Event::class);
+        $events = $repository->findAll();
+
+        $jsonContent = array();
+        foreach($events as $event)
+        {
+            array_push($jsonContent, $event->toArray());
+        }
+
+        return new JsonResponse(['events' => $jsonContent]);
     }
 }

@@ -35,6 +35,8 @@ Encore
     .addEntry('intranet/main', './assets/css/intranet/main.css')
     .addEntry('intranet/style.red', './assets/css/intranet/style.red.css')
     .addEntry('intranet/fontastic', './assets/css/intranet/fontastic.css')
+    .addEntry('intranet/calendar/calendar', './assets/js/intranet/calendar/calendar.js')
+    .addEntry('intranet/calendar/event-calendar-data', './assets/js/intranet/calendar/event-calendar-data.js')
     // .addEntry('intranet', './assets/js/intranet.js')
 
     // When enabled, Webpack "splits" your files into smaller pieces for greater optimization.
