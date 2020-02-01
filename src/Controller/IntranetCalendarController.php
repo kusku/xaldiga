@@ -54,4 +54,18 @@ class IntranetCalendarController extends AbstractController
 
         return new JsonResponse(['events' => $jsonContent]);
     }
+
+    public function deleteEvent(int $eventId)
+    {
+        $entityManager = $this->getDoctrine()->getManager();
+        $repository = $entityManager->getRepository(Event::class);
+        $event = $repository->find($eventId);
+        if($event)
+        {
+            $entityManager->remove($event);
+            $entityManager->flush();
+        }
+
+        return new JsonResponse();
+    }
 }

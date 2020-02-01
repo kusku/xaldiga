@@ -137,3 +137,7 @@ intranet-create-calendar-event:
 intranet-calendar-get-events:
   path: /intranet/calendar/get-events
   controller: App\Controller\IntranetCalendarController:getEvents
+
+intranet-calendar-delete-event:
+  path: /intranet/calendar/delete-event/{eventId}
+  controller: App\Controller\IntranetCalendarController:deleteEvent
