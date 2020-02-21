@@ -1,4 +1,4 @@
-export default class EventCalendarData {
+export default class IntranetCalendarData {
     constructor() {
        this.reset(); 
     }

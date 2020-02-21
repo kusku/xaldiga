@@ -21,25 +21,8 @@
           </div>
           <div class="card-body">
             
-            <div id="intranet-calendar"></div>
-                  
-                {# <tbody>
-                  {% for event in events %}
-                    <tr>
-                      <td>{{event.ts |date('d/m/Y') }}</td>
-                      <td>{{event.title}}</td>
-                      <td>{{event.ts |date('H:i') }}</td>
-                      <td>{{event.address}}</td>
-                      <td>{{event.city}}</td>
-                      <td>{{event.description}}</td>
-                      <td>
-                        <button type="button" class="btn btn-info"><i class="fa fa-pencil"></i></button>
-                        <button type="button" class="btn btn-danger"><i class="fa fa-trash"></i></button>
-                      </td>
-                    </tr>
-                  {% endfor %}
-                </tbody> #}
-            </div>
+            <div id="intranet-calendar-table"></div>
+              
           </div>
         </div>
       <div>
@@ -49,5 +32,5 @@
 {% endblock %}
 
 {% block scripts %}
-  {{ encore_entry_script_tags('intranet/calendar/calendar') }}
+  {{ encore_entry_script_tags('intranet/calendar/calendar-table') }}
 {% endblock %}

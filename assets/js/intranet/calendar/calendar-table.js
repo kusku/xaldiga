@@ -1,63 +1,10 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import axios from 'axios';
-import EventCalendarData from './event-calendar-data';
+import IntranetCalendarData from './calendar-data';
+import { IntranetCalendarCell } from './calendar-cell';
 
-class EventCalendarCell extends React.Component {
-    constructor(props) {
-        super(props);
-
-        this.handleDeleteCell = this.handleDeleteCell.bind(this);
-    }
-
-    handleDeleteCell(e, cellId) {
-        e.preventDefault();
-
-        console.log("handleDeleteCell");
-        console.log(cellId);
-        // cancel the previous request
-        if (typeof this._deleteCellPetition != typeof undefined) {
-            this._deleteCellPetition.cancel('Operation canceled due to new request.')
-        }
-
-        // save the new request for cancellation
-        this._deleteCellPetition = axios.CancelToken.source();
-        
-        axios.post('/intranet/calendar/delete-event/'+ cellId,
-            // cancel token used by axios
-            { cancelToken: this._deleteCellPetition.token }
-        )
-        .then(response => {
-            this.props.onUpdate();
-        })
-        .catch(error => {
-            if (axios.isCancel(error)) {
-            console.log('Request canceled', error);
-            } else {
-            console.log(error);
-            }
-        });
-    }
-
-    render() {
-        return (
-            <tr>
-                <td>{this.props.date}</td>
-                <td>{this.props.title}</td>
-                <td>{this.props.time}</td>
-                <td>{this.props.address}</td>
-                <td>{this.props.city}</td>
-                <td>{this.props.description}</td>
-                <td>
-                    <button type="button" className="btn btn-info"><i className="fa fa-pencil"></i></button>
-                    <button type="button" className="btn btn-danger" onClick={(e) => this.handleDeleteCell(e, this.props.id) }><i className="fa fa-trash"></i></button>
-                </td>
-            </tr>
-        );
-    }
-}
-
-class IntranetCalendar extends React.Component {
+class IntranetCalendarTable extends React.Component {
     constructor(props) {
         super(props);
 
@@ -96,7 +43,7 @@ class IntranetCalendar extends React.Component {
             let data = response.data;
             let events = [];
             for (let i = 0; i < data.events.length; i++) {
-                event = new EventCalendarData();
+                event = new IntranetCalendarData();
                 event.fill(data.events[i]);
                 events.push(event);
             } 
@@ -126,7 +73,7 @@ class IntranetCalendar extends React.Component {
         for (let i = 0; i < this.state.events.length; i++) {
             var event = this.state.events[i];
             table.push(
-                <EventCalendarCell 
+                <IntranetCalendarCell 
                     key={event.id} 
                     id={event.id} 
                     date={event.date} 
@@ -179,4 +126,4 @@ class IntranetCalendar extends React.Component {
     }
 }
 
-ReactDOM.render(<IntranetCalendar />, document.getElementById('intranet-calendar'));
+ReactDOM.render(<IntranetCalendarTable />, document.getElementById('intranet-calendar-table'));

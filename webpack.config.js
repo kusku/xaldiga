@@ -35,8 +35,11 @@ Encore
     .addEntry('intranet/main', './assets/css/intranet/main.css')
     .addEntry('intranet/style.red', './assets/css/intranet/style.red.css')
     .addEntry('intranet/fontastic', './assets/css/intranet/fontastic.css')
-    .addEntry('intranet/calendar/calendar', './assets/js/intranet/calendar/calendar.js')
-    .addEntry('intranet/calendar/event-calendar-data', './assets/js/intranet/calendar/event-calendar-data.js')
+    .addEntry('intranet/calendar/calendar-table', './assets/js/intranet/calendar/calendar-table.js')
+    .addEntry('intranet/calendar/calendar-cell', './assets/js/intranet/calendar/calendar-cell.js')
+    .addEntry('intranet/calendar/calendar-data', './assets/js/intranet/calendar/calendar-data.js')
+    .addEntry('intranet/components/delete-button', './assets/js/intranet/components/delete-button.js')
+    .addEntry('intranet/components/edit-button', './assets/js/intranet/components/edit-button.js')
     // .addEntry('intranet', './assets/js/intranet.js')
 
     // When enabled, Webpack "splits" your files into smaller pieces for greater optimization.
