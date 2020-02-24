@@ -38,6 +38,7 @@ Encore
     .addEntry('intranet/calendar/calendar-table', './assets/js/intranet/calendar/calendar-table.js')
     .addEntry('intranet/calendar/calendar-cell', './assets/js/intranet/calendar/calendar-cell.js')
     .addEntry('intranet/calendar/calendar-data', './assets/js/intranet/calendar/calendar-data.js')
+    .addEntry('intranet/calendar/calendar-form', './assets/js/intranet/calendar/calendar-form.js')
     .addEntry('intranet/components/delete-button', './assets/js/intranet/components/delete-button.js')
     .addEntry('intranet/components/edit-button', './assets/js/intranet/components/edit-button.js')
     // .addEntry('intranet', './assets/js/intranet.js')

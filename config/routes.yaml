@@ -124,20 +124,24 @@ new-member:
 
 intranet:
   path: /intranet
-  controller: App\Controller\IntranetController:intranetAction
+  controller: App\Controller\Intranet\IntranetController:intranetAction
 
 intranet-calendar:
   path: /intranet/calendar
-  controller: App\Controller\IntranetCalendarController:showCalendarListAction
+  controller: App\Controller\Intranet\IntranetCalendarController:showCalendarListAction
 
 intranet-create-calendar-event:
   path: /intranet/calendar/create
-  controller: App\Controller\IntranetCalendarController:createCalendarEventAction
+  controller: App\Controller\Intranet\IntranetCalendarController:createCalendarEventAction
 
 intranet-calendar-get-events:
   path: /intranet/calendar/get-events
-  controller: App\Controller\IntranetCalendarController:getEvents
+  controller: App\Controller\Intranet\IntranetCalendarController:getEvents
 
 intranet-calendar-delete-event:
   path: /intranet/calendar/delete-event/{eventId}
-  controller: App\Controller\IntranetCalendarController:deleteEvent
+  controller: App\Controller\Intranet\IntranetCalendarController:deleteEvent
+
+intranet-calendar-edit-event:
+  path: /intranet/calendar/edit-event/{eventId}
+  controller: App\Controller\Intranet\IntranetCalendarController:editEvent

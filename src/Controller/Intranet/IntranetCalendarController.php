@@ -1,5 +1,5 @@
 <?php
-namespace App\Controller;
+namespace App\Controller\Intranet;
 
 use App\Entity\Event;
 use App\Form\CreateEventType;
@@ -15,10 +15,8 @@ class IntranetCalendarController extends AbstractController
         return $this->render('intranet/calendar/calendar.html.twig');
     }
 
-    public function createCalendarEventAction(Request $request)
+    public function handleForm(Request $request, $form)
     {
-        $form = $this->createForm(CreateEventType::class);
-
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $formData = $form->getData();
@@ -35,6 +33,18 @@ class IntranetCalendarController extends AbstractController
             $entityManager->persist($event);
             $entityManager->flush();
 
+            return true;
+        }
+
+        return false;
+    }
+
+    public function createCalendarEventAction(Request $request)
+    {
+        $form = $this->createForm(CreateEventType::class);
+
+        if ($this->handleForm($request, $form))
+        {
             return $this->redirectToRoute('intranet-calendar');
         }
 
@@ -67,5 +77,25 @@ class IntranetCalendarController extends AbstractController
         }
 
         return new JsonResponse();
+    }
+
+    public function editEvent(int $eventId)
+    {
+        $entityManager = $this->getDoctrine()->getManager();
+        $repository = $entityManager->getRepository(Event::class);
+        $event = $repository->find($eventId);
+        if($event)
+        {
+            $form = $this->createForm(CreateEventType::class);
+            $form->get('title')->setData($event->getTitle());
+            $form->get('date')->setData($event->getTs());
+            $form->get('address')->setData($event->getAddress());
+            $form->get('city')->setData($event->getCity());
+            $form->get('description')->setData($event->getDescription());
+
+            return $this->render('intranet/calendar/edit-calendar.html.twig', ['form' => $form->createView()]);
+        }
+
+        return new JsonResponse(['events' => $event]);
     }
 }

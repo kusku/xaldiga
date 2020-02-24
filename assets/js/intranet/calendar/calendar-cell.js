@@ -7,14 +7,36 @@ export class IntranetCalendarCell extends React.Component {
     constructor(props) {
         super(props);
 
+        this.handleEditCell = this.handleEditCell.bind(this);
         this.handleDeleteCell = this.handleDeleteCell.bind(this);
+    }
+
+    handleEditCell(e, cellId) {
+        e.preventDefault();
+
+        // cancel the previous request
+        if (typeof this._editCellPetition != typeof undefined) {
+            this._editCellPetition.cancel('Operation canceled due to new request.')
+        }
+
+        // save the new request for cancellation
+        this._editCellPetition = axios.CancelToken.source();
+
+        axios.post('/intranet/calendar/edit-event/' + cellId,
+            // cancel token used by axios
+            { cancelToken: this._editCellPetition.token }
+        )
+        .then(response => {
+            console.log(response);
+        })
+        .catch(error => {
+            console.log(error);
+        });
     }
 
     handleDeleteCell(e, cellId) {
         e.preventDefault();
 
-        console.log("handleDeleteCell");
-        console.log(cellId);
         // cancel the previous request
         if (typeof this._deleteCellPetition != typeof undefined) {
             this._deleteCellPetition.cancel('Operation canceled due to new request.')
@@ -50,7 +72,7 @@ export class IntranetCalendarCell extends React.Component {
                 <td>{this.props.description}</td>
                 <td>
                     <div className="form-group">
-                        <EditButton></EditButton>
+                        <EditButton id={this.props.id} modalDataTarget="#intranetCalendarFormModal"></EditButton>
                         <DeleteButton id={this.props.id} handle={this.handleDeleteCell}></DeleteButton>
                     </div>
                 </td>
