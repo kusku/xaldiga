@@ -1,5 +1,6 @@
 import * as React from 'react';
 import axios from 'axios';
+import { IntranetCalendarForm } from './calendar-form';
 import { DeleteButton } from '../components/delete-button';
 import { EditButton } from '../components/edit-button';
 
@@ -62,6 +63,9 @@ export class IntranetCalendarCell extends React.Component {
     }
 
     render() {
+        var modalDataTargetTemplate = "intranetCalendarFormModal_";
+        let modalDataTargetName = modalDataTargetTemplate.concat(this.props.id);
+
         return (
             <tr>
                 <td>{this.props.date}</td>
@@ -72,8 +76,17 @@ export class IntranetCalendarCell extends React.Component {
                 <td>{this.props.description}</td>
                 <td>
                     <div className="form-group">
-                        <EditButton id={this.props.id} modalDataTarget="#intranetCalendarFormModal"></EditButton>
+                        <EditButton id={this.props.id} title={this.props.title} modalDataTarget={"#".concat(modalDataTargetName)}></EditButton>
                         <DeleteButton id={this.props.id} handle={this.handleDeleteCell}></DeleteButton>
+                        <IntranetCalendarForm 
+                            modalDataTarget={modalDataTargetName} 
+                            date={this.props.date} 
+                            time={this.props.time} 
+                            title={this.props.title} 
+                            description={this.props.description} 
+                            address={this.props.address} 
+                            city={this.props.city}
+                        />
                     </div>
                 </td>
             </tr>

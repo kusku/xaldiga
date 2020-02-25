@@ -23,7 +23,7 @@ export class IntranetCalendarForm extends React.Component {
 
     render() {
         return(
-            <div className="modal fade" id="intranetCalendarFormModal" tabIndex="-1" role="dialog" aria-labelledby="intranetCalendarFormModalLabel" aria-hidden="true">
+            <div className="modal fade" id={this.props.modalDataTarget} tabIndex="-1" role="dialog" aria-labelledby="intranetCalendarFormModalLabel" aria-hidden="true">
                 <div className="modal-dialog modal-dialog-centered" role="document">
                     <div className="modal-content">
                         <div className="modal-header">
@@ -36,7 +36,7 @@ export class IntranetCalendarForm extends React.Component {
                             <Form onSubmit = {this.handle}>
                                 <Form.Group>
                                     <Form.Label>Títol de l'acte</Form.Label>
-                                    <Form.Control type="text" />
+                                    <Form.Control type="text" value={this.props.title}/>
                                 </Form.Group>
                                 <Form.Group>
                                     <Form.Label>Data</Form.Label>
@@ -45,19 +45,20 @@ export class IntranetCalendarForm extends React.Component {
                                             {   required: true
                                             }
                                         } 
+                                        value = {this.props.date}
                                     />
                                 </Form.Group>
                                 <Form.Group>
                                     <Form.Label>Adreça</Form.Label>
-                                    <Form.Control type="text" />
+                                    <Form.Control type="text" value={this.props.address} />
                                 </Form.Group>
                                 <Form.Group>
                                     <Form.Label>Població</Form.Label>
-                                    <Form.Control type="text" />
+                                    <Form.Control type="text" value={this.props.city} />
                                 </Form.Group>
                                 <Form.Group>
                                     <Form.Label>Descripció</Form.Label>
-                                    <Form.Control type="text" as="textarea" />
+                                    <Form.Control type="text" as="textarea" value={this.props.description} />
                                 </Form.Group>
                             </Form>
                         </div>
